@@ -5,11 +5,12 @@ import { promises as fs } from "fs";
 import moment from "moment";
 import path from "path";
 
-const compile = async (data: any) => {
+const compile = async (data: Record<string, unknown>): Promise<string> => {
   const filePath = path.resolve(process.cwd(), "pages/api/cv-template.hbs");
   const html = await fs.readFile(filePath, "utf-8");
   return Handlebars.compile(html)(data);
 };
+
 
 Handlebars.registerHelper("dataFormat", (value, format) => {
   return moment(value).format(format);

@@ -13,7 +13,7 @@ import {
 import Loading from "@/components/loading-screen";
 import { projects } from "@/data/projects";
 
-const page = () => {
+const Page = () => {
   const [activeSection, setActiveSection] = useState("");
   const [isTop, setIsTop] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
@@ -356,4 +356,4 @@ const page = () => {
   );
 };
 
-export default memo(page);
+export default memo(Page);
