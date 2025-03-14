@@ -9,7 +9,7 @@ import Loading from "@/components/loading-screen";
 const ProjectsPage = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useRouter();
   useEffect(() => {
     async function fetchRepos() {
@@ -24,7 +24,7 @@ const ProjectsPage = () => {
         const data = await response.json();
         setRepos(data);
       } catch (err) {
-        setError(err.message);
+        setError((err as Error).message);
       } finally {
         setLoading(false);
       }
