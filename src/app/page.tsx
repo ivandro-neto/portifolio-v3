@@ -214,7 +214,7 @@ const Page = () => {
               Senior Backend Engineer at{" "}
               <a
                 className="text-zinc-200"
-                href="https://ucall.co.ao"
+                href="https://www.ucall.co.ao"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -245,7 +245,7 @@ const Page = () => {
               developer for{" "}
               <a
                 className="text-zinc-200"
-                href="https://risingsystems.com"
+                href="https://www.risingsystems.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
