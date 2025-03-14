@@ -117,7 +117,7 @@ const Page = () => {
     return <Loading />;
   }
 
-  const parsePeriod = (period) => {
+  const parsePeriod = (period : string) => {
     if (period.includes(" - ")) {
       const [startStr, endStr] = period.split(" - ");
       const startYear = parseInt(startStr);

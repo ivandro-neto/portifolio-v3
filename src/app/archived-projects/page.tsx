@@ -5,9 +5,19 @@ import ProjectCard from "@/components/project-card";
 import { Box } from "@/components/TechSkillBox";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/loading-screen";
-
+interface Repo {
+  id: number; // or string if that's what you expect
+  html_url: string;
+  owner: {
+    avatar_url: string;
+  };
+  name: string;
+  description : string;
+  language : string
+  // include any other properties you use
+}
 const ProjectsPage = () => {
-  const [repos, setRepos] = useState([]);
+  const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useRouter();
