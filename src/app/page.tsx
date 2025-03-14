@@ -57,7 +57,7 @@ const Page = () => {
         technologies: technologies.join(", "),
       }),
     );
-  
+
     try {
       // Requisição para gerar o PDF no backend
       const response = await fetch("/api/generate-resume", {
@@ -88,12 +88,12 @@ const Page = () => {
             "Chess, Photography, Reading, Quality Time with Family & Friends, Mortal Kombat",
         }),
       });
-  
+
       if (!response.ok) throw new Error("Erro ao gerar o PDF");
-  
+
       // Converte a resposta para Blob (arquivo binário)
       const blob = await response.blob();
-  
+
       // Cria um URL temporário para o Blob e inicia o download
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -102,22 +102,22 @@ const Page = () => {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-  
+
       // Se o backend gera um arquivo temporário, deleta-o após 10 segundos
-   /*    setTimeout(async () => {
+      /*    setTimeout(async () => {
         await fetch("/api/delete-temp", { method: "DELETE" });
       }, 10000); */
     } catch (error) {
       console.error("Failed to download resume:", error);
     }
   };
-  
+
   // Enquanto o carregamento estiver ativo, exibe o componente Loading
   if (isLoading) {
     return <Loading />;
   }
 
-  const parsePeriod = (period : string) => {
+  const parsePeriod = (period: string) => {
     if (period.includes(" - ")) {
       const [startStr, endStr] = period.split(" - ");
       const startYear = parseInt(startStr);
@@ -316,10 +316,12 @@ const Page = () => {
             ))}
 
           <a
-            onClick={handleDownloadPDF}
+            href="/api/download-resume"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hover:underline cursor-pointer"
           >
-            View full résumé 
+            View full résumé
           </a>
         </section>
 
