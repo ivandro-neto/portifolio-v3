@@ -1,0 +1,41 @@
+export const projects = [
+  {
+    title: "Custom & Log Solutions",
+    description: `An Angolan logistics company specializing in import/export operations. We connect origin and destination customs offices with efficiency, transparency, and competitive pricing, ensuring seamless logistics solutions.`,
+    imgURL: "/projects/bg/cls.png",
+    liveLink: "https://clsolutions.ao",
+    liveMask: "Customs and logistics solutions",
+    logo: "projects/logo/cls-logo.svg",
+    repo: null,
+    techs: ["React", "JavaScript", "CSS Module"],
+  },
+   {
+    title: "In.orbit",
+    description: `A goal-tracking app designed to boost productivity. Users can set weekly objectives, monitor progress, and manage tasks efficiently through an intuitive and engaging interface.`,
+    imgURL:
+      "https://raw.githubusercontent.com/ivandro-neto/Inorbit-frontend/refs/heads/main/public/Goals.png",
+    liveLink: "https://inorbit-eta.vercel.app/",
+    liveMask: "Track your Weekly goals, be productive!",
+    logo: "https://raw.githubusercontent.com/ivandro-neto/Inorbit-frontend/refs/heads/main/public/icon.svg",
+    repo: "https://github.com/ivandro-neto/Inorbit-frontend",
+    techs: [
+      "React.Js",
+      "TailwindCSS",
+      "TypeScript",
+      "PostgresSQL",
+      "Drizzle ORM",
+      "Docker",
+      "Fastify",
+    ],
+  },
+  {
+    title: "SPACIUM",
+    description: `A business incubator supporting startups with mentorship, networking, and funding opportunities. Spacium fosters innovation and helps new ventures grow from idea to market presence.`,
+    imgURL: "/projects/bg/spacium.png",
+    liveLink: "https://spacium.netlify.app/",
+    liveMask: "Shared Space and Pop up ideas",
+    logo: "projects/logo/spc-logo.svg",
+    repo: "https://github.com/ivandro-neto/SPACIUM",
+    techs: ["React", "CSS", "JavaScript"],
+  },
+];

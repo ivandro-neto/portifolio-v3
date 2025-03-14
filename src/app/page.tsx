@@ -1,47 +1,147 @@
-'use client'
+"use client";
 
 import ProjectCard from "@/components/project-card";
 import { Box } from "@/components/TechSkillBox";
 import ExperienceCard from "@/components/xp-cards";
 import Image from "next/image";
 import React, { memo, useEffect, useState } from "react";
+import {
+  experiences,
+  experiencesResumed,
+  techCategories,
+} from "@/data/experience";
+import Loading from "@/components/loading-screen";
+import { projects } from "@/data/projects";
 
 const page = () => {
+  const [activeSection, setActiveSection] = useState("");
+  const [isTop, setIsTop] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [activeSection, setActiveSection] = useState('');
+  // Simulação de delay para o carregamento (2 segundos)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll('section');
+      setIsTop(window.scrollY <= 0);
+
+      const sections = document.querySelectorAll("section");
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= (window.screen.height/3) && rect.bottom >= (window.screen.height/3)) {
+        if (
+          rect.top <= window.innerHeight / 2 &&
+          rect.bottom >= window.innerHeight / 2
+        ) {
           setActiveSection(section.id);
         }
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run initially to set correct state
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const handleDownloadPDF = async () => {
+    // Converte o objeto techCategories em um array com string única para cada categoria
+    const techCategoriesArray = Object.entries(techCategories).map(
+      ([category, technologies]) => ({
+        category,
+        technologies: technologies.join(", "),
+      }),
+    );
+  
+    try {
+      // Requisição para gerar o PDF no backend
+      const response = await fetch("/api/generate-resume", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Ivandro Neto",
+          links: [
+            {
+              tel: "+244949359054",
+              mail: "ivandro.neto@outlook.com",
+              web: "ivandroneto.com",
+              git: "github.com/ivandro-neto",
+            },
+          ],
+          summary:
+            "Experienced software engineer dedicated to crafting engaging digital experiences that drive impact and elevate user satisfaction.",
+          skills: techCategoriesArray,
+          experience: experiencesResumed,
+          educations: [
+            {
+              institution: "ISPTEC",
+              degree: "Computer Engineering",
+            },
+          ],
+          projects: projects,
+          interests:
+            "Chess, Photography, Reading, Quality Time with Family & Friends, Mortal Kombat",
+        }),
+      });
+  
+      if (!response.ok) throw new Error("Erro ao gerar o PDF");
+  
+      // Converte a resposta para Blob (arquivo binário)
+      const blob = await response.blob();
+  
+      // Cria um URL temporário para o Blob e inicia o download
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "IvandroNeto_Resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+  
+      // Se o backend gera um arquivo temporário, deleta-o após 10 segundos
+   /*    setTimeout(async () => {
+        await fetch("/api/delete-temp", { method: "DELETE" });
+      }, 10000); */
+    } catch (error) {
+      console.error("Failed to download resume:", error);
+    }
+  };
+  
+  // Enquanto o carregamento estiver ativo, exibe o componente Loading
+  if (isLoading) {
+    return <Loading />;
+  }
 
+  const parsePeriod = (period) => {
+    if (period.includes(" - ")) {
+      const [startStr, endStr] = period.split(" - ");
+      const startYear = parseInt(startStr);
+      const endYear = parseInt(endStr);
+      return { start: startYear, end: endYear };
+    }
+    // Se for apenas um ano, usa o mesmo valor para início e fim
+    const year = parseInt(period);
+    return { start: year, end: year };
+  };
   return (
     <main className="flex flex-col lg:flex-row w-screen lg:p-8 p-4 xl:px-24 xl:justify-center">
       {/* Sidebar / Introdução */}
       <section className="lg:w-[50%] w-full flex flex-col p-6 lg:p-12 justify-between lg:h-[80dvh] lg:sticky top-8">
         {/* Brief */}
-        <div className="flex gap-4 lg:gap-4 items-center lg:items-start">
+        <div className="flex gap-4 lg:gap-4 items-start lg:items-start">
           <Image
-            className="border-r-foreground border-r-2 p-2"
+            className="border-r-foreground border-r-2 p-2 lg:w-16"
             src={"/logo.png"}
             width={48}
             height={48}
             alt="Ivandro Neto logo"
           />
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-44 h-[90dvh]">
             <div className="flex flex-col items-start">
               <h1 className="text-3xl lg:text-4xl font-semibold capitalize">
                 Ivandro Neto
@@ -50,42 +150,48 @@ const page = () => {
                 Software Engineer
               </h2>
               <p className="text-sm lg:text-base">
-                I deliver high-impact, scalable software solutions.
+                Experienced software engineer dedicated to crafting engaging
+                digital experiences that drive impact and elevate user
+                satisfaction.
               </p>
             </div>
             {/* Nav */}
             <nav className="hidden lg:block">
-              <ul className="space-y-2">
-                <li className="uppercase cursor-pointer">
+              <ul className="space-y-4">
+                <li className="uppercase cursor-pointer text-lg">
                   <a
                     href="#about"
-                    className={`nav-link ${activeSection === "about" || window.scrollY <= 0 ? "active" : ""}`}
+                    className={`nav-link ${
+                      activeSection === "about" || isTop == true ? "active" : ""
+                    }`}
                   >
-                  About
+                    About
                   </a>
                 </li>
-                <li className="uppercase cursor-pointer">
+                <li className="uppercase cursor-pointer text-lg">
                   <a
                     href="#experience"
-                    className={`nav-link ${activeSection === "experience" ? "active" : ""}`}
+                    className={`nav-link ${
+                      activeSection === "experience" ? "active" : ""
+                    }`}
                   >
-                  Experience
+                    Experience
                   </a>
                 </li>
-                <li className="uppercase cursor-pointer">
-                <a
+                <li className="uppercase cursor-pointer text-lg">
+                  <a
                     href="#projects"
-                    className={`nav-link ${activeSection === "projects" ? "active" : ""}`}
+                    className={`nav-link ${
+                      activeSection === "projects" ? "active" : ""
+                    }`}
                   >
-                  Projects
+                    Projects
                   </a>
                 </li>
               </ul>
             </nav>
             {/* Links */}
-            <div className="flex w-full p-4">
-
-            </div>
+            <div className="flex w-full p-4"></div>
           </div>
         </div>
       </section>
@@ -93,117 +199,157 @@ const page = () => {
       {/* Conteúdo principal */}
       <section className="flex flex-col lg:w-[65%] h-auto w-full p-0 lg:p-8 gap-8 items-center overflow-y-auto scroll-smooth min-h-screen bg-background ">
         {/* Sobre Mim */}
-        <section id="about" className="text-offtext lg:px-6 p-0 lg:h-fit flex flex-col gap-6 xl:py-4">
+        <section
+          id="about"
+          className="text-offtext lg:px-6 p-0 lg:h-fit flex flex-col gap-6 xl:py-4"
+        >
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
             About
           </h2>
-          <p className="text-justify text-sm lg:text-base ">
-            I’m Ivandro Neto, a software engineer focused on creating scalable,
-            high-performance solutions and leading development teams to success.
-            Currently at{" "}
-            <a
-              className="text-zinc-200"
-              href="https://spacium.org"
-            >
-              Spacium
-            </a>
-            , I lead our development team while partnering closely with small
-            startups to elevate their brand presence and refine their codebases
-            for scalability. This role has allowed me to strategically shape
-            digital products, delivering solutions that empower businesses to
-            scale sustainably while maintaining high standards in code quality.
-          </p>
-          <p className="text-justify text-sm ">
-            In addition to my work at{" "}
-            <a
-              className="text-zinc-200"
-              href="https://spacium.org"
-            >
-              Spacium
-            </a>
-            , I contribute as a developer at{" "}
-            <a
-              className="text-zinc-200"
-              href="https://spacium.org"
-            >
-              RisingSystems
-            </a>
-            , a Portuguese software development provider. Here, I tackle diverse
-            projects, developing custom software solutions that meet the unique
-            needs of each client. This experience has strengthened my
-            adaptability across front-end and back-end development, equipping me
-            to handle a wide range of technical challenges.
-          </p>
-          <p className="">
-            Throughout these roles, I combine strategic insight with hands-on
-            expertise, focusing on efficiency, robustness, and seamless
-            scalability. I approach each project with a commitment to technical
-            excellence and client satisfaction, ensuring that the solutions I
-            create make a lasting impact.
-          </p>
-          <p className="">
-            Outside of work, I find balance and inspiration through chess,
-            photography, reading, and spending time with family and friends.
-            These pursuits fuel my creativity and bring fresh perspectives to my
-            work, helping me to approach each new challenge with clarity and
-            innovation.
-          </p>
+          <section className="flex flex-col gap-6">
+            <p className="text-sm lg:text-base">
+              I’m Ivandro Neto, a dedicated software engineer committed to
+              building scalable, high-performance solutions that drive
+              innovation in every project I undertake. Currently, I serve as a
+              Senior Backend Engineer at{" "}
+              <a
+                className="text-zinc-200"
+                href="https://ucall.co.ao"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ucall
+              </a>
+              , where I focus on enhancing system performance and implementing
+              cutting-edge features.
+            </p>
+
+            <p className="text-sm lg:text-base">
+              With a solid foundation in both front-end and back-end
+              development, I thrive on transforming complex challenges into
+              elegant digital products. My technical expertise spans modern
+              technologies and methodologies that empower businesses to achieve
+              sustainable growth.
+            </p>
+
+            <p className="text-sm lg:text-base">
+              At Ucall, my role involves architecting resilient APIs, resolving
+              critical performance bottlenecks, and collaborating closely with
+              cross-functional teams to align technical strategies with business
+              objectives. I take pride in delivering solutions that are robust,
+              scalable, and secure.
+            </p>
+
+            <p className="text-sm lg:text-base">
+              In addition to my responsibilities at Ucall, I work as a freelance
+              developer for{" "}
+              <a
+                className="text-zinc-200"
+                href="https://risingsystems.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RisingSystems
+              </a>
+              . This opportunity allows me to engage with a diverse array of
+              projects, delivering tailored software solutions that meet each
+              client’s unique needs.
+            </p>
+
+            <p className="text-sm lg:text-base">
+              I am passionate about continuous learning and always stay
+              up-to-date with emerging technologies. This commitment to
+              innovation ensures that my solutions remain future-proof and in
+              line with industry best practices.
+            </p>
+
+            <p className="text-sm lg:text-base">
+              Collaboration is at the heart of my work ethos. I believe that
+              effective communication and teamwork are essential for overcoming
+              challenges and delivering projects that exceed expectations.
+            </p>
+
+            <p className="text-sm lg:text-base">
+              Outside of work, I find inspiration in activities such as chess,
+              photography, and reading, and I cherish quality time with family
+              and friends. These passions fuel my creativity and help me
+              approach every challenge with fresh perspectives and enthusiasm.
+            </p>
+          </section>
         </section>
 
         {/* Experiência */}
-        <section id="experience" className="text-offtext flex flex-col gap-4 w-full h-auto">
+        <section
+          id="experience"
+          className="text-offtext flex flex-col gap-4 w-full h-auto"
+        >
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
             Experience
           </h2>
-          <ExperienceCard
-            period="2023 - 24"
-            role="Frontend Developer"
-            company="SPACIUM"
-            description="In addition to my work at Spacium, I contribute as a developer at RisingSystems, a Portuguese software development provider. Here, I tackle diverse projects, developing custom software solutions that meet the unique needs of each client."
-          >
-            <div className="flex gap-2 flex-wrap">
-              <Box content="Next.JS" />
-              <Box content="Next.JS" />
-              <Box content="Next.JS" />
-            </div>
-          </ExperienceCard>
+          {experiences
+            .sort((a, b) => {
+              const { start: startA, end: endA } = parsePeriod(a.period);
+              const { start: startB, end: endB } = parsePeriod(b.period);
 
-          <a href="">View full resumé</a>
+              // Ordena pela data de término (decrescente)
+              if (endB !== endA) {
+                return endB - endA;
+              }
+              // Se os anos finais forem iguais, ordena pelo ano de início (decrescente)
+              return startB - startA;
+            })
+            .map((exp, index) => (
+              <ExperienceCard
+                key={index}
+                period={exp.period}
+                role={exp.role}
+                seniority={exp.seniority}
+                company={exp.company}
+                description={exp.description}
+              >
+                <div className="flex gap-2 flex-wrap">
+                  {exp.skills.map((skill, idx) => (
+                    <Box key={idx} content={skill} />
+                  ))}
+                </div>
+              </ExperienceCard>
+            ))}
+
+          <a
+            onClick={handleDownloadPDF}
+            className="hover:underline cursor-pointer"
+          >
+            View full résumé 
+          </a>
         </section>
 
         {/* Projetos */}
-        <section id="projects" className="text-offtext grid grid-cols-1 gap-4 w-full">
+        <section
+          id="projects"
+          className="text-offtext grid grid-cols-1 gap-4 w-full"
+        >
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
             Projects
           </h2>
-          <ProjectCard
-            link=""
-            image="/Projects/Ecommerce.png"
-            title="Ecommerce Website"
-            description="I.N. Store é uma loja de moda conceitual feita com HTML, CSS e JavaScript. Inclui funcionalidades como login, carrinho, produtos e mais."
-          >
-            <Box content="Next.JS" />
-          </ProjectCard>
-          <ProjectCard
-            link=""
-            image="/Projects/Ecommerce.png"
-            title="Ecommerce Website"
-            description="I.N. Store é uma loja de moda conceitual feita com HTML, CSS e JavaScript. Inclui funcionalidades como login, carrinho, produtos e mais."
-          >
-            <Box content="Next.JS" />
-          </ProjectCard>
-          <ProjectCard
-            link=""
-            image="/Projects/EventHubAPI.png"
-            title="Portfolio Website"
-            description="Um portfólio minimalista e responsivo feito com Next.js e Tailwind."
-          >
-            <div className="flex space-x-2">
-              <Box content="Next.JS" />
-            </div>
-          </ProjectCard>
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              link={project.liveLink}
+              image={project.imgURL}
+              title={project.title}
+              description={project.description}
+            >
+              <div className="flex gap-2 flex-wrap">
+                {project.techs.map((tech, idx) => (
+                  <Box key={idx} content={tech} />
+                ))}
+              </div>
+            </ProjectCard>
+          ))}
 
-          <a href="">View full archive projects</a>
+          <a href="archived-projects" className=" hover:underline">
+            View full archive projects
+          </a>
         </section>
       </section>
     </main>
