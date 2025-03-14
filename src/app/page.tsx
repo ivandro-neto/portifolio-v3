@@ -131,7 +131,7 @@ const Page = () => {
   return (
     <main className="flex flex-col lg:flex-row w-screen lg:p-8 p-4 xl:px-24 xl:justify-center">
       {/* Sidebar / Introdução */}
-      <section className="lg:w-[50%] w-full flex flex-col p-6 lg:p-12 justify-between lg:h-[80dvh] lg:sticky top-8">
+      <section className="lg:w-[50%] w-full flex flex-col p-6 lg:p-12 justify-between lg:h-[80dvh] h-[40dvh] lg:sticky top-8">
         {/* Brief */}
         <div className="flex gap-4 lg:gap-4 items-start lg:items-start">
           <Image
