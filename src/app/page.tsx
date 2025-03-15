@@ -71,6 +71,7 @@ const Page = () => {
               mail: "ivandro.neto@outlook.com",
               web: "ivandroneto.com",
               git: "github.com/ivandro-neto",
+              lndk: "linkedin.com/in/ineto818",
             },
           ],
           summary:
@@ -314,7 +315,7 @@ const Page = () => {
                 </div>
               </ExperienceCard>
             ))}
-
+          {/* 
           <a
             href="/api/download-resume"
             target="_blank"
@@ -322,7 +323,8 @@ const Page = () => {
             className="hover:underline cursor-pointer"
           >
             View full résumé
-          </a>
+          </a> */}
+          <a onClick={handleDownloadPDF}>View full résumé</a>
         </section>
 
         {/* Projetos */}
@@ -353,6 +355,9 @@ const Page = () => {
             View full archive projects
           </a>
         </section>
+      <div className="footer text-xs text-offtext opacity-40 text-center mt-0">
+        <p>© 2025 Ivandro Neto. All rights reserved.</p>
+      </div>
       </section>
     </main>
   );
