@@ -34,8 +34,8 @@ const Page = () => {
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         if (
-          rect.top <= window.innerHeight / 3 &&
-          rect.bottom >= window.innerHeight / 3
+          rect.top <= window.innerHeight / 2 &&
+          rect.bottom >= window.innerHeight / 2
         ) {
           setActiveSection(section.id);
         }
