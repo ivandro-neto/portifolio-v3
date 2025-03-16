@@ -4,7 +4,7 @@ import ProjectCard from "@/components/project-card";
 import { Box } from "@/components/TechSkillBox";
 import ExperienceCard from "@/components/xp-cards";
 import Image from "next/image";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import {
   experiences,
   experiencesResumed,
@@ -18,37 +18,43 @@ const Page = () => {
   const [isTop, setIsTop] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simulação de delay para o carregamento (2 segundos)
-  useEffect(() => {
+   // Simulação de delay para o carregamento (2 segundos)
+   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
+  // Função de Scroll otimizada
+  const handleScroll = useCallback(() => {
+    const scrollPosition = window.scrollY;
+    setIsTop(scrollPosition <= 0);
+
+    const sections = document.querySelectorAll("section");
+    let currentSection = "";
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+        currentSection = section.id;
+      }
+    });
+
+    if (currentSection && activeSection !== currentSection) {
+      setActiveSection(currentSection);
+    }
+  }, [activeSection]);
+
+  // Adiciona e remove o evento de scroll corretamente
   useEffect(() => {
-    const handleScroll = () => {
-      setIsTop(window.scrollY <= 0);
-
-      const sections = document.querySelectorAll("section");
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (
-          rect.top <= window.innerHeight / 2 &&
-          rect.bottom >= window.innerHeight / 2
-        ) {
-          setActiveSection(section.id);
-        }
-      });
-    };
-
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Run initially to set correct state
+    handleScroll(); // Inicializa corretamente
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
   const handleDownloadPDF = async () => {
     // Converte o objeto techCategories em um array com string única para cada categoria
     const techCategoriesArray = Object.entries(techCategories).map(
