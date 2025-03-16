@@ -4,7 +4,7 @@ import ProjectCard from "@/components/project-card";
 import { Box } from "@/components/TechSkillBox";
 import ExperienceCard from "@/components/xp-cards";
 import Image from "next/image";
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import {
   experiences,
   experiencesResumed,
@@ -18,43 +18,37 @@ const Page = () => {
   const [isTop, setIsTop] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
-   // Simulação de delay para o carregamento (2 segundos)
-   useEffect(() => {
+  // Simulação de delay para o carregamento (2 segundos)
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  // Função de Scroll otimizada
-  const handleScroll = useCallback(() => {
-    const scrollPosition = window.scrollY;
-    setIsTop(scrollPosition <= 0);
-
-    const sections = document.querySelectorAll("section");
-    let currentSection = "";
-
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-        currentSection = section.id;
-      }
-    });
-
-    if (currentSection && activeSection !== currentSection) {
-      setActiveSection(currentSection);
-    }
-  }, [activeSection]);
-
-  // Adiciona e remove o evento de scroll corretamente
   useEffect(() => {
+    const handleScroll = () => {
+      setIsTop(window.scrollY <= 0);
+
+      const sections = document.querySelectorAll("section");
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (
+          rect.top <= window.innerHeight / 2 &&
+          rect.bottom >= window.innerHeight / 2
+        ) {
+          setActiveSection(section.id);
+        }
+      });
+    };
+
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Inicializa corretamente
+    handleScroll(); // Run initially to set correct state
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
   const handleDownloadPDF = async () => {
     // Converte o objeto techCategories em um array com string única para cada categoria
     const techCategoriesArray = Object.entries(techCategories).map(
@@ -165,36 +159,24 @@ const Page = () => {
             {/* Nav */}
             <nav className="hidden lg:block">
               <ul className="space-y-4">
-                <li className="uppercase cursor-pointer text-lg">
-                  <a
-                    href="#about"
-                    className={`nav-link ${
-                      activeSection === "about" || isTop == true ? "active" : ""
-                    }`}
+                {["about", "experience", "projects"].map((section) => (
+                  <li
+                    key={section}
+                    className="uppercase cursor-pointer text-lg"
                   >
-                    About
-                  </a>
-                </li>
-                <li className="uppercase cursor-pointer text-lg">
-                  <a
-                    href="#experience"
-                    className={`nav-link ${
-                      activeSection === "experience" ? "active" : ""
-                    }`}
-                  >
-                    Experience
-                  </a>
-                </li>
-                <li className="uppercase cursor-pointer text-lg">
-                  <a
-                    href="#projects"
-                    className={`nav-link ${
-                      activeSection === "projects" ? "active" : ""
-                    }`}
-                  >
-                    Projects
-                  </a>
-                </li>
+                    <a
+                      href={`#${section}`}
+                      className={`nav-link ${
+                        activeSection === section ||
+                        (isTop && section === "about")
+                          ? "active"
+                          : ""
+                      }`}
+                    >
+                      {section.charAt(0).toUpperCase() + section.slice(1)}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </nav>
             {/* Links */}
@@ -361,9 +343,9 @@ const Page = () => {
             View full archive projects
           </a>
         </section>
-      <div className="footer text-xs text-offtext opacity-40 text-center mt-0">
-        <p>© 2025 Ivandro Neto. All rights reserved.</p>
-      </div>
+        <div className="footer text-xs text-offtext opacity-40 text-center mt-0">
+          <p>© 2025 Ivandro Neto. All rights reserved.</p>
+        </div>
       </section>
     </main>
   );
