@@ -33,10 +33,7 @@ const Page = () => {
       const sections = document.querySelectorAll("section");
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        if (
-          rect.top <= window.innerHeight / 2 &&
-          rect.bottom >= window.innerHeight / 2
-        ) {
+        if (rect.top <= 0 && rect.bottom >= window.innerHeight - (window.innerHeight / 4)) {
           setActiveSection(section.id);
         }
       });
