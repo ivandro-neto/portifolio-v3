@@ -31,17 +31,16 @@ const Page = () => {
       setIsTop(window.scrollY <= 0);
 
       const sections = document.querySelectorAll("section");
-      sections.forEach((section) => {
+      for (const section of sections) {
         const rect = section.getBoundingClientRect();
-        console.log(rect.top, rect.bottom);
-        console.log("WINDOWS : " + window.innerHeight / 2);
+
         if (
           rect.top <= window.innerHeight / 2 &&
           rect.bottom >= window.innerHeight / 2
         ) {
           setActiveSection(section.id);
         }
-      });
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -101,7 +100,7 @@ const Page = () => {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "IvandroNeto_Resume.pdf";
+      //a.download = "IvandroNeto_Resume.pdf";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -123,12 +122,12 @@ const Page = () => {
   const parsePeriod = (period: string) => {
     if (period.includes(" - ")) {
       const [startStr, endStr] = period.split(" - ");
-      const startYear = parseInt(startStr);
-      const endYear = parseInt(endStr);
+      const startYear = Number.parseInt(startStr);
+      const endYear = Number.parseInt(endStr);
       return { start: startYear, end: endYear };
     }
     // Se for apenas um ano, usa o mesmo valor para início e fim
-    const year = parseInt(period);
+    const year = Number.parseInt(period);
     return { start: year, end: year };
   };
   return (
@@ -182,7 +181,7 @@ const Page = () => {
               </ul>
             </nav>
             {/* Links */}
-            <div className="flex w-full p-4"></div>
+            <div className="flex w-full p-4" />
           </div>
         </div>
       </section>
@@ -289,9 +288,9 @@ const Page = () => {
               // Se os anos finais forem iguais, ordena pelo ano de início (decrescente)
               return startB - startA;
             })
-            .map((exp, index) => (
+            .map((exp) => (
               <ExperienceCard
-                key={index}
+                key={exp.company}
                 period={exp.period}
                 role={exp.role}
                 seniority={exp.seniority}
@@ -299,8 +298,8 @@ const Page = () => {
                 description={exp.description}
               >
                 <div className="flex gap-2 flex-wrap">
-                  {exp.skills.map((skill, idx) => (
-                    <Box key={idx} content={skill} />
+                  {exp.skills.map((skill) => (
+                    <Box key={skill} content={skill} />
                   ))}
                 </div>
               </ExperienceCard>
@@ -314,7 +313,14 @@ const Page = () => {
           >
             View full résumé
           </a> */}
-          <a onClick={handleDownloadPDF}>View full résumé</a>
+          <a
+            href={`${window.location.origin}/resume.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer hover:underline"
+          >
+            View full résumé
+          </a>
         </section>
 
         {/* Projetos */}
@@ -325,23 +331,26 @@ const Page = () => {
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
             Projects
           </h2>
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <ProjectCard
-              key={index}
+              key={project.title}
               link={project.liveLink}
               image={project.imgURL}
               title={project.title}
               description={project.description}
             >
               <div className="flex gap-2 flex-wrap">
-                {project.techs.map((tech, idx) => (
-                  <Box key={idx} content={tech} />
+                {project.techs.map((tech) => (
+                  <Box key={tech} content={tech} />
                 ))}
               </div>
             </ProjectCard>
           ))}
 
-          <a href="archived-projects" className=" hover:underline">
+          <a
+            href="archived-projects"
+            className="cursor-pointer hover:underline"
+          >
             View full archive projects
           </a>
         </section>
