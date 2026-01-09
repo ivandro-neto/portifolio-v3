@@ -1,0 +1,7 @@
+{
+    "functions": {
+        "pages/api/generate-resume.ts": {
+            "maxDuration": 10
+        }
+    }
+}

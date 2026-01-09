@@ -20,6 +20,7 @@ const Page = () => {
   const [activeSection, setActiveSection] = useState("");
   const [isTop, setIsTop] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   // Simulação de delay para o carregamento (2 segundos)
   useEffect(() => {
@@ -54,6 +55,7 @@ const Page = () => {
     };
   }, []);
   const handleDownloadPDF = async () => {
+    setIsGeneratingPdf(true);
     // Converte o objeto techCategories em um array com string única para cada categoria
     const techCategoriesArray = Object.entries(techCategories).map(
       ([category, technologies]) => ({
@@ -106,7 +108,10 @@ const Page = () => {
         }),
       });
 
-      if (!response.ok) throw new Error("Erro ao gerar o PDF");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.details || errorData.error || "Erro ao gerar o PDF");
+      }
 
       // Converte a resposta para Blob (arquivo binário)
       const blob = await response.blob();
@@ -126,6 +131,9 @@ const Page = () => {
       }, 10000); */
     } catch (error) {
       console.error("Failed to download resume:", error);
+      alert(`Failed to generate resume: ${error instanceof Error ? error.message : "Unknown error"}`);
+    } finally {
+      setIsGeneratingPdf(false);
     }
   };
 
@@ -413,10 +421,11 @@ const Page = () => {
           
           <button
             onClick={handleDownloadPDF}
-            className="hover:underline cursor-pointer text-left"
+            disabled={isGeneratingPdf}
+            className="hover:underline cursor-pointer text-left disabled:opacity-50 disabled:cursor-not-allowed"
             type="button"
           >
-            View full résumé
+            {isGeneratingPdf ? "Generating PDF..." : "View full résumé"}
           </button>
          {/*  <a
             href={`${window.location.origin}/resume.pdf`}

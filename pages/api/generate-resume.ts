@@ -72,6 +72,7 @@ export default async function handler(
     res.end(pdfBuffer);
   } catch (error) {
     console.error("Erro ao gerar o CV:", error);
-    res.status(500).json({ error: "Erro ao gerar o CV" });
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: "Erro ao gerar o CV", details: errorMessage });
   }
 }
