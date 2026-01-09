@@ -9,31 +9,31 @@
   --offtext: #f2f4f3b2;
   --accent: #1E2435;
   --backgroundlight: #181E2F;
-  --primary : #1FA2FF;
+  --primary: #1FA2FF;
 }
 
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family:"Inter", sans-serif;
+  font-family: "Inter", sans-serif;
   overflow-x: hidden;
 }
 
-a{
+a {
   font-weight: 600;
   transition: 300ms color;
 }
 
-a:hover{
+a:hover {
   color: var(--primary);
 }
 
-.hovered:hover{
+.hovered:hover {
   background-color: var(--backgroundlight);
 }
 
-.hovered:hover .highlighted ~ span{
+.hovered:hover .highlighted~span {
   color: #F2F4F3;
 }
 
@@ -41,7 +41,7 @@ a:hover{
   position: relative;
 }
 
-.nav-link::before{
+.nav-link::before {
   position: absolute;
   content: '';
   background-color: var(--offtext);
@@ -55,7 +55,8 @@ a:hover{
 .nav-link.active {
   color: var(--primary);
 }
-.nav-link.active::before{
+
+.nav-link.active::before {
   width: 100%;
 }
 
@@ -74,6 +75,7 @@ a:hover{
   border-radius: 100%;
   animation: pulse 1s infinite;
 }
+
 .logo::after {
   position: absolute;
   content: '';
@@ -84,12 +86,15 @@ a:hover{
   opacity: 0;
 }
 
-.logo.pulsing::after{
+.logo.pulsing::after {
   opacity: 1;
   animation: pulseLong 1s infinite;
 }
 
-.logo:hover::before, .logo:hover::after, .logo.pulsing::before, .logo.pulsing::after {
+.logo:hover::before,
+.logo:hover::after,
+.logo.pulsing::before,
+.logo.pulsing::after {
   border: 2px solid var(--offtext);
 }
 
@@ -108,22 +113,27 @@ html {
     transform: scale(1);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: scale(1.2);
     opacity: 0;
   }
 }
+
 @keyframes pulseLong {
   0% {
     transform: scale(1);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: scale(1.4);
     opacity: 0;

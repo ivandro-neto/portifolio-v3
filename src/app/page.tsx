@@ -12,6 +12,9 @@ import {
 } from "@/data/experience";
 import Loading from "@/components/loading-screen";
 import { projects } from "@/data/projects";
+import { contentItems } from "@/data/content";
+import ContentCard from "@/components/content-card";
+import Script from "next/script";
 
 const Page = () => {
   const [activeSection, setActiveSection] = useState("");
@@ -68,9 +71,9 @@ const Page = () => {
           name: "Ivandro Neto",
           links: [
             {
-              tel: "+244949359054",
+              tel: "+244923474934",
               mail: "ivandro.neto@outlook.com",
-              web: "ivandroneto.com",
+              web: "ivandroneto.online",
               git: "github.com/ivandro-neto",
               lndk: "linkedin.com/in/ineto818",
             },
@@ -83,6 +86,18 @@ const Page = () => {
             {
               institution: "ISPTEC",
               degree: "Computer Engineering",
+            },
+            {
+              institution: "Grupo Nuveto",
+              degree: "Five9 Administrator and Sigma",
+            },
+            {
+              institution: "Rocketseat",
+              degree: "Fundamentos do .NET",
+            },
+            {
+              institution: "Udemy",
+              degree: "Complete Software Engineering Course",
             },
           ],
           projects: projects,
@@ -123,7 +138,7 @@ const Page = () => {
     if (period.includes(" - ")) {
       const [startStr, endStr] = period.split(" - ");
       const startYear = Number.parseInt(startStr);
-      const endYear = Number.parseInt(endStr);
+      const endYear = endStr.toLowerCase() === "present" ? new Date().getFullYear() : Number.parseInt(endStr);
       return { start: startYear, end: endYear };
     }
     // Se for apenas um ano, usa o mesmo valor para início e fim
@@ -131,7 +146,7 @@ const Page = () => {
     return { start: year, end: year };
   };
   return (
-    <main className="flex flex-col lg:flex-row w-screen lg:p-8 p-4 xl:px-24 xl:justify-center">
+    <main className="flex flex-col lg:flex-row min-h-screen lg:p-12 p-8 xl:px-48 xl:justify-center">
       {/* Sidebar / Introdução */}
       <section className="lg:w-[50%] w-full flex flex-col p-6 lg:p-12 justify-between lg:h-[80dvh] h-[40dvh] lg:sticky top-8">
         {/* Brief */}
@@ -148,19 +163,19 @@ const Page = () => {
               <h1 className="text-3xl lg:text-4xl font-semibold capitalize">
                 Ivandro Neto
               </h1>
-              <h2 className="text-lg lg:text-xl font-semibold capitalize">
-                Software Engineer
+              <h2 className="text-lg lg:text-xl font-semibold capitalize mt-3">
+                Backend Software Engineer
               </h2>
-              <p className="text-sm lg:text-base">
-                Experienced software engineer dedicated to crafting engaging
-                digital experiences that drive impact and elevate user
-                satisfaction.
+              <p className="text-sm lg:text-base mt-4 text-offtext max-w-lg">
+                Backend Software Engineer specialized in C# (.NET) and scalable,
+                distributed systems. I design and build high-performance APIs
+                and backend platforms.
               </p>
             </div>
             {/* Nav */}
             <nav className="hidden lg:block">
               <ul className="space-y-4">
-                {["about", "experience", "projects"].map((section) => (
+                {["about", "experience", "projects", "writing"].map((section) => (
                   <li
                     key={section}
                     className="uppercase cursor-pointer text-lg"
@@ -181,7 +196,129 @@ const Page = () => {
               </ul>
             </nav>
             {/* Links */}
-            <div className="flex w-full p-4" />
+            <div className="flex w-full gap-5 mt-8 items-center">
+              <a
+                href="https://github.com/ivandro-neto"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                aria-label="GitHub"
+              >
+                <div
+                  className="w-7 h-7 bg-current"
+                  style={{
+                    maskImage: "url('/github-brands-solid-full.svg')",
+                    WebkitMaskImage: "url('/github-brands-solid-full.svg')",
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskPosition: "center",
+                    WebkitMaskPosition: "center",
+                  }}
+                />
+              </a>
+              <a
+                href="https://linkedin.com/in/ineto818"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                aria-label="LinkedIn"
+              >
+                <div
+                  className="w-7 h-7 bg-current"
+                  style={{
+                    maskImage: "url('/linkedin-brands-solid-full.svg')",
+                    WebkitMaskImage: "url('/linkedin-brands-solid-full.svg')",
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskPosition: "center",
+                    WebkitMaskPosition: "center",
+                  }}
+                />
+              </a>
+              <a
+                href="https://x.com/ivneto_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                aria-label="X (Twitter)"
+              >
+                <div
+                  className="w-7 h-7 bg-current"
+                  style={{
+                    maskImage: "url('/x-twitter-brands-solid-full.svg')",
+                    WebkitMaskImage: "url('/x-twitter-brands-solid-full.svg')",
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskPosition: "center",
+                    WebkitMaskPosition: "center",
+                  }}
+                />
+              </a>
+              <a
+                href="https://www.threads.net/@incode_r"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                aria-label="Threads"
+              >
+                <div
+                  className="w-7 h-7 bg-current"
+                  style={{
+                    maskImage: "url('/threads-brands-solid-full (1).svg')",
+                    WebkitMaskImage: "url('/threads-brands-solid-full (1).svg')",
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskPosition: "center",
+                    WebkitMaskPosition: "center",
+                  }}
+                />
+              </a>
+              <a
+                href="https://hashnode.com/@ineto"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                aria-label="Hashnode"
+              >
+                <div
+                  className="w-6 h-6 bg-current"
+                  style={{
+                    maskImage: "url('/hashnode.svg')",
+                    WebkitMaskImage: "url('/hashnode.svg')",
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskPosition: "center",
+                    WebkitMaskPosition: "center",
+                  }}
+                />
+              </a>
+              <a
+                href="mailto:ivandro.neto@outlook.com"
+                className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                aria-label="Email"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-7 h-7"
+                >
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -198,10 +335,16 @@ const Page = () => {
           </h2>
           <section className="flex flex-col gap-6">
             <p className="text-sm lg:text-base">
-              I’m Ivandro Neto, a dedicated software engineer committed to
-              building scalable, high-performance solutions that drive
-              innovation in every project I undertake. Currently, I serve as a
-              Senior Backend Engineer at{" "}
+              Backend Software Engineer specialized in C# (.NET) and scalable,
+              distributed systems. I design and build high-performance APIs and
+              backend platforms with a strong focus on scalability, low latency,
+              security, and fault tolerance. I have hands-on experience with
+              REST & GraphQL APIs, Redis, RabbitMQ, CI/CD pipelines, and
+              cloud-ready architectures.
+            </p>
+
+            <p className="text-sm lg:text-base">
+              Currently, I work as a Backend Engineer at{" "}
               <a
                 className="text-zinc-200"
                 href="https://www.ucall.co.ao"
@@ -210,60 +353,23 @@ const Page = () => {
               >
                 Ucall
               </a>
-              , where I focus on enhancing system performance and implementing
-              cutting-edge features.
+              , where I lead backend initiatives focused on system performance
+              and reliability. I’m also the Co-founder & CTO of Bytebooster,
+              where I help design and deliver scalable software solutions
+              aligned with real business needs.
             </p>
 
             <p className="text-sm lg:text-base">
-              With a solid foundation in both front-end and back-end
-              development, I thrive on transforming complex challenges into
-              elegant digital products. My technical expertise spans modern
-              technologies and methodologies that empower businesses to achieve
-              sustainable growth.
+              I’m comfortable working in international, distributed teams,
+              collaborating closely with DevOps and product stakeholders. I
+              value clean code, solid architecture, and continuous improvement.
+              My goal is to deliver solutions that are not only robust and
+              secure but also drive tangible business value.
             </p>
 
             <p className="text-sm lg:text-base">
-              At Ucall, my role involves architecting resilient APIs, resolving
-              critical performance bottlenecks, and collaborating closely with
-              cross-functional teams to align technical strategies with business
-              objectives. I take pride in delivering solutions that are robust,
-              scalable, and secure.
-            </p>
-
-            <p className="text-sm lg:text-base">
-              In addition to my responsibilities at Ucall, I work as a freelance
-              developer for{" "}
-              <a
-                className="text-zinc-200"
-                href="https://www.risingsystems.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                RisingSystems
-              </a>
-              . This opportunity allows me to engage with a diverse array of
-              projects, delivering tailored software solutions that meet each
-              client’s unique needs.
-            </p>
-
-            <p className="text-sm lg:text-base">
-              I am passionate about continuous learning and always stay
-              up-to-date with emerging technologies. This commitment to
-              innovation ensures that my solutions remain future-proof and in
-              line with industry best practices.
-            </p>
-
-            <p className="text-sm lg:text-base">
-              Collaboration is at the heart of my work ethos. I believe that
-              effective communication and teamwork are essential for overcoming
-              challenges and delivering projects that exceed expectations.
-            </p>
-
-            <p className="text-sm lg:text-base">
-              Outside of work, I find inspiration in activities such as chess,
-              photography, and reading, and I cherish quality time with family
-              and friends. These passions fuel my creativity and help me
-              approach every challenge with fresh perspectives and enthusiasm.
+              Outside of work, I find inspiration in connecting with the tech
+              community, continuous learning, and exploring new technologies.
             </p>
           </section>
         </section>
@@ -304,23 +410,22 @@ const Page = () => {
                 </div>
               </ExperienceCard>
             ))}
-          {/* 
-          <a
-            href="/api/download-resume"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline cursor-pointer"
+          
+          <button
+            onClick={handleDownloadPDF}
+            className="hover:underline cursor-pointer text-left"
+            type="button"
           >
             View full résumé
-          </a> */}
-          <a
+          </button>
+         {/*  <a
             href={`${window.location.origin}/resume.pdf`}
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer hover:underline"
           >
             View full résumé
-          </a>
+          </a> */}
         </section>
 
         {/* Projetos */}
@@ -354,10 +459,25 @@ const Page = () => {
             View full archive projects
           </a>
         </section>
-        <div className="footer text-xs text-offtext opacity-40 text-center mt-0">
+
+        {/* Social & Blog */}
+        <section
+          id="writing"
+          className="text-offtext grid grid-cols-1 gap-4 w-full"
+        >
+          <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
+            Writing & Social
+          </h2>
+          {contentItems.map((item) => (
+            <ContentCard key={item.id} item={item} />
+          ))}
+        </section>
+
+        <div className="footer text-xs text-offtext opacity-40 text-center mt-12 mb-4">
           <p>© 2025 Ivandro Neto. All rights reserved.</p>
         </div>
       </section>
+      <Script src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
     </main>
   );
 };

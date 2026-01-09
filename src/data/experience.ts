@@ -27,32 +27,49 @@ export const experiences = [
     skills: ["React", "Node.js", "Express.js", "PostgreSQL"],
   },
   {
-    period: "2025",
-    role: "Backend Engineer",
+    period: "2025 - Present",
+    role: "Backend Software Engineer",
     seniority: "Senior",
     company: "Ucall",
     description:
-      "At Ucall, I worked as a Senior Backend Developer, leading strategic initiatives to improve existing systems and implement new features that enhanced overall performance and scalability. I played a key role in identifying and resolving performance bottlenecks, developing and maintaining robust REST and GraphQL APIs, and integrating advanced messaging and caching solutions using RabbitMQ and Redis. My position required close collaboration with frontend and DevOps teams to ensure secure, efficient, and business-aligned processes.",
+      "Backend engineer focused on building scalable, high-performance systems for communication and contact-center platforms. Designed, developed, and maintained scalable backend services using C# / .NET, supporting high-volume, real-time communication workflows. Built and optimized REST and GraphQL APIs, ensuring low latency, security, and reliability. Implemented asynchronous processing using RabbitMQ and integrated Redis for caching. Contributed to system architecture decisions and worked closely with DevOps to support CI/CD pipelines and production stability.",
     skills: [
       "C#",
-      "ASP.NET Core",
+      ".NET",
       "GraphQL API",
-      "RESTFul API",
+      "REST API",
       "Redis",
       "RabbitMQ",
-      "SQL Server",
-      "MongoDB",
+      "Distributed Systems",
+      "Microservices",
     ],
+  },
+  {
+    period: "2023 - Present",
+    role: "Co-founder & CTO",
+    seniority: "C-Level",
+    company: "Bytebooster",
+    description:
+      "Co-founder & CTO, helping design and deliver scalable software solutions aligned with real business needs. Responsible for technical strategy, architecture design, and overseeing the development of custom software solutions.",
+    skills: ["Technical Strategy", "Software Architecture", "Team Leadership"],
   },
 ];
 export const experiencesResumed = [
   {
-    period: "2025",
-    role: "Backend Engineer",
+    period: "2025 - Present",
+    role: "Backend Software Engineer",
     seniority: "Senior",
     company: "Ucall",
     description:
-      "Spearheaded backend development initiatives, focusing on performance optimization and system scalability. Designed and implemented high-performance RESTful and GraphQL APIs, enhancing data efficiency and reducing response times. Led integrations with Redis and RabbitMQ to improve real-time processing and messaging reliability. Worked closely with frontend and DevOps teams to ensure seamless deployment, security, and maintainability of services.",
+      "Backend engineer focused on building scalable, high-performance systems for communication and contact-center platforms. Designed, developed, and maintained scalable backend services using C# / .NET, supporting high-volume, real-time communication workflows. Built and optimized REST and GraphQL APIs, ensuring low latency, security, and reliability. Implemented asynchronous processing using RabbitMQ and integrated Redis for caching. Contributed to system architecture decisions and worked closely with DevOps to support CI/CD pipelines and production stability.",
+  },
+  {
+    period: "2023 - Present",
+    role: "Co-founder & CTO",
+    seniority: "C-Level",
+    company: "Bytebooster",
+    description:
+      "Co-founder & CTO, helping design and deliver scalable software solutions aligned with real business needs. Responsible for technical strategy, software architecture, and delivering value-driven solutions.",
   },
   {
     period: "2023 - 2025",

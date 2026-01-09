@@ -1,22 +1,22 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "IN - Ivandro Neto",
-  description: "I deliver high-impact, scalable software solutions.",
-  icons: {
-    icon: "/icon.png",
-  },
+  title: "Ivandro Neto | Portfolio",
+  description: "Backend Software Engineer | C# .NET & Distributed Systems",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={"antialiased"}>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

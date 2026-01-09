@@ -1,41 +1,51 @@
-export const projects = [
+export interface Project {
+  title: string;
+  description: string;
+  liveLink: string;
+  liveMask: string;
+  logo: string;
+  repo: string;
+  techs: string[];
+  imgURL?: string;
+}
+
+export const projects: Project[] = [
   {
-    title: "Custom & Log Solutions",
-    description: `An Angolan logistics company specializing in import/export operations. We connect origin and destination customs offices with efficiency, transparency, and competitive pricing, ensuring seamless logistics solutions.`,
-    imgURL: "/projects/bg/cls.png",
-    liveLink: "https://clsolutions.ao",
-    liveMask: "Customs and logistics solutions",
-    logo: "projects/logo/cls-logo.svg",
-    repo: null,
-    techs: ["React", "JavaScript", "CSS Module"],
+    title: "EventHub",
+    description: `A scalable event management platform built with ASP.NET Core. Designed with a microservices-oriented mindset, featuring robust API endpoints, Docker containerization for easy deployment, and efficient data handling.`,
+
+    liveLink: "https://github.com/ivandro-neto/EventHub",
+    liveMask: "ASP.NET Core Event Platform",
+    logo: "projects/logo/eventhub-logo.svg", // Placeholder
+    repo: "https://github.com/ivandro-neto/EventHub",
+    techs: ["C#", "ASP.NET Core", "Docker", "SQL Server", "REST API"],
   },
-   {
-    title: "In.orbit",
-    description: `A goal-tracking app designed to boost productivity. Users can set weekly objectives, monitor progress, and manage tasks efficiently through an intuitive and engaging interface.`,
-    imgURL:
-      "https://raw.githubusercontent.com/ivandro-neto/Inorbit-frontend/refs/heads/main/public/Goals.png",
-    liveLink: "https://inorbit-eta.vercel.app/",
-    liveMask: "Track your Weekly goals, be productive!",
-    logo: "https://raw.githubusercontent.com/ivandro-neto/Inorbit-frontend/refs/heads/main/public/icon.svg",
-    repo: "https://github.com/ivandro-neto/Inorbit-frontend",
+  {
+    title: "Ulock Proxy Service",
+    description: `High-performance proxy service engineered in C# to ensure secure and reliable request routing. Focused on low-latency communication and resilience in distributed environments.`,
+
+    liveLink: "https://github.com/ivandro-neto/ulock-proxy-service",
+    liveMask: "C# Proxy Service",
+    logo: "projects/logo/ulock-logo.svg", // Placeholder
+    repo: "https://github.com/ivandro-neto/ulock-proxy-service",
+    techs: ["C#", ".NET", "Proxy Pattern", "Network Security"],
+  },
+  {
+    title: "Imoni",
+    description: `A comprehensive full-stack personal finance application built as a Progressive Web App (PWA). Features offline-first architecture with robust data synchronization, ensuring 100% functionality without internet access.`,
+
+    liveLink: "https://imoni-app.vercel.app/",
+    liveMask: "Offline-first Finance PWA",
+    logo: "projects/logo/imoni-logo.svg", // Placeholder
+    repo: "https://github.com/ivandro-neto/imoni-app",
     techs: [
-      "React.Js",
-      "TailwindCSS",
+      "React",
       "TypeScript",
-      "PostgresSQL",
-      "Drizzle ORM",
-      "Docker",
-      "Fastify",
+      "PWA",
+      "IndexedDB",
+      "Workbox",
+      "Node.js",
+      "TailwindCSS",
     ],
-  },
-  {
-    title: "SPACIUM",
-    description: `A business incubator supporting startups with mentorship, networking, and funding opportunities. Spacium fosters innovation and helps new ventures grow from idea to market presence.`,
-    imgURL: "/projects/bg/spacium.png",
-    liveLink: "https://spacium.netlify.app/",
-    liveMask: "Shared Space and Pop up ideas",
-    logo: "projects/logo/spc-logo.svg",
-    repo: "https://github.com/ivandro-neto/SPACIUM",
-    techs: ["React", "CSS", "JavaScript"],
   },
 ];

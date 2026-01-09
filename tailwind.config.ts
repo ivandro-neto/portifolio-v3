@@ -15,6 +15,7 @@ export default {
         backgroundlight: "var(--backgroundlight)",
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
       },
     },
   },
