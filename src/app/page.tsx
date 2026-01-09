@@ -146,9 +146,9 @@ const Page = () => {
     return { start: year, end: year };
   };
   return (
-    <main className="flex flex-col lg:flex-row min-h-screen lg:p-12 p-8 xl:px-48 xl:justify-center">
+    <main className="flex flex-col lg:flex-row min-h-screen lg:p-12 p-6 xl:px-48 xl:justify-center">
       {/* Sidebar / Introdução */}
-      <section className="lg:w-[50%] w-full flex flex-col p-6 lg:p-12 justify-between lg:h-[80dvh] h-[40dvh] lg:sticky top-8">
+      <section className="lg:w-[50%] w-full flex flex-col p-6 lg:p-12 justify-between lg:h-[80dvh] h-auto lg:sticky top-8">
         {/* Brief */}
         <div className="flex gap-4 lg:gap-4 items-start lg:items-start">
           <Image
@@ -158,7 +158,7 @@ const Page = () => {
             height={48}
             alt="Ivandro Neto logo"
           />
-          <div className="flex flex-col gap-44 h-[90dvh]">
+          <div className="flex flex-col gap-12 lg:gap-44 h-auto lg:h-[90dvh]">
             <div className="flex flex-col items-start">
               <h1 className="text-3xl lg:text-4xl font-semibold capitalize">
                 Ivandro Neto
