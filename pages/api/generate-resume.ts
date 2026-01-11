@@ -45,6 +45,7 @@ export default async function handler(
     educations,
     projects,
     interests,
+    certifications,
   } = req.body;
 
   let browser: BrowserLike | null = null;
@@ -80,6 +81,7 @@ export default async function handler(
       educations,
       projects,
       interests,
+      certifications,
     });
 
     // Define o conteúdo da página

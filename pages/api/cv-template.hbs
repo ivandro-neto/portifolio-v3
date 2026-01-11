@@ -39,13 +39,13 @@
     .page {
       max-width: 210mm;
       margin: 0 auto;
-      padding: 25px 30px;
+      padding: 15px 25px;
       /* Reduced padding */
       background: white;
       display: grid;
       grid-template-columns: 28% 1fr;
       /* Sidebar slightly narrower */
-      gap: 25px;
+      gap: 20px;
       /* Reduced gap */
     }
 
@@ -68,9 +68,9 @@
       text-transform: uppercase;
       border-bottom: 2px solid var(--accent);
       padding-bottom: 2px;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       /* Reduced margin */
-      margin-top: 16px;
+      margin-top: 10px;
       /* Reduced margin */
     }
 
@@ -104,7 +104,7 @@
     .sidebar {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       /* Reduced gap */
     }
 
@@ -156,7 +156,7 @@
     /* Main Content Elements */
     .header {
       grid-column: 1 / -1;
-      margin-bottom: 15px;
+      margin-bottom: 2px;
       /* Reduced margin */
       border-bottom: 1px solid #E5E7EB;
       padding-bottom: 10px;
@@ -177,7 +177,7 @@
     }
 
     .experience-item {
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       /* Reduced margin */
       page-break-inside: avoid;
     }
@@ -216,7 +216,7 @@
     }
 
     .project-item {
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       /* Reduced margin */
       page-break-inside: avoid;
     }
@@ -246,7 +246,7 @@
     <!-- Header Section (Full Width) -->
     <header class="header">
       <h1>{{name}}</h1>
-      <div class="role-title">Software Engineer</div>
+      <div class="role-title">Backend Software Engineer</div>
       <p class="summary">{{summary}}</p>
     </header>
 
@@ -297,6 +297,15 @@
       <section>
         <h2>Education</h2>
         {{#each educations}}
+        <div class="education-item">
+          <div class="education-degree">{{degree}}</div>
+          <div style="font-size: 11px; color: #6B7280;">{{institution}}</div>
+        </div>
+        {{/each}}
+      </section>
+      <section>
+        <h2>Certifications</h2>
+        {{#each certifications}}
         <div class="education-item">
           <div class="education-degree">{{degree}}</div>
           <div style="font-size: 11px; color: #6B7280;">{{institution}}</div>

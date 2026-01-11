@@ -81,7 +81,7 @@ const Page = () => {
             },
           ],
           summary:
-            "Experienced software engineer dedicated to crafting engaging digital experiences that drive impact and elevate user satisfaction.",
+            "Backend Software Engineer with over 4 years of experience working mainly with C#/.NET and Node.Js. I build and maintain backend systems focused on performance, scalability, and reliability, especially for APIs and data-driven applications. I've worked with message queues like RabbitMQ, caching with Redis, and both REST and GraphQL APIs. I'm used to collaborating closely with DevOps and product teams to ship stable features and keep production systems running smoothly.",
           skills: techCategoriesArray,
           experience: experiencesResumed,
           educations: [
@@ -89,6 +89,9 @@ const Page = () => {
               institution: "ISPTEC",
               degree: "Computer Engineering",
             },
+            
+          ],
+          certifications: [
             {
               institution: "Grupo Nuveto",
               degree: "Five9 Administrator and Sigma",

@@ -28,11 +28,11 @@ export const experiences = [
   },
   {
     period: "2025 - Present",
-    role: "Backend Software Engineer",
+    role: "Backend Engineer",
     seniority: "Senior",
     company: "Ucall",
     description:
-      "Backend engineer focused on building scalable, high-performance systems for communication and contact-center platforms. Designed, developed, and maintained scalable backend services using C# / .NET, supporting high-volume, real-time communication workflows. Built and optimized REST and GraphQL APIs, ensuring low latency, security, and reliability. Implemented asynchronous processing using RabbitMQ and integrated Redis for caching. Contributed to system architecture decisions and worked closely with DevOps to support CI/CD pipelines and production stability.",
+      "Working as a backend engineer on communication and contact-center systems built with C# and .NET. My day-to-day work includes developing and maintaining APIs, handling background jobs and message-based workflows with RabbitMQ, and using Redis to improve performance in critical paths. I collaborate closely with DevOps to deploy services, monitor production issues, and keep the system stable under real-world load.",
     skills: [
       "C#",
       ".NET",
@@ -46,30 +46,30 @@ export const experiences = [
   },
   {
     period: "2023 - Present",
-    role: "Co-founder & CTO",
+    role: "Co-founder & Tech Lead",
     seniority: "C-Level",
     company: "Bytebooster",
     description:
-      "Co-founder & CTO, helping design and deliver scalable software solutions aligned with real business needs. Responsible for technical strategy, architecture design, and overseeing the development of custom software solutions.",
+      "Co-founder & Tech Lead, helping design and deliver scalable software solutions aligned with real business needs. Responsible for technical strategy, architecture design, and overseeing the development of custom software solutions.",
     skills: ["Technical Strategy", "Software Architecture", "Team Leadership"],
   },
 ];
 export const experiencesResumed = [
   {
     period: "2025 - Present",
-    role: "Backend Software Engineer",
+    role: "Backend Engineer",
     seniority: "Senior",
     company: "Ucall",
     description:
-      "Backend engineer focused on building scalable, high-performance systems for communication and contact-center platforms. Designed, developed, and maintained scalable backend services using C# / .NET, supporting high-volume, real-time communication workflows. Built and optimized REST and GraphQL APIs, ensuring low latency, security, and reliability. Implemented asynchronous processing using RabbitMQ and integrated Redis for caching. Contributed to system architecture decisions and worked closely with DevOps to support CI/CD pipelines and production stability.",
+      "Working as a backend engineer on communication and contact-center systems built with C# and .NET. My day-to-day work includes developing and maintaining APIs, handling background jobs and message-based workflows with RabbitMQ, and using Redis to improve performance in critical paths. I collaborate closely with DevOps to deploy services, monitor production issues, and keep the system stable under real-world load.",
   },
   {
     period: "2023 - Present",
-    role: "Co-founder & CTO",
+    role: "Co-founder & Tech Lead",
     seniority: "C-Level",
     company: "Bytebooster",
     description:
-      "Co-founder & CTO, helping design and deliver scalable software solutions aligned with real business needs. Responsible for technical strategy, software architecture, and delivering value-driven solutions.",
+      "Co-founder & Tech Lead, helping design and deliver scalable software solutions aligned with real business needs. Responsible for technical strategy, software architecture, and delivering value-driven solutions.",
   },
   {
     period: "2023 - 2025",
@@ -85,7 +85,7 @@ export const experiencesResumed = [
     seniority: "Mid-Level",
     company: "SPACIUM",
     description:
-      "Designed and developed high-performance, scalable frontend applications using Next.js, TypeScript, and Tailwind CSS. Created intuitive and responsive UIs that improved user engagement and accessibility. Worked closely with backend and UX/UI teams to integrate APIs seamlessly, ensuring optimal performance and a smooth user experience. Led optimizations that improved page load speeds and overall system responsiveness.",
+      "Worked on frontend applications using Next.js, TypeScript, and Tailwind CSS. Focused on building responsive interfaces and integrating backend APIs in close collaboration with backend and design teams.",
   },
   {
     period: "2020 - 2022",
@@ -102,28 +102,19 @@ export const techCategories = {
     "C#",
     "TypeScript",
     "JavaScript",
-    "C",
-    "C++",
-    "Java",
+    "SQL"
   ],
   "Frameworks & Libraries": [
-    "Next.js",
-    "React",
-    "Angular",
-    "Tailwind CSS",
     ".NET Core",
     "Node.js",
     "Express.js",
-    "GraphQL API",
-    "RESTFul API",
-    "Unity",
-    "Godot",
-    "SFML",
+    "React",
   ],
   "Tools & Platforms": [
     "SQL Server",
     "MongoDB",
     "MySQL",
+    "Docker",
     "PostgreSQL",
     "SQLite",
     "Redis",
