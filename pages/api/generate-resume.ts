@@ -14,11 +14,7 @@ type PageLike = {
   setContent: (
     html: string,
     options?: {
-      waitUntil?:
-        | "load"
-        | "domcontentloaded"
-        | "networkidle0"
-        | "networkidle2";
+      waitUntil?: "load" | "domcontentloaded" | "networkidle0" | "networkidle2";
     },
   ) => Promise<void>;
   pdf: (options?: {
@@ -45,6 +41,7 @@ const fallbackCvLabels: Record<Locale, Record<string, string>> = {
     education: "Education",
     certifications: "Certifications",
     skills: "Skills",
+    languages: "Languages",
     interests: "Interests",
     experience: "Experience",
     selectedProjects: "Selected Projects",
@@ -61,6 +58,7 @@ const fallbackCvLabels: Record<Locale, Record<string, string>> = {
     education: "Formação",
     certifications: "Certificações",
     skills: "Competências",
+    languages: "Línguas",
     interests: "Interesses",
     experience: "Experiência",
     selectedProjects: "Projetos em Destaque",
@@ -107,6 +105,7 @@ export default async function handler(
     projects,
     interests,
     certifications,
+    languages,
     labels: clientLabels,
   } = req.body;
 
@@ -156,6 +155,7 @@ export default async function handler(
       projects,
       interests,
       certifications,
+      languages,
       labels,
     });
 
@@ -175,7 +175,9 @@ export default async function handler(
     console.error("Erro ao gerar o CV:", error);
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    res.status(500).json({ error: "Erro ao gerar o CV", details: errorMessage });
+    res
+      .status(500)
+      .json({ error: "Erro ao gerar o CV", details: errorMessage });
   } finally {
     if (browser) {
       await browser.close();

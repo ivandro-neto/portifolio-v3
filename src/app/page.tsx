@@ -65,7 +65,10 @@ const PageInner = () => {
 
     // Build skills array with translated category names but raw tech values.
     const techCategoriesArray = (
-      Object.entries(techCategories) as [keyof typeof techCategories, string[]][]
+      Object.entries(techCategories) as [
+        keyof typeof techCategories,
+        string[],
+      ][]
     ).map(([categoryKey, technologies]) => ({
       category: t.cv.techCategories[categoryKey],
       technologies: technologies.join(", "),
@@ -107,6 +110,7 @@ const PageInner = () => {
           experience: experienceResumed,
           educations: t.cv.educations,
           certifications: t.cv.certifications,
+          languages: t.cv.languages,
           projects: projectsForCv,
           interests: t.cv.interests,
           labels: t.cv.labels,
@@ -244,8 +248,7 @@ const PageInner = () => {
                     className="w-6 h-6 sm:w-7 sm:h-7 bg-current"
                     style={{
                       maskImage: "url('/linkedin-brands-solid-full.svg')",
-                      WebkitMaskImage:
-                        "url('/linkedin-brands-solid-full.svg')",
+                      WebkitMaskImage: "url('/linkedin-brands-solid-full.svg')",
                       maskSize: "contain",
                       WebkitMaskSize: "contain",
                       maskRepeat: "no-repeat",
@@ -287,8 +290,7 @@ const PageInner = () => {
                   <div
                     className="w-6 h-6 sm:w-7 sm:h-7 bg-current"
                     style={{
-                      maskImage:
-                        "url('/threads-brands-solid-full (1).svg')",
+                      maskImage: "url('/threads-brands-solid-full (1).svg')",
                       WebkitMaskImage:
                         "url('/threads-brands-solid-full (1).svg')",
                       maskSize: "contain",

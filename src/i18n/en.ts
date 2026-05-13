@@ -184,6 +184,21 @@ export const en = {
       },
     },
 
+    languages: [
+      {
+        language: "Portuguese",
+        level: "Fluent",
+      },
+      {
+        language: "English",
+        level: "B2",
+      },
+      {
+        language: "German",
+        level: "Learning",
+      },
+    ],
+
     // sidebar labels
     labels: {
       contact: "Contact",
@@ -196,6 +211,7 @@ export const en = {
       education: "Education",
       certifications: "Certifications",
       skills: "Skills",
+      languages: "Languages",
       interests: "Interests",
       experience: "Experience",
       selectedProjects: "Selected Projects",
@@ -226,10 +242,8 @@ export const en = {
         "Full-stack templating platform. Web version is functional (demo mode), backend in TypeScript/Node.js.",
       designPatterns:
         "Implementation of various software design patterns demonstrating architectural best practices.",
-      timeTower:
-        "Match-3 puzzle game developed using the MonoGame framework.",
-      xpto:
-        "Condominium management system modeling focusing on OOP principles and data persistence.",
+      timeTower: "Match-3 puzzle game developed using the MonoGame framework.",
+      xpto: "Condominium management system modeling focusing on OOP principles and data persistence.",
     },
   },
 

@@ -181,6 +181,21 @@ export const pt: Translations = {
       },
     },
 
+    languages: [
+      {
+        language: "Português",
+        level: "Fluente",
+      },
+      {
+        language: "Inglês",
+        level: "B2",
+      },
+      {
+        language: "Alemão",
+        level: "Aprendendo",
+      },
+    ],
+
     // sidebar labels
     labels: {
       contact: "Contacto",
@@ -193,6 +208,7 @@ export const pt: Translations = {
       education: "Formação",
       certifications: "Certificações",
       skills: "Competências",
+      languages: "Línguas",
       interests: "Interesses",
       experience: "Experiência",
       selectedProjects: "Projetos em Destaque",
@@ -225,8 +241,7 @@ export const pt: Translations = {
         "Implementação de vários padrões de design de software demonstrando boas práticas arquiteturais.",
       timeTower:
         "Jogo de puzzle match-3 desenvolvido com a framework MonoGame.",
-      xpto:
-        "Modelação de um sistema de gestão de condomínios com foco em princípios de POO e persistência de dados.",
+      xpto: "Modelação de um sistema de gestão de condomínios com foco em princípios de POO e persistência de dados.",
     },
   },
 
