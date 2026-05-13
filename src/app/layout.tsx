@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Ivandro Neto | Portfolio",
   description: "Backend Software Engineer | C# .NET & Distributed Systems",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({

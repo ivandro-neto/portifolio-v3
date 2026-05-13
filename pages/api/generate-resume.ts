@@ -67,6 +67,57 @@ const cvLabels: Record<Locale, Record<string, string>> = {
   },
 };
 
+// ─── Education and certifications translations ──────────────────────────────
+type EducationCertItem = { degree: string; institution: string };
+type EducationCertMap = Record<string, Record<string, EducationCertItem>>;
+
+const educationCertTranslations: Record<Locale, EducationCertMap> = {
+  en: {
+    education: {
+      isptec: {
+        degree: "Computer Engineering",
+        institution: "ISPTEC",
+      },
+    },
+    certifications: {
+      grupoNuveto: {
+        degree: "Five9 Administrator and Sigma",
+        institution: "Grupo Nuveto",
+      },
+      rocketseat: {
+        degree: "Fundamentos do .NET",
+        institution: "Rocketseat",
+      },
+      udemy: {
+        degree: "Complete Software Engineering Course",
+        institution: "Udemy",
+      },
+    },
+  },
+  pt: {
+    education: {
+      isptec: {
+        degree: "Engenharia Informática",
+        institution: "ISPTEC",
+      },
+    },
+    certifications: {
+      grupoNuveto: {
+        degree: "Five9 Administrator e Sigma",
+        institution: "Grupo Nuveto",
+      },
+      rocketseat: {
+        degree: "Fundamentos do .NET",
+        institution: "Rocketseat",
+      },
+      udemy: {
+        degree: "Complete Software Engineering Course",
+        institution: "Udemy",
+      },
+    },
+  },
+};
+
 // ─── Handlebars helpers ───────────────────────────────────────────────────────
 Handlebars.registerHelper("dataFormat", (value, format) => {
   return moment(value).format(format);
@@ -104,6 +155,7 @@ export default async function handler(
 
   const locale: Locale = lang === "pt" ? "pt" : "en";
   const labels = cvLabels[locale];
+  const educCertTranslations = educationCertTranslations[locale];
 
   let browser: BrowserLike | null = null;
 
@@ -132,16 +184,31 @@ export default async function handler(
 
     const page = await browser.newPage();
 
+    // Format educations with translations
+    const formattedEducations = educations.map((edu: any) => ({
+      degree: educCertTranslations.education[edu.institution.toLowerCase().replace(/\s+/g, '')]?.degree || edu.degree,
+      institution: educCertTranslations.education[edu.institution.toLowerCase().replace(/\s+/g, '')]?.institution || edu.institution,
+    }));
+
+    // Format certifications with translations
+    const formattedCertifications = certifications.map((cert: any) => {
+      const certKey = cert.institution.toLowerCase().replace(/\s+/g, '');
+      return {
+        degree: educCertTranslations.certifications[certKey]?.degree || cert.degree,
+        institution: educCertTranslations.certifications[certKey]?.institution || cert.institution,
+      };
+    });
+
     const content = await compile({
       name,
       links,
       summary,
       skills,
       experience,
-      educations,
+      educations: formattedEducations,
       projects,
       interests,
-      certifications,
+      certifications: formattedCertifications,
       labels,
     });
 

@@ -6,23 +6,22 @@ import ExperienceCard from "@/components/xp-cards";
 import Image from "next/image";
 import React, { memo, useEffect, useState } from "react";
 import {
-  experiences,
-  experiencesResumed,
   techCategories,
 } from "@/data/experience";
 import Loading from "@/components/loading-screen";
-import { projects } from "@/data/projects";
 import { contentItems } from "@/data/content";
 import ContentCard from "@/components/content-card";
 import Script from "next/script";
 import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
 import { LangSwitcher } from "@/components/ui/LangSwitcher";
+import { useTranslatedData } from "@/hooks/useTranslatedData";
 
 /* ─────────────────────────────────────────────
    Inner page — has access to LanguageContext
 ───────────────────────────────────────────── */
 const PageInner = () => {
   const { locale, t } = useLanguage();
+  const { experiences, experiencesResumed, projects } = useTranslatedData();
 
   const [activeSection, setActiveSection] = useState("");
   const [isTop, setIsTop] = useState(true);
@@ -86,22 +85,22 @@ const PageInner = () => {
           experience: experiencesResumed,
           educations: [
             {
-              institution: "ISPTEC",
-              degree: "Computer Engineering",
+              institution: locale === "pt" ? "ISPTEC" : "ISPTEC",
+              degree: locale === "pt" ? t.cv.education.isptec.degree : t.cv.education.isptec.degree,
             },
           ],
           certifications: [
             {
-              institution: "Grupo Nuveto",
-              degree: "Five9 Administrator and Sigma",
+              institution: locale === "pt" ? t.cv.certifications.grupoNuveto.institution : t.cv.certifications.grupoNuveto.institution,
+              degree: locale === "pt" ? t.cv.certifications.grupoNuveto.degree : t.cv.certifications.grupoNuveto.degree,
             },
             {
-              institution: "Rocketseat",
-              degree: "Fundamentos do .NET",
+              institution: locale === "pt" ? t.cv.certifications.rocketseat.institution : t.cv.certifications.rocketseat.institution,
+              degree: locale === "pt" ? t.cv.certifications.rocketseat.degree : t.cv.certifications.rocketseat.degree,
             },
             {
-              institution: "Udemy",
-              degree: "Complete Software Engineering Course",
+              institution: locale === "pt" ? t.cv.certifications.udemy.institution : t.cv.certifications.udemy.institution,
+              degree: locale === "pt" ? t.cv.certifications.udemy.degree : t.cv.certifications.udemy.degree,
             },
           ],
           projects: projects,

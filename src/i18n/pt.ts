@@ -57,6 +57,28 @@ export const pt: Translations = {
     interests:
       "Xadrez, Fotografia, Leitura, Tempo de qualidade com Família e Amigos, Mortal Kombat",
 
+    // education and certifications
+    education: {
+      isptec: {
+        degree: "Engenharia Informática",
+        institution: "ISPTEC",
+      },
+    },
+    certifications: {
+      grupoNuveto: {
+        degree: "Five9 Administrator e Sigma",
+        institution: "Grupo Nuveto",
+      },
+      rocketseat: {
+        degree: "Fundamentos do .NET",
+        institution: "Rocketseat",
+      },
+      udemy: {
+        degree: "Complete Software Engineering Course",
+        institution: "Udemy",
+      },
+    },
+
     // sidebar labels
     labels: {
       contact: "Contacto",

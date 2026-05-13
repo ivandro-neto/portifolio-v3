@@ -55,6 +55,28 @@ export const en = {
     interests:
       "Chess, Photography, Reading, Quality Time with Family & Friends, Mortal Kombat",
 
+    // education and certifications
+    education: {
+      isptec: {
+        degree: "Computer Engineering",
+        institution: "ISPTEC",
+      },
+    },
+    certifications: {
+      grupoNuveto: {
+        degree: "Five9 Administrator and Sigma",
+        institution: "Grupo Nuveto",
+      },
+      rocketseat: {
+        degree: "Fundamentos do .NET",
+        institution: "Rocketseat",
+      },
+      udemy: {
+        degree: "Complete Software Engineering Course",
+        institution: "Udemy",
+      },
+    },
+
     // sidebar labels
     labels: {
       contact: "Contact",
