@@ -3,8 +3,8 @@
 import { useLanguage, type Locale } from "@/context/LanguageContext";
 
 const LOCALES: { code: Locale; label: string }[] = [
-  { code: "en", label: "EN" },
-  { code: "pt", label: "PT" },
+  { code: "en", label: "English" },
+  { code: "pt", label: "Português" },
 ];
 
 export const LangSwitcher = () => {
@@ -12,28 +12,24 @@ export const LangSwitcher = () => {
 
   return (
     <div
-      className="flex items-center gap-1 text-xs font-semibold tracking-widest"
+      className="flex items-center gap-3 py-3 px-4 rounded-lg border border-foreground/20 hover:border-foreground/40 transition-colors"
       role="group"
       aria-label="Language switcher"
     >
-      {LOCALES.map(({ code, label }, idx) => (
-        <span key={code} className="flex items-center gap-1">
-          <button
-            type="button"
-            onClick={() => setLocale(code)}
-            aria-pressed={locale === code}
-            className={`transition-colors ${
-              locale === code
-                ? "text-foreground cursor-default"
-                : "text-offtext hover:text-foreground cursor-pointer"
-            }`}
-          >
-            {label}
-          </button>
-          {idx < LOCALES.length - 1 && (
-            <span className="text-offtext opacity-40 select-none">|</span>
-          )}
-        </span>
+      {LOCALES.map(({ code, label }) => (
+        <button
+          key={code}
+          type="button"
+          onClick={() => setLocale(code)}
+          aria-pressed={locale === code}
+          className={`px-3 py-1.5 rounded-md font-semibold text-sm transition-all ${
+            locale === code
+              ? "bg-foreground text-background cursor-default"
+              : "text-foreground hover:bg-foreground/10 cursor-pointer"
+          }`}
+        >
+          {label}
+        </button>
       ))}
     </div>
   );

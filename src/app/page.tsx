@@ -180,6 +180,11 @@ const PageInner = () => {
                 {t.hero.tagline}
               </p>
             </div>
+            {/* Language Switcher - Top right */}
+            <div className="absolute top-6 right-6 lg:relative lg:top-auto lg:right-auto lg:mb-auto">
+              <LangSwitcher />
+            </div>
+
             {/* Nav */}
             <nav className="hidden lg:block">
               <ul className="space-y-4">
@@ -328,8 +333,6 @@ const PageInner = () => {
                   </svg>
                 </a>
               </div>
-              {/* Language switcher below social icons */}
-              <LangSwitcher />
             </div>
           </div>
         </div>
