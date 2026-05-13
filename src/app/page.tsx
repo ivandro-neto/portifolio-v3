@@ -6,22 +6,23 @@ import ExperienceCard from "@/components/xp-cards";
 import Image from "next/image";
 import React, { memo, useEffect, useState } from "react";
 import {
+  experiences,
+  experiencesResumed,
   techCategories,
 } from "@/data/experience";
 import Loading from "@/components/loading-screen";
+import { projects } from "@/data/projects";
 import { contentItems } from "@/data/content";
 import ContentCard from "@/components/content-card";
 import Script from "next/script";
 import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
 import { LangSwitcher } from "@/components/ui/LangSwitcher";
-import { useTranslatedData } from "@/hooks/useTranslatedData";
 
 /* ─────────────────────────────────────────────
    Inner page — has access to LanguageContext
 ───────────────────────────────────────────── */
 const PageInner = () => {
   const { locale, t } = useLanguage();
-  const { experiences, experiencesResumed, projects } = useTranslatedData();
 
   const [activeSection, setActiveSection] = useState("");
   const [isTop, setIsTop] = useState(true);
