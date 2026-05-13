@@ -3,6 +3,7 @@
 import ProjectCard from "@/components/project-card";
 import { Box } from "@/components/TechSkillBox";
 import ExperienceCard from "@/components/xp-cards";
+import LanguageCard from "@/components/language-card";
 import Image from "next/image";
 import React, { memo, useEffect, useState } from "react";
 import {
@@ -160,6 +161,7 @@ const PageInner = () => {
   const navKeys = [
     { key: "about", label: t.nav.about },
     { key: "experience", label: t.nav.experience },
+    { key: "languages", label: t.nav.languages },
     { key: "projects", label: t.nav.projects },
     { key: "writing", label: t.nav.writing },
   ];
@@ -418,6 +420,25 @@ const PageInner = () => {
               ? t.experience.generatingBtn
               : t.experience.resumeBtn}
           </button>
+        </section>
+
+        {/* Languages */}
+        <section
+          id="languages"
+          className="text-offtext flex flex-col gap-4 w-full"
+        >
+          <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
+            {t.nav.languages}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {t.cv.languages.map((lang, idx) => (
+              <LanguageCard
+                key={idx}
+                language={lang.language}
+                level={lang.level}
+              />
+            ))}
+          </div>
         </section>
 
         {/* Projects */}

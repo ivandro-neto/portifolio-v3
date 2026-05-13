@@ -5,6 +5,7 @@ export const pt: Translations = {
   nav: {
     about: "Sobre",
     experience: "Experiência",
+    languages: "Línguas",
     projects: "Projetos",
     writing: "Escrita",
   },
