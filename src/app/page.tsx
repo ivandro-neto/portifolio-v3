@@ -7,7 +7,8 @@ import Image from "next/image";
 import React, { memo, useEffect, useState } from "react";
 import {
   experiences,
-  experiencesResumed,
+  experiencesResumedOrder,
+  experiencesResumedPeriods,
   techCategories,
 } from "@/data/experience";
 import Loading from "@/components/loading-screen";
@@ -55,15 +56,34 @@ const PageInner = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Translate period strings (e.g. "2025 - Present" → "2025 - Atual" in PT).
+  const localizedPeriod = (period: string) =>
+    period.replace(/Present/i, t.experience.presentLabel);
+
   const handleDownloadPDF = async () => {
     setIsGeneratingPdf(true);
 
-    const techCategoriesArray = Object.entries(techCategories).map(
-      ([category, technologies]) => ({
-        category,
-        technologies: technologies.join(", "),
-      }),
-    );
+    // Build skills array with translated category names but raw tech values.
+    const techCategoriesArray = (
+      Object.entries(techCategories) as [keyof typeof techCategories, string[]][]
+    ).map(([categoryKey, technologies]) => ({
+      category: t.cv.techCategories[categoryKey],
+      technologies: technologies.join(", "),
+    }));
+
+    // Build resumed experience list from i18n + ordered metadata.
+    const experienceResumed = experiencesResumedOrder.map((id) => ({
+      period: localizedPeriod(experiencesResumedPeriods[id]),
+      ...t.cv.experienceResumed[id],
+    }));
+
+    // Build projects array for the CV (translated fields + raw techs/link).
+    const projectsForCv = projects.map((p) => ({
+      title: t.projects.items[p.id].title,
+      description: t.projects.items[p.id].description,
+      liveLink: p.liveLink,
+      techs: p.techs,
+    }));
 
     try {
       const response = await fetch("/api/generate-resume", {
@@ -72,6 +92,7 @@ const PageInner = () => {
         body: JSON.stringify({
           lang: locale,
           name: "Ivandro Neto",
+          role: t.cv.role,
           links: [
             {
               tel: "+244923474934",
@@ -83,29 +104,12 @@ const PageInner = () => {
           ],
           summary: t.cv.summary,
           skills: techCategoriesArray,
-          experience: experiencesResumed,
-          educations: [
-            {
-              institution: "ISPTEC",
-              degree: "Computer Engineering",
-            },
-          ],
-          certifications: [
-            {
-              institution: "Grupo Nuveto",
-              degree: "Five9 Administrator and Sigma",
-            },
-            {
-              institution: "Rocketseat",
-              degree: "Fundamentos do .NET",
-            },
-            {
-              institution: "Udemy",
-              degree: "Complete Software Engineering Course",
-            },
-          ],
-          projects: projects,
+          experience: experienceResumed,
+          educations: t.cv.educations,
+          certifications: t.cv.certifications,
+          projects: projectsForCv,
           interests: t.cv.interests,
+          labels: t.cv.labels,
         }),
       });
 
@@ -157,27 +161,32 @@ const PageInner = () => {
   ];
 
   return (
-    <main className="flex flex-col lg:flex-row min-h-screen lg:p-12 p-6 xl:px-48 xl:justify-center">
+    <main className="relative flex flex-col lg:flex-row min-h-screen lg:p-12 p-4 sm:p-6 xl:px-48 xl:justify-center">
+      {/* Floating language switcher — always visible on every breakpoint */}
+      <div className="fixed top-3 right-3 sm:top-4 sm:right-6 lg:top-6 lg:right-8 z-50">
+        <LangSwitcher />
+      </div>
+
       {/* Sidebar / Introdução */}
-      <section className="lg:w-[50%] w-full flex flex-col p-6 lg:p-12 justify-between lg:h-[80dvh] h-auto lg:sticky top-8">
+      <section className="lg:w-[50%] w-full flex flex-col p-4 sm:p-6 lg:p-12 justify-between lg:h-[80dvh] h-auto lg:sticky top-8">
         {/* Brief */}
-        <div className="flex gap-4 lg:gap-4 items-start lg:items-start">
+        <div className="flex gap-3 sm:gap-4 lg:gap-4 items-start lg:items-start">
           <Image
-            className="border-r-foreground border-r-2 p-2 lg:w-16"
+            className="border-r-foreground border-r-2 p-2 w-12 sm:w-14 lg:w-16"
             src={"/logo.png"}
             width={48}
             height={48}
             alt="Ivandro Neto logo"
           />
-          <div className="flex flex-col gap-12 lg:gap-44 h-auto lg:h-[90dvh]">
+          <div className="flex flex-col gap-8 sm:gap-12 lg:gap-44 h-auto lg:h-[90dvh] flex-1 min-w-0">
             <div className="flex flex-col items-start">
-              <h1 className="text-3xl lg:text-4xl font-semibold capitalize">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold capitalize">
                 Ivandro Neto
               </h1>
-              <h2 className="text-lg lg:text-xl font-semibold capitalize mt-3">
+              <h2 className="text-base sm:text-lg lg:text-xl font-semibold capitalize mt-2 sm:mt-3">
                 {t.hero.role}
               </h2>
-              <p className="text-sm lg:text-base mt-4 text-offtext max-w-lg">
+              <p className="text-sm lg:text-base mt-3 sm:mt-4 text-offtext max-w-lg">
                 {t.hero.tagline}
               </p>
             </div>
@@ -200,9 +209,9 @@ const PageInner = () => {
                 ))}
               </ul>
             </nav>
-            {/* Social links + Language switcher */}
-            <div className="flex flex-col gap-4 mt-8">
-              <div className="flex w-full gap-5 items-center">
+            {/* Social links */}
+            <div className="flex flex-col gap-4 mt-6 sm:mt-8">
+              <div className="flex w-full gap-4 sm:gap-5 items-center flex-wrap">
                 <a
                   href="https://github.com/ivandro-neto"
                   target="_blank"
@@ -211,7 +220,7 @@ const PageInner = () => {
                   aria-label="GitHub"
                 >
                   <div
-                    className="w-7 h-7 bg-current"
+                    className="w-6 h-6 sm:w-7 sm:h-7 bg-current"
                     style={{
                       maskImage: "url('/github-brands-solid-full.svg')",
                       WebkitMaskImage: "url('/github-brands-solid-full.svg')",
@@ -232,7 +241,7 @@ const PageInner = () => {
                   aria-label="LinkedIn"
                 >
                   <div
-                    className="w-7 h-7 bg-current"
+                    className="w-6 h-6 sm:w-7 sm:h-7 bg-current"
                     style={{
                       maskImage: "url('/linkedin-brands-solid-full.svg')",
                       WebkitMaskImage:
@@ -254,7 +263,7 @@ const PageInner = () => {
                   aria-label="X (Twitter)"
                 >
                   <div
-                    className="w-7 h-7 bg-current"
+                    className="w-6 h-6 sm:w-7 sm:h-7 bg-current"
                     style={{
                       maskImage: "url('/x-twitter-brands-solid-full.svg')",
                       WebkitMaskImage:
@@ -276,7 +285,7 @@ const PageInner = () => {
                   aria-label="Threads"
                 >
                   <div
-                    className="w-7 h-7 bg-current"
+                    className="w-6 h-6 sm:w-7 sm:h-7 bg-current"
                     style={{
                       maskImage:
                         "url('/threads-brands-solid-full (1).svg')",
@@ -299,7 +308,7 @@ const PageInner = () => {
                   aria-label="Hashnode"
                 >
                   <div
-                    className="w-6 h-6 bg-current"
+                    className="w-5 h-5 sm:w-6 sm:h-6 bg-current"
                     style={{
                       maskImage: "url('/hashnode.svg')",
                       WebkitMaskImage: "url('/hashnode.svg')",
@@ -319,18 +328,14 @@ const PageInner = () => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-7 h-7"
+                    className="w-6 h-6 sm:w-7 sm:h-7"
                   >
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
                   </svg>
                 </a>
               </div>
-              {/* Language switcher below social icons */}
-              <LangSwitcher />
             </div>
           </div>
         </div>
@@ -341,7 +346,7 @@ const PageInner = () => {
         {/* About */}
         <section
           id="about"
-          className="text-offtext lg:px-6 p-0 lg:h-fit flex flex-col gap-6 xl:py-4"
+          className="text-offtext lg:px-6 p-0 lg:h-fit flex flex-col gap-6 xl:py-4 w-full"
         >
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
             {t.about.heading}
@@ -374,28 +379,32 @@ const PageInner = () => {
             {t.experience.heading}
           </h2>
           {experiences
+            .slice()
             .sort((a, b) => {
               const { start: startA, end: endA } = parsePeriod(a.period);
               const { start: startB, end: endB } = parsePeriod(b.period);
               if (endB !== endA) return endB - endA;
               return startB - startA;
             })
-            .map((exp) => (
-              <ExperienceCard
-                key={exp.company}
-                period={exp.period}
-                role={exp.role}
-                seniority={exp.seniority}
-                company={exp.company}
-                description={exp.description}
-              >
-                <div className="flex gap-2 flex-wrap">
-                  {exp.skills.map((skill) => (
-                    <Box key={skill} content={skill} />
-                  ))}
-                </div>
-              </ExperienceCard>
-            ))}
+            .map((exp) => {
+              const tx = t.experience.items[exp.id];
+              return (
+                <ExperienceCard
+                  key={exp.id}
+                  period={localizedPeriod(exp.period)}
+                  role={tx.role}
+                  seniority={tx.seniority}
+                  company={tx.company}
+                  description={tx.description}
+                >
+                  <div className="flex gap-2 flex-wrap">
+                    {exp.skills.map((skill) => (
+                      <Box key={skill} content={skill} />
+                    ))}
+                  </div>
+                </ExperienceCard>
+              );
+            })}
 
           <button
             onClick={handleDownloadPDF}
@@ -417,21 +426,24 @@ const PageInner = () => {
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
             {t.projects.heading}
           </h2>
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              link={project.liveLink}
-              image={project.imgURL}
-              title={project.title}
-              description={project.description}
-            >
-              <div className="flex gap-2 flex-wrap">
-                {project.techs.map((tech) => (
-                  <Box key={tech} content={tech} />
-                ))}
-              </div>
-            </ProjectCard>
-          ))}
+          {projects.map((project) => {
+            const px = t.projects.items[project.id];
+            return (
+              <ProjectCard
+                key={project.id}
+                link={project.liveLink}
+                image={project.imgURL}
+                title={px.title}
+                description={px.description}
+              >
+                <div className="flex gap-2 flex-wrap">
+                  {project.techs.map((tech) => (
+                    <Box key={tech} content={tech} />
+                  ))}
+                </div>
+              </ProjectCard>
+            );
+          })}
 
           <a
             href="archived-projects"

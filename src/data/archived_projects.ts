@@ -1,51 +1,67 @@
+// Non-translatable archived-project metadata. Translatable fields (madeAt
+// label and description) live in `src/i18n/{en,pt}.ts` under
+// `archive.madeAt.<key>` and `archive.descriptions.<key>`.
+
+export type ArchivedProjectId =
+  | "orderManagement"
+  | "templify"
+  | "designPatterns"
+  | "timeTower"
+  | "xpto";
+
+export type ArchivedMadeAtKey =
+  | "personalProject"
+  | "personalStudy"
+  | "universityProject";
+
 export interface ArchivedProject {
+  id: ArchivedProjectId;
   year: string;
   title: string;
-  madeAt: string;
+  madeAtKey: ArchivedMadeAtKey;
   builtWith: string[];
   link: string;
-  description?: string; // Keeping for potential tooltip or detailed view
 }
 
 export const archivedProjects: ArchivedProject[] = [
   {
+    id: "orderManagement",
     year: "2024",
     title: "OrderManagementSystem",
-    madeAt: "Personal Project",
+    madeAtKey: "personalProject",
     builtWith: ["C#", ".NET Core", "Web API"],
     link: "https://github.com/ivandro-neto/OrderManagementSystem",
-    description: "Web API built with C# and .NET Core for managing orders and products.",
   },
   {
+    id: "templify",
     year: "2024",
     title: "Templify",
-    madeAt: "Personal Project",
+    madeAtKey: "personalProject",
     builtWith: ["React", "Vite", "Tailwind CSS", "Node.js"],
     link: "https://github.com/ivandro-neto/Templify-web",
-    description: "Full-stack templating platform. Web version is functional (demo mode), backend in TypeScript/Node.js.",
   },
   {
+    id: "designPatterns",
     year: "2023",
     title: "Design Patterns C#",
-    madeAt: "Personal Study",
+    madeAtKey: "personalStudy",
     builtWith: ["C#", "Design Patterns", "Architecture"],
     link: "https://github.com/ivandro-neto/Design-Patterns-package-projects---C-",
-    description: "Implementation of various software design patterns demonstrating architectural best practices.",
   },
   {
+    id: "timeTower",
     year: "2021",
     title: "TimeTower",
-    madeAt: "University Project",
+    madeAtKey: "universityProject",
     builtWith: ["C#", "MonoGame", "Game Dev"],
     link: "https://github.com/ivandro-neto/TimeTowerGame",
-    description: "Match-3 puzzle game developed using the MonoGame framework.",
   },
   {
+    id: "xpto",
     year: "2020",
     title: "XPTO Condominium",
-    madeAt: "University Project",
+    madeAtKey: "universityProject",
     builtWith: ["Java", "OOP", "Architecture"],
     link: "https://github.com/ivandro-neto/XPTOCondominiumManagentSystem",
-    description: "Condominium management system modeling focusing on OOP principles and data persistence.",
   },
 ];

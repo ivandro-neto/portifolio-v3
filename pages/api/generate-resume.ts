@@ -30,9 +30,11 @@ type PageLike = {
 // ─── i18n labels for the CV template ─────────────────────────────────────────
 type Locale = "en" | "pt";
 
-const cvLabels: Record<Locale, Record<string, string>> = {
+// Fallback labels used when the client does not pass `labels`/`role` in the
+// request body. The canonical source of truth lives in `src/i18n/{en,pt}.ts`
+// and is sent in the request body by the client.
+const fallbackCvLabels: Record<Locale, Record<string, string>> = {
   en: {
-    role: "Backend Software Engineer",
     contact: "Contact",
     email: "Email",
     phone: "Phone",
@@ -49,7 +51,6 @@ const cvLabels: Record<Locale, Record<string, string>> = {
     tech: "Tech",
   },
   pt: {
-    role: "Engenheiro de Software Backend",
     contact: "Contacto",
     email: "Email",
     phone: "Telefone",
@@ -65,6 +66,11 @@ const cvLabels: Record<Locale, Record<string, string>> = {
     selectedProjects: "Projetos em Destaque",
     tech: "Tecnologias",
   },
+};
+
+const fallbackRole: Record<Locale, string> = {
+  en: "Backend Software Engineer",
+  pt: "Engenheiro de Software Backend",
 };
 
 // ─── Handlebars helpers ───────────────────────────────────────────────────────
@@ -92,6 +98,7 @@ export default async function handler(
   const {
     lang = "en",
     name,
+    role,
     links,
     summary,
     skills,
@@ -100,10 +107,17 @@ export default async function handler(
     projects,
     interests,
     certifications,
+    labels: clientLabels,
   } = req.body;
 
   const locale: Locale = lang === "pt" ? "pt" : "en";
-  const labels = cvLabels[locale];
+  // Merge client-supplied labels over the fallback set so any missing label
+  // still renders, and always inject the localized role.
+  const labels = {
+    ...fallbackCvLabels[locale],
+    ...(clientLabels ?? {}),
+    role: role ?? fallbackRole[locale],
+  };
 
   let browser: BrowserLike | null = null;
 
