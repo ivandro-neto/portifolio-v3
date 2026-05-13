@@ -15,18 +15,22 @@ import { projects } from "@/data/projects";
 import { contentItems } from "@/data/content";
 import ContentCard from "@/components/content-card";
 import Script from "next/script";
+import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
+import { LangSwitcher } from "@/components/ui/LangSwitcher";
 
-const Page = () => {
+/* ─────────────────────────────────────────────
+   Inner page — has access to LanguageContext
+───────────────────────────────────────────── */
+const PageInner = () => {
+  const { locale, t } = useLanguage();
+
   const [activeSection, setActiveSection] = useState("");
   const [isTop, setIsTop] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
-  // Simulação de delay para o carregamento (2 segundos)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -37,7 +41,6 @@ const Page = () => {
       const sections = document.querySelectorAll("section");
       for (const section of sections) {
         const rect = section.getBoundingClientRect();
-
         if (
           rect.top <= window.innerHeight / 2 &&
           rect.bottom >= window.innerHeight / 2
@@ -48,15 +51,13 @@ const Page = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Run initially to set correct state
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const handleDownloadPDF = async () => {
     setIsGeneratingPdf(true);
-    // Converte o objeto techCategories em um array com string única para cada categoria
+
     const techCategoriesArray = Object.entries(techCategories).map(
       ([category, technologies]) => ({
         category,
@@ -65,11 +66,11 @@ const Page = () => {
     );
 
     try {
-      // Requisição para gerar o PDF no backend
       const response = await fetch("/api/generate-resume", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          lang: locale,
           name: "Ivandro Neto",
           links: [
             {
@@ -80,8 +81,7 @@ const Page = () => {
               lndk: "linkedin.com/in/ineto818",
             },
           ],
-          summary:
-            "Backend Software Engineer with over 4 years of experience working mainly with C#/.NET and Node.Js. I build and maintain backend systems focused on performance, scalability, and reliability, especially for APIs and data-driven applications. I've worked with message queues like RabbitMQ, caching with Redis, and both REST and GraphQL APIs. I'm used to collaborating closely with DevOps and product teams to ship stable features and keep production systems running smoothly.",
+          summary: t.cv.summary,
           skills: techCategoriesArray,
           experience: experiencesResumed,
           educations: [
@@ -89,7 +89,6 @@ const Page = () => {
               institution: "ISPTEC",
               degree: "Computer Engineering",
             },
-            
           ],
           certifications: [
             {
@@ -106,56 +105,57 @@ const Page = () => {
             },
           ],
           projects: projects,
-          interests:
-            "Chess, Photography, Reading, Quality Time with Family & Friends, Mortal Kombat",
+          interests: t.cv.interests,
         }),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.details || errorData.error || "Erro ao gerar o PDF");
+        throw new Error(
+          errorData.details || errorData.error || "Erro ao gerar o PDF",
+        );
       }
 
-      // Converte a resposta para Blob (arquivo binário)
       const blob = await response.blob();
-
-      // Cria um URL temporário para o Blob e inicia o download
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      //a.download = "IvandroNeto_Resume.pdf";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-
-      // Se o backend gera um arquivo temporário, deleta-o após 10 segundos
-      /*    setTimeout(async () => {
-        await fetch("/api/delete-temp", { method: "DELETE" });
-      }, 10000); */
     } catch (error) {
       console.error("Failed to download resume:", error);
-      alert(`Failed to generate resume: ${error instanceof Error ? error.message : "Unknown error"}`);
+      alert(
+        `Failed to generate resume: ${error instanceof Error ? error.message : "Unknown error"}`,
+      );
     } finally {
       setIsGeneratingPdf(false);
     }
   };
 
-  // Enquanto o carregamento estiver ativo, exibe o componente Loading
-  if (isLoading) {
-    return <Loading />;
-  }
+  if (isLoading) return <Loading />;
 
   const parsePeriod = (period: string) => {
     if (period.includes(" - ")) {
       const [startStr, endStr] = period.split(" - ");
       const startYear = Number.parseInt(startStr);
-      const endYear = endStr.toLowerCase() === "present" ? new Date().getFullYear() : Number.parseInt(endStr);
+      const endYear =
+        endStr.toLowerCase() === "present"
+          ? new Date().getFullYear()
+          : Number.parseInt(endStr);
       return { start: startYear, end: endYear };
     }
-    // Se for apenas um ano, usa o mesmo valor para início e fim
     const year = Number.parseInt(period);
     return { start: year, end: year };
   };
+
+  const navKeys = [
+    { key: "about", label: t.nav.about },
+    { key: "experience", label: t.nav.experience },
+    { key: "projects", label: t.nav.projects },
+    { key: "writing", label: t.nav.writing },
+  ];
+
   return (
     <main className="flex flex-col lg:flex-row min-h-screen lg:p-12 p-6 xl:px-48 xl:justify-center">
       {/* Sidebar / Introdução */}
@@ -175,234 +175,209 @@ const Page = () => {
                 Ivandro Neto
               </h1>
               <h2 className="text-lg lg:text-xl font-semibold capitalize mt-3">
-                Backend Software Engineer
+                {t.hero.role}
               </h2>
               <p className="text-sm lg:text-base mt-4 text-offtext max-w-lg">
-                Backend Software Engineer specialized in C# (.NET) and scalable,
-                distributed systems. I design and build high-performance APIs
-                and backend platforms.
+                {t.hero.tagline}
               </p>
             </div>
             {/* Nav */}
             <nav className="hidden lg:block">
               <ul className="space-y-4">
-                {["about", "experience", "projects", "writing"].map((section) => (
-                  <li
-                    key={section}
-                    className="uppercase cursor-pointer text-lg"
-                  >
+                {navKeys.map(({ key, label }) => (
+                  <li key={key} className="uppercase cursor-pointer text-lg">
                     <a
-                      href={`#${section}`}
+                      href={`#${key}`}
                       className={`nav-link ${
-                        activeSection === section ||
-                        (isTop && section === "about")
+                        activeSection === key || (isTop && key === "about")
                           ? "active"
                           : ""
                       }`}
                     >
-                      {section.charAt(0).toUpperCase() + section.slice(1)}
+                      {label}
                     </a>
                   </li>
                 ))}
               </ul>
             </nav>
-            {/* Links */}
-            <div className="flex w-full gap-5 mt-8 items-center">
-              <a
-                href="https://github.com/ivandro-neto"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-offtext hover:text-foreground transition-all hover:scale-110"
-                aria-label="GitHub"
-              >
-                <div
-                  className="w-7 h-7 bg-current"
-                  style={{
-                    maskImage: "url('/github-brands-solid-full.svg')",
-                    WebkitMaskImage: "url('/github-brands-solid-full.svg')",
-                    maskSize: "contain",
-                    WebkitMaskSize: "contain",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskRepeat: "no-repeat",
-                    maskPosition: "center",
-                    WebkitMaskPosition: "center",
-                  }}
-                />
-              </a>
-              <a
-                href="https://linkedin.com/in/ineto818"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-offtext hover:text-foreground transition-all hover:scale-110"
-                aria-label="LinkedIn"
-              >
-                <div
-                  className="w-7 h-7 bg-current"
-                  style={{
-                    maskImage: "url('/linkedin-brands-solid-full.svg')",
-                    WebkitMaskImage: "url('/linkedin-brands-solid-full.svg')",
-                    maskSize: "contain",
-                    WebkitMaskSize: "contain",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskRepeat: "no-repeat",
-                    maskPosition: "center",
-                    WebkitMaskPosition: "center",
-                  }}
-                />
-              </a>
-              <a
-                href="https://x.com/ivneto_"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-offtext hover:text-foreground transition-all hover:scale-110"
-                aria-label="X (Twitter)"
-              >
-                <div
-                  className="w-7 h-7 bg-current"
-                  style={{
-                    maskImage: "url('/x-twitter-brands-solid-full.svg')",
-                    WebkitMaskImage: "url('/x-twitter-brands-solid-full.svg')",
-                    maskSize: "contain",
-                    WebkitMaskSize: "contain",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskRepeat: "no-repeat",
-                    maskPosition: "center",
-                    WebkitMaskPosition: "center",
-                  }}
-                />
-              </a>
-              <a
-                href="https://www.threads.net/@incode_r"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-offtext hover:text-foreground transition-all hover:scale-110"
-                aria-label="Threads"
-              >
-                <div
-                  className="w-7 h-7 bg-current"
-                  style={{
-                    maskImage: "url('/threads-brands-solid-full (1).svg')",
-                    WebkitMaskImage: "url('/threads-brands-solid-full (1).svg')",
-                    maskSize: "contain",
-                    WebkitMaskSize: "contain",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskRepeat: "no-repeat",
-                    maskPosition: "center",
-                    WebkitMaskPosition: "center",
-                  }}
-                />
-              </a>
-              <a
-                href="https://hashnode.com/@ineto"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-offtext hover:text-foreground transition-all hover:scale-110"
-                aria-label="Hashnode"
-              >
-                <div
-                  className="w-6 h-6 bg-current"
-                  style={{
-                    maskImage: "url('/hashnode.svg')",
-                    WebkitMaskImage: "url('/hashnode.svg')",
-                    maskSize: "contain",
-                    WebkitMaskSize: "contain",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskRepeat: "no-repeat",
-                    maskPosition: "center",
-                    WebkitMaskPosition: "center",
-                  }}
-                />
-              </a>
-              <a
-                href="mailto:ivandro.neto@outlook.com"
-                className="text-offtext hover:text-foreground transition-all hover:scale-110"
-                aria-label="Email"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-7 h-7"
+            {/* Social links + Language switcher */}
+            <div className="flex flex-col gap-4 mt-8">
+              <div className="flex w-full gap-5 items-center">
+                <a
+                  href="https://github.com/ivandro-neto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                  aria-label="GitHub"
                 >
-                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
-                </svg>
-              </a>
+                  <div
+                    className="w-7 h-7 bg-current"
+                    style={{
+                      maskImage: "url('/github-brands-solid-full.svg')",
+                      WebkitMaskImage: "url('/github-brands-solid-full.svg')",
+                      maskSize: "contain",
+                      WebkitMaskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskPosition: "center",
+                      WebkitMaskPosition: "center",
+                    }}
+                  />
+                </a>
+                <a
+                  href="https://linkedin.com/in/ineto818"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                  aria-label="LinkedIn"
+                >
+                  <div
+                    className="w-7 h-7 bg-current"
+                    style={{
+                      maskImage: "url('/linkedin-brands-solid-full.svg')",
+                      WebkitMaskImage:
+                        "url('/linkedin-brands-solid-full.svg')",
+                      maskSize: "contain",
+                      WebkitMaskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskPosition: "center",
+                      WebkitMaskPosition: "center",
+                    }}
+                  />
+                </a>
+                <a
+                  href="https://x.com/ivneto_"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                  aria-label="X (Twitter)"
+                >
+                  <div
+                    className="w-7 h-7 bg-current"
+                    style={{
+                      maskImage: "url('/x-twitter-brands-solid-full.svg')",
+                      WebkitMaskImage:
+                        "url('/x-twitter-brands-solid-full.svg')",
+                      maskSize: "contain",
+                      WebkitMaskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskPosition: "center",
+                      WebkitMaskPosition: "center",
+                    }}
+                  />
+                </a>
+                <a
+                  href="https://www.threads.net/@incode_r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                  aria-label="Threads"
+                >
+                  <div
+                    className="w-7 h-7 bg-current"
+                    style={{
+                      maskImage:
+                        "url('/threads-brands-solid-full (1).svg')",
+                      WebkitMaskImage:
+                        "url('/threads-brands-solid-full (1).svg')",
+                      maskSize: "contain",
+                      WebkitMaskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskPosition: "center",
+                      WebkitMaskPosition: "center",
+                    }}
+                  />
+                </a>
+                <a
+                  href="https://hashnode.com/@ineto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                  aria-label="Hashnode"
+                >
+                  <div
+                    className="w-6 h-6 bg-current"
+                    style={{
+                      maskImage: "url('/hashnode.svg')",
+                      WebkitMaskImage: "url('/hashnode.svg')",
+                      maskSize: "contain",
+                      WebkitMaskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskPosition: "center",
+                      WebkitMaskPosition: "center",
+                    }}
+                  />
+                </a>
+                <a
+                  href="mailto:ivandro.neto@outlook.com"
+                  className="text-offtext hover:text-foreground transition-all hover:scale-110"
+                  aria-label="Email"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-7 h-7"
+                  >
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                  </svg>
+                </a>
+              </div>
+              {/* Language switcher below social icons */}
+              <LangSwitcher />
             </div>
           </div>
         </div>
       </section>
 
       {/* Conteúdo principal */}
-      <section className="flex flex-col lg:w-[65%] h-auto w-full p-0 lg:p-8 gap-8 items-center overflow-y-auto scroll-smooth min-h-screen bg-background ">
-        {/* Sobre Mim */}
+      <section className="flex flex-col lg:w-[65%] h-auto w-full p-0 lg:p-8 gap-8 items-center overflow-y-auto scroll-smooth min-h-screen bg-background">
+        {/* About */}
         <section
           id="about"
           className="text-offtext lg:px-6 p-0 lg:h-fit flex flex-col gap-6 xl:py-4"
         >
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
-            About
+            {t.about.heading}
           </h2>
           <section className="flex flex-col gap-6">
+            <p className="text-sm lg:text-base">{t.about.p1}</p>
             <p className="text-sm lg:text-base">
-              Backend Software Engineer specialized in C# (.NET) and scalable,
-              distributed systems. I design and build high-performance APIs and
-              backend platforms with a strong focus on scalability, low latency,
-              security, and fault tolerance. I have hands-on experience with
-              REST & GraphQL APIs, Redis, RabbitMQ, CI/CD pipelines, and
-              cloud-ready architectures.
-            </p>
-
-            <p className="text-sm lg:text-base">
-              Currently, I work as a Backend Engineer at{" "}
+              {t.about.p2.split(t.about.p2_ucall_label)[0]}
               <a
                 className="text-zinc-200"
                 href="https://www.ucall.co.ao"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Ucall
+                {t.about.p2_ucall_label}
               </a>
-              , where I lead backend initiatives focused on system performance
-              and reliability. I’m also the Co-founder & CTO of Bytebooster,
-              where I help design and deliver scalable software solutions
-              aligned with real business needs.
+              {t.about.p2.split(t.about.p2_ucall_label)[1]}
             </p>
-
-            <p className="text-sm lg:text-base">
-              I’m comfortable working in international, distributed teams,
-              collaborating closely with DevOps and product stakeholders. I
-              value clean code, solid architecture, and continuous improvement.
-              My goal is to deliver solutions that are not only robust and
-              secure but also drive tangible business value.
-            </p>
-
-            <p className="text-sm lg:text-base">
-              Outside of work, I find inspiration in connecting with the tech
-              community, continuous learning, and exploring new technologies.
-            </p>
+            <p className="text-sm lg:text-base">{t.about.p3}</p>
+            <p className="text-sm lg:text-base">{t.about.p4}</p>
           </section>
         </section>
 
-        {/* Experiência */}
+        {/* Experience */}
         <section
           id="experience"
           className="text-offtext flex flex-col gap-4 w-full h-auto"
         >
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
-            Experience
+            {t.experience.heading}
           </h2>
           {experiences
             .sort((a, b) => {
               const { start: startA, end: endA } = parsePeriod(a.period);
               const { start: startB, end: endB } = parsePeriod(b.period);
-
-              // Ordena pela data de término (decrescente)
-              if (endB !== endA) {
-                return endB - endA;
-              }
-              // Se os anos finais forem iguais, ordena pelo ano de início (decrescente)
+              if (endB !== endA) return endB - endA;
               return startB - startA;
             })
             .map((exp) => (
@@ -421,32 +396,26 @@ const Page = () => {
                 </div>
               </ExperienceCard>
             ))}
-          
+
           <button
             onClick={handleDownloadPDF}
             disabled={isGeneratingPdf}
             className="hover:underline cursor-pointer text-left disabled:opacity-50 disabled:cursor-not-allowed"
             type="button"
           >
-            {isGeneratingPdf ? "Generating PDF..." : "View full résumé"}
+            {isGeneratingPdf
+              ? t.experience.generatingBtn
+              : t.experience.resumeBtn}
           </button>
-         {/*  <a
-            href={`${window.location.origin}/resume.pdf`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cursor-pointer hover:underline"
-          >
-            View full résumé
-          </a> */}
         </section>
 
-        {/* Projetos */}
+        {/* Projects */}
         <section
           id="projects"
           className="text-offtext grid grid-cols-1 gap-4 w-full"
         >
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
-            Projects
+            {t.projects.heading}
           </h2>
           {projects.map((project) => (
             <ProjectCard
@@ -468,17 +437,17 @@ const Page = () => {
             href="archived-projects"
             className="cursor-pointer hover:underline"
           >
-            View full archive projects
+            {t.projects.viewArchive}
           </a>
         </section>
 
-        {/* Social & Blog */}
+        {/* Writing */}
         <section
           id="writing"
           className="text-offtext grid grid-cols-1 gap-4 w-full"
         >
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
-            Writing & Social
+            {t.writing.heading}
           </h2>
           {contentItems.map((item) => (
             <ContentCard key={item.id} item={item} />
@@ -486,12 +455,25 @@ const Page = () => {
         </section>
 
         <div className="footer text-xs text-offtext opacity-40 text-center mt-12 mb-4">
-          <p>© 2025 Ivandro Neto. All rights reserved.</p>
+          <p>{t.footer.copy}</p>
         </div>
       </section>
-      <Script src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
+
+      <Script
+        src="https://platform.twitter.com/widgets.js"
+        strategy="lazyOnload"
+      />
     </main>
   );
 };
+
+/* ─────────────────────────────────────────────
+   Root export — wraps with LanguageProvider
+───────────────────────────────────────────── */
+const Page = () => (
+  <LanguageProvider>
+    <PageInner />
+  </LanguageProvider>
+);
 
 export default memo(Page);

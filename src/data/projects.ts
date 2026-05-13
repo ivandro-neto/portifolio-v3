@@ -11,14 +11,26 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "EventHub",
-    description: `A scalable event management platform built with ASP.NET Core. Designed with a microservices-oriented mindset, featuring robust API endpoints, Docker containerization for easy deployment, and efficient data handling.`,
+    title: "Entitle.",
+    description: `A real-time access and monetization engine for SaaS products. Built to centralize subscription logic, feature entitlements, rollout rules, and access decisions through a scalable event-driven architecture. Features deterministic subscription state management, feature flags, audit logs, and a developer-focused access control API.`,
 
-    liveLink: "https://github.com/ivandro-neto/EventHub",
-    liveMask: "ASP.NET Core Event Platform",
-    logo: "projects/logo/eventhub-logo.svg", // Placeholder
-    repo: "https://github.com/ivandro-neto/EventHub",
-    techs: ["C#", "ASP.NET Core", "Docker", "SQL Server", "REST API"],
+    liveLink: "https://entitle-psi.vercel.app/",
+    liveMask: "Access & Monetization Engine",
+    logo: "projects/logo/entitle-logo.svg",
+    repo: "",
+    techs: [
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "Redis",
+      "Prisma",
+      "React",
+      "TanStack Router",
+      "TailwindCSS",
+      "REST API",
+      "Feature Flags",
+      "Event-Driven Architecture",
+    ],
   },
   {
     title: "Ulock Proxy Service",
@@ -26,7 +38,7 @@ export const projects: Project[] = [
 
     liveLink: "https://github.com/ivandro-neto/ulock-proxy-service",
     liveMask: "C# Proxy Service",
-    logo: "projects/logo/ulock-logo.svg", // Placeholder
+    logo: "projects/logo/ulock-logo.svg",
     repo: "https://github.com/ivandro-neto/ulock-proxy-service",
     techs: ["C#", ".NET", "Proxy Pattern", "Network Security"],
   },
@@ -34,10 +46,10 @@ export const projects: Project[] = [
     title: "Imoni",
     description: `A comprehensive full-stack personal finance application built as a Progressive Web App (PWA). Features offline-first architecture with robust data synchronization, ensuring 100% functionality without internet access.`,
 
-    liveLink: "https://imoni-app.vercel.app/",
+    liveLink: "https://imoni.it.ao/",
     liveMask: "Offline-first Finance PWA",
-    logo: "projects/logo/imoni-logo.svg", // Placeholder
-    repo: "https://github.com/ivandro-neto/imoni-app",
+    logo: "projects/logo/imoni-logo.svg",
+    repo: "",
     techs: [
       "React",
       "TypeScript",
