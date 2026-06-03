@@ -61,7 +61,9 @@ const PageInner = () => {
   const localizedPeriod = (period: string) =>
     period.replace(/Present/i, t.experience.presentLabel);
 
-  const handleDownloadPDF = async () => {
+  const handleDownloadPDF = async (
+    layout: "two-column" | "single" = "two-column",
+  ) => {
     setIsGeneratingPdf(true);
 
     // Build skills array with translated category names but raw tech values.
@@ -95,6 +97,7 @@ const PageInner = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           lang: locale,
+          layout,
           name: "Ivandro Neto",
           role: t.cv.role,
           links: [
@@ -410,16 +413,28 @@ const PageInner = () => {
               );
             })}
 
-          <button
-            onClick={handleDownloadPDF}
-            disabled={isGeneratingPdf}
-            className="hover:underline cursor-pointer text-left disabled:opacity-50 disabled:cursor-not-allowed"
-            type="button"
-          >
-            {isGeneratingPdf
-              ? t.experience.generatingBtn
-              : t.experience.resumeBtn}
-          </button>
+          <div className="flex flex-col gap-2">
+            <button
+              onClick={() => handleDownloadPDF("two-column")}
+              disabled={isGeneratingPdf}
+              className="hover:underline cursor-pointer text-left disabled:opacity-50 disabled:cursor-not-allowed"
+              type="button"
+            >
+              {isGeneratingPdf
+                ? t.experience.generatingBtn
+                : t.experience.resumeBtn}
+            </button>
+            <button
+              onClick={() => handleDownloadPDF("single")}
+              disabled={isGeneratingPdf}
+              className="hover:underline cursor-pointer text-left text-offtext text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              type="button"
+            >
+              {isGeneratingPdf
+                ? t.experience.generatingBtn
+                : t.experience.resumeBtnAts}
+            </button>
+          </div>
         </section>
 
         {/* Languages */}

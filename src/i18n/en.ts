@@ -12,14 +12,14 @@ export const en = {
   hero: {
     role: "Backend Software Engineer",
     tagline:
-      "Backend Software Engineer specialized in C# (.NET) and scalable, distributed systems. I design and build high-performance APIs and backend platforms.",
+      "Backend Software Engineer specialized in C# (.NET) and scalable, distributed systems. I design and build high-performance APIs and data-intensive platforms that run reliably at scale.",
   },
 
   // ---------- ABOUT ----------
   about: {
     heading: "About",
-    p1: "Backend Software Engineer specialized in C# (.NET) and scalable, distributed systems. I design and build high-performance APIs and backend platforms with a strong focus on scalability, low latency, security, and fault tolerance. I have hands-on experience with REST & GraphQL APIs, Redis, RabbitMQ, CI/CD pipelines, and cloud-ready architectures.",
-    p2: "Currently, I work as a Backend Engineer at Ucall, where I lead backend initiatives focused on system performance and reliability. I'm also the Co-founder & CTO of Bytebooster, where I help design and deliver scalable software solutions aligned with real business needs.",
+    p1: "Backend Software Engineer specialized in C# (.NET) and scalable, distributed systems. I design and build high-performance APIs and data-intensive platforms with a strong focus on scalability, low latency, security, and fault tolerance. I have hands-on experience with REST & GraphQL APIs, Redis, RabbitMQ, message-based workflows, SFTP and cloud-storage pipelines, and CI/CD.",
+    p2: "Currently, I'm a Backend Engineer at Ucall — a contact-center operation with 1,000+ employees that handles 1M+ calls per day (company scale, not my system's throughput). There I led the backend of a 2-person team building a call-quality-control platform that processes 500K+ audio and chat interactions. I'm also Co-founder & Tech Lead at Bytebooster, where I help design and deliver scalable software solutions aligned with real business needs.",
     p2_ucall_label: "Ucall",
     p3: "I'm comfortable working in international, distributed teams, collaborating closely with DevOps and product stakeholders. I value clean code, solid architecture, and continuous improvement. My goal is to deliver solutions that are not only robust and secure but also drive tangible business value.",
     p4: "Outside of work, I find inspiration in connecting with the tech community, continuous learning, and exploring new technologies.",
@@ -29,6 +29,7 @@ export const en = {
   experience: {
     heading: "Experience",
     resumeBtn: "View full résumé",
+    resumeBtnAts: "Download ATS-friendly résumé",
     generatingBtn: "Generating PDF...",
     // Full experience list (translatable parts only)
     items: {
@@ -37,35 +38,35 @@ export const en = {
         seniority: "Mid-Level",
         company: "SPACIUM",
         description:
-          "At SPACIUM, I served as a Mid-Level Frontend Developer, leading initiatives to create scalable and high-performance web applications. I was responsible for designing responsive and intuitive user interfaces and collaborating closely with design and backend teams to deliver seamless digital experiences. Leveraging modern technologies like Next.js, TypeScript, Tailwind CSS, and React, I contributed significantly to enhancing our frontend solutions.",
+          "At SPACIUM, I worked as a Frontend Developer building scalable, high-performance web applications. I designed responsive, intuitive user interfaces and partnered closely with design and backend teams to deliver seamless digital experiences. Using Next.js, TypeScript, Tailwind CSS, and React, I improved frontend performance and contributed to a cleaner, more maintainable component architecture.",
       },
       risingsystems: {
         role: "Software Developer",
         seniority: "Mid-Level",
         company: "RisingSystems",
         description:
-          "At RisingSystems, I worked as a Mid-Level Software Developer, developing and maintaining custom software solutions for a variety of clients. My role focused on optimizing application performance and ensuring smooth user experiences. Utilizing technologies such as C#, .NET Core, SQL Server, and MongoDB, I implemented robust features and collaborated with cross-functional teams to meet strategic business objectives.",
+          "At RisingSystems, I built and maintained custom software solutions for a range of clients, focused on application performance and reliability. Using C#, .NET Core, SQL Server, and MongoDB, I delivered robust features, optimized database queries, and refactored legacy code to reduce technical debt. I collaborated with cross-functional teams to align software architecture with strategic business objectives and high availability standards.",
       },
       freelance: {
         role: "Full Stack Developer",
         seniority: "Junior",
         company: "Freelance",
         description:
-          "As a Freelance Full Stack Developer, I handled end-to-end projects for startups, designing and developing web applications that effectively enhanced user engagement. Working at a Junior level, I combined frontend and backend technologies, including React, Node.js, Express.js, and PostgreSQL, to deliver tailored solutions that boosted digital presence and system performance.",
+          "As a Freelance Full Stack Developer, I delivered end-to-end web applications for startups, combining frontend and backend technologies — React, Node.js, Express.js, and PostgreSQL — to ship tailored solutions. I designed scalable architectures, optimized system performance, and built responsive interfaces that increased user engagement and strengthened clients' digital presence.",
       },
       ucall: {
         role: "Backend Engineer",
         seniority: "Mid-Level",
         company: "Ucall",
         description:
-          "Working as a backend engineer on communication and contact-center systems built with C# and .NET. My day-to-day work includes developing and maintaining APIs, handling background jobs and message-based workflows with RabbitMQ, and using Redis to improve performance in critical paths. I collaborate closely with DevOps to deploy services, monitor production issues, and keep the system stable under real-world load.",
+          "Backend engineer on communication and contact-center systems built with C# and .NET. The company is a BPO with 1,000+ employees that handles 1M+ calls per day across its operations — that's the scale and context I work within, not the throughput of a service I built. I led the backend of a 2-person team building a call-quality-control platform that processes 500K+ audio and chat interactions, with features like automatic rotation of supervisors and team assistants integrated with an attendance-control system. I also built media pipelines that import audio into a local SFTP server and offload recordings to cloud storage (Wasabi), and developed self-service IVR solutions. Day-to-day I work with RabbitMQ for message-based workflows, Redis for low-latency critical paths, and collaborate closely with DevOps to keep systems stable under real-world load.",
       },
       bytebooster: {
         role: "Co-founder & Tech Lead",
         seniority: "C-Level",
         company: "Bytebooster",
         description:
-          "Co-founder & Tech Lead, helping design and deliver scalable software solutions aligned with real business needs. Responsible for technical strategy, architecture design, and overseeing the development of custom software solutions.",
+          "Co-founder & Tech Lead driving technical strategy and software architecture. I design and deliver scalable software solutions aligned with real business needs, oversee the development of custom products, and guide engineering decisions from architecture through delivery.",
       },
     },
     presentLabel: "Present",
@@ -111,7 +112,7 @@ export const en = {
   cv: {
     role: "Backend Software Engineer",
     summary:
-      "Backend Software Engineer with over 4 years of experience working mainly with C#/.NET and Node.Js. I build and maintain backend systems focused on performance, scalability, and reliability, especially for APIs and data-driven applications. I've worked with message queues like RabbitMQ, caching with Redis, and both REST and GraphQL APIs. I'm used to collaborating closely with DevOps and product teams to ship stable features and keep production systems running smoothly.",
+      "Backend Software Engineer with 4+ years of experience building scalable, distributed systems in C#/.NET and Node.js. I design and maintain high-throughput APIs and data-intensive backend services — including a call-quality-control platform I led that processes 500K+ audio and chat interactions, SFTP-to-cloud media pipelines, and self-service IVRs. These systems support a contact-center operation with 1,000+ employees that handles 1M+ calls per day (company scale, not single-service throughput). Skilled in REST and GraphQL APIs, RabbitMQ messaging, Redis caching, SFTP and cloud-storage pipelines, and microservices. I collaborate closely with DevOps and product teams to ship reliable, secure, and fault-tolerant features in production.",
     interests:
       "Chess, Photography, Reading, Quality Time with Family & Friends, Mortal Kombat",
 
@@ -153,35 +154,35 @@ export const en = {
         seniority: "Mid-Level",
         company: "Ucall",
         description:
-          "Working as a backend engineer on communication and contact-center systems built with C# and .NET. My day-to-day work includes developing and maintaining APIs, handling background jobs and message-based workflows with RabbitMQ, and using Redis to improve performance in critical paths. I collaborate closely with DevOps to deploy services, monitor production issues, and keep the system stable under real-world load.",
+          "Backend engineer at a BPO with 1,000+ employees that handles 1M+ calls per day (company scale, not my system's throughput). Led the backend of a 2-person team on a call-quality-control platform that processes 500K+ audio and chat interactions, with automatic supervisor/team-assistant rotation integrated with an attendance-control system. Built media pipelines importing audio into a local SFTP server and offloading recordings to cloud storage (Wasabi), plus self-service IVR solutions. Stack: C#/.NET, RabbitMQ, Redis, REST & GraphQL APIs.",
       },
       bytebooster: {
         role: "Co-founder & Tech Lead",
         seniority: "C-Level",
         company: "Bytebooster",
         description:
-          "Co-founder & Tech Lead, helping design and deliver scalable software solutions aligned with real business needs. Responsible for technical strategy, software architecture, and delivering value-driven solutions.",
+          "Co-founder & Tech Lead driving technical strategy and software architecture. Design and deliver scalable, value-driven software solutions aligned with real business needs, and guide engineering decisions from architecture through delivery.",
       },
       risingsystems: {
         role: "Software Developer",
         seniority: "Mid-Level",
         company: "RisingSystems",
         description:
-          "Developed and maintained robust software solutions, optimizing application performance using C#, .NET Core, and SQL Server. Engineered scalable backends to support high-traffic systems, improving database efficiency and query performance. Collaborated cross-functionally to align software architecture with business goals, ensuring high availability and security standards. Contributed to system refactoring, reducing technical debt and enhancing maintainability.",
+          "Built and maintained robust software solutions, optimizing application performance with C#, .NET Core, SQL Server, and MongoDB. Engineered scalable backends for high-traffic systems, improving database efficiency and query performance. Collaborated cross-functionally to align architecture with business goals while ensuring high availability and security. Refactored legacy code, reducing technical debt and improving maintainability.",
       },
       spacium: {
         role: "Frontend Developer",
         seniority: "Mid-Level",
         company: "SPACIUM",
         description:
-          "Worked on frontend applications using Next.js, TypeScript, and Tailwind CSS. Focused on building responsive interfaces and integrating backend APIs in close collaboration with backend and design teams.",
+          "Built responsive frontend applications with Next.js, TypeScript, Tailwind CSS, and React. Improved frontend performance and integrated backend APIs in close collaboration with backend and design teams, contributing to a cleaner, more maintainable component architecture.",
       },
       freelance: {
         role: "Full Stack Developer",
         seniority: "Junior",
         company: "Freelance",
         description:
-          "Developed end-to-end web applications for startups, handling both frontend and backend development with React, Node.js, and PostgreSQL. Designed and deployed scalable architectures that supported business growth and operational efficiency. Focused on enhancing user engagement through responsive UI/UX improvements and performance optimizations. Delivered tailored solutions that aligned with client needs, ensuring high-impact results and long-term maintainability.",
+          "Delivered end-to-end web applications for startups using React, Node.js, Express.js, and PostgreSQL. Designed and deployed scalable architectures supporting business growth and operational efficiency. Improved user engagement through responsive UI/UX and performance optimizations, delivering tailored, maintainable solutions aligned with client needs.",
       },
     },
 
@@ -209,6 +210,7 @@ export const en = {
       github: "Github",
       blog: "Blog",
       web: "Web",
+      summary: "Professional Summary",
       education: "Education",
       certifications: "Certifications",
       skills: "Skills",

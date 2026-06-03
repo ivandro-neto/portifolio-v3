@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume - {{name}}</title>
+  <!--
+    Single-column, ATS-friendly résumé template.
+    Design goals: linear top-to-bottom reading order, no multi-column grids,
+    no tables or text boxes for layout, no icon fonts, standard system fonts,
+    plain-text section headings — so applicant-tracking parsers read it cleanly.
+    The richer two-column layout lives in `cv-template.hbs`.
+  -->
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #111827;
+      line-height: 1.4;
+      font-size: 11px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 22px 32px;
+      background: #ffffff;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 2px;
+    }
+
+    .role-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1F2937;
+      margin-bottom: 6px;
+    }
+
+    .contact-line {
+      font-size: 10.5px;
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    .contact-line a {
+      color: #1F2937;
+      text-decoration: none;
+    }
+
+    .contact-sep {
+      color: #9CA3AF;
+      padding: 0 5px;
+    }
+
+    h2 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #111827;
+      border-bottom: 1px solid #9CA3AF;
+      padding-bottom: 2px;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    p,
+    li,
+    span,
+    div {
+      font-size: 11px;
+      color: #1F2937;
+    }
+
+    .summary {
+      text-align: left;
+    }
+
+    .item {
+      margin-bottom: 9px;
+      page-break-inside: avoid;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .item-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .item-meta {
+      font-size: 11px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .item-date {
+      font-size: 10.5px;
+      color: #6B7280;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .item-desc {
+      margin-top: 2px;
+      text-align: left;
+    }
+
+    .item-tech {
+      margin-top: 2px;
+      font-size: 10.5px;
+      color: #374151;
+    }
+
+    .kv {
+      margin-bottom: 4px;
+    }
+
+    .kv strong {
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .inline-link {
+      color: #1F2937;
+      text-decoration: underline;
+      font-size: 10.5px;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <h1>{{name}}</h1>
+      <div class="role-title">{{labels.role}}</div>
+      <div class="contact-line">
+        {{#each links}}
+        <span><strong>{{../labels.email}}:</strong> <a href="mailto:{{mail}}">{{mail}}</a></span>
+        {{#if tel}}<span class="contact-sep">|</span><span><strong>{{../labels.phone}}:</strong> <a href="tel:{{tel}}">{{tel}}</a></span>{{/if}}
+        {{#if lndk}}<span class="contact-sep">|</span><span><strong>{{../labels.linkedin}}:</strong> <a href="https://www.{{lndk}}">{{lndk}}</a></span>{{/if}}
+        {{#if git}}<span class="contact-sep">|</span><span><strong>{{../labels.github}}:</strong> <a href="https://www.{{git}}">{{git}}</a></span>{{/if}}
+        {{#if web}}<span class="contact-sep">|</span><span><strong>{{../labels.web}}:</strong> <a href="https://www.{{web}}">{{web}}</a></span>{{/if}}
+        {{/each}}
+      </div>
+    </header>
+
+    <!-- Summary -->
+    <section>
+      <h2>{{labels.summary}}</h2>
+      <p class="summary">{{summary}}</p>
+    </section>
+
+    <!-- Experience -->
+    <section>
+      <h2>{{labels.experience}}</h2>
+      {{#each experience}}
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">{{role}}</span>
+          <span class="item-date">{{period}}</span>
+        </div>
+        <div class="item-meta">{{company}} — {{seniority}}</div>
+        <p class="item-desc">{{description}}</p>
+      </div>
+      {{/each}}
+    </section>
+
+    <!-- Projects -->
+    <section>
+      <h2>{{labels.selectedProjects}}</h2>
+      {{#each projects}}
+      <div class="item">
+        <div class="item-title">
+          {{title}}<a href="{{liveLink}}" class="inline-link">{{liveLink}}</a>
+        </div>
+        <p class="item-desc">{{description}}</p>
+        <div class="item-tech">
+          <strong>{{../labels.tech}}:</strong>
+          {{#each techs}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+        </div>
+      </div>
+      {{/each}}
+    </section>
+
+    <!-- Skills -->
+    <section>
+      <h2>{{labels.skills}}</h2>
+      {{#each skills}}
+      <div class="kv"><strong>{{category}}:</strong> {{technologies}}</div>
+      {{/each}}
+    </section>
+
+    <!-- Education -->
+    <section>
+      <h2>{{labels.education}}</h2>
+      {{#each educations}}
+      <div class="kv"><strong>{{degree}}</strong> — {{institution}}</div>
+      {{/each}}
+    </section>
+
+    <!-- Certifications -->
+    <section>
+      <h2>{{labels.certifications}}</h2>
+      {{#each certifications}}
+      <div class="kv"><strong>{{degree}}</strong> — {{institution}}</div>
+      {{/each}}
+    </section>
+
+    <!-- Languages -->
+    <section>
+      <h2>{{labels.languages}}</h2>
+      {{#each languages}}
+      <div class="kv"><strong>{{language}}:</strong> {{level}}</div>
+      {{/each}}
+    </section>
+
+    <!-- Interests -->
+    <section>
+      <h2>{{labels.interests}}</h2>
+      <p>{{interests}}</p>
+    </section>
+  </div>
+</body>
+
+</html>

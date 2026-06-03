@@ -38,6 +38,7 @@ const fallbackCvLabels: Record<Locale, Record<string, string>> = {
     github: "Github",
     blog: "Blog",
     web: "Web",
+    summary: "Professional Summary",
     education: "Education",
     certifications: "Certifications",
     skills: "Skills",
@@ -55,6 +56,7 @@ const fallbackCvLabels: Record<Locale, Record<string, string>> = {
     github: "Github",
     blog: "Blog",
     web: "Web",
+    summary: "Resumo Profissional",
     education: "Formação",
     certifications: "Certificações",
     skills: "Competências",
@@ -78,8 +80,16 @@ Handlebars.registerHelper("dataFormat", (value, format) => {
 Handlebars.registerHelper("lt", (a, b) => a < b);
 
 // ─── Template compiler ────────────────────────────────────────────────────────
-const compile = async (data: Record<string, unknown>): Promise<string> => {
-  const filePath = path.resolve(process.cwd(), "pages/api/cv-template.hbs");
+type Layout = "two-column" | "single";
+
+const templateFileFor = (layout: Layout): string =>
+  layout === "single" ? "cv-template-single.hbs" : "cv-template.hbs";
+
+const compile = async (
+  data: Record<string, unknown>,
+  layout: Layout,
+): Promise<string> => {
+  const filePath = path.resolve(process.cwd(), "pages/api", templateFileFor(layout));
   const html = await fs.readFile(filePath, "utf-8");
   return Handlebars.compile(html)(data);
 };
@@ -95,6 +105,7 @@ export default async function handler(
 
   const {
     lang = "en",
+    layout: rawLayout = "two-column",
     name,
     role,
     links,
@@ -110,6 +121,7 @@ export default async function handler(
   } = req.body;
 
   const locale: Locale = lang === "pt" ? "pt" : "en";
+  const layout: Layout = rawLayout === "single" ? "single" : "two-column";
   // Merge client-supplied labels over the fallback set so any missing label
   // still renders, and always inject the localized role.
   const labels = {
@@ -145,19 +157,22 @@ export default async function handler(
 
     const page = await browser.newPage();
 
-    const content = await compile({
-      name,
-      links,
-      summary,
-      skills,
-      experience,
-      educations,
-      projects,
-      interests,
-      certifications,
-      languages,
-      labels,
-    });
+    const content = await compile(
+      {
+        name,
+        links,
+        summary,
+        skills,
+        experience,
+        educations,
+        projects,
+        interests,
+        certifications,
+        languages,
+        labels,
+      },
+      layout,
+    );
 
     await page.setContent(content, { waitUntil: "load" });
 
@@ -166,7 +181,10 @@ export default async function handler(
       printBackground: true,
     });
 
-    const filename = `IvandroNeto-CV-${locale.toUpperCase()}.pdf`;
+    const filename =
+      layout === "single"
+        ? `IvandroNeto-CV-${locale.toUpperCase()}-ATS.pdf`
+        : `IvandroNeto-CV-${locale.toUpperCase()}.pdf`;
 
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Disposition", `attachment; filename=${filename}`);

@@ -14,14 +14,14 @@ export const pt: Translations = {
   hero: {
     role: "Engenheiro de Software Backend",
     tagline:
-      "Engenheiro de Software Backend especializado em C# (.NET) e sistemas escaláveis e distribuídos. Projeto e construo APIs de alto desempenho e plataformas backend.",
+      "Engenheiro de Software Backend especializado em C# (.NET) e sistemas escaláveis e distribuídos. Projeto e construo APIs de alto desempenho e plataformas intensivas em dados que funcionam de forma fiável em escala.",
   },
 
   // ---------- ABOUT ----------
   about: {
     heading: "Sobre",
-    p1: "Engenheiro de Software Backend especializado em C# (.NET) e sistemas escaláveis e distribuídos. Projeto e construo APIs de alto desempenho e plataformas backend com forte foco em escalabilidade, baixa latência, segurança e tolerância a falhas. Tenho experiência prática com APIs REST e GraphQL, Redis, RabbitMQ, pipelines CI/CD e arquiteturas cloud-ready.",
-    p2: "Atualmente trabalho como Engenheiro Backend na Ucall, onde lidero iniciativas de backend focadas em desempenho e fiabilidade dos sistemas. Sou também Co-fundador e CTO da Bytebooster, onde ajudo a projetar e entregar soluções de software escaláveis alinhadas com necessidades reais de negócio.",
+    p1: "Engenheiro de Software Backend especializado em C# (.NET) e sistemas escaláveis e distribuídos. Projeto e construo APIs de alto desempenho e plataformas intensivas em dados com forte foco em escalabilidade, baixa latência, segurança e tolerância a falhas. Tenho experiência prática com APIs REST e GraphQL, Redis, RabbitMQ, fluxos baseados em mensagens, pipelines de SFTP e armazenamento em cloud, e CI/CD.",
+    p2: "Atualmente sou Engenheiro Backend na Ucall — uma operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia (escala da empresa, não o débito do meu sistema). Aí liderei o backend de uma equipa de 2 pessoas no desenvolvimento de uma plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat. Sou também Co-fundador e Tech Lead da Bytebooster, onde ajudo a projetar e entregar soluções de software escaláveis alinhadas com necessidades reais de negócio.",
     p2_ucall_label: "Ucall",
     p3: "Estou habituado a trabalhar em equipas internacionais e distribuídas, colaborando estreitamente com DevOps e stakeholders de produto. Valorizo código limpo, arquitetura sólida e melhoria contínua. O meu objetivo é entregar soluções que sejam robustas e seguras, mas que também gerem valor tangível para o negócio.",
     p4: "Fora do trabalho, encontro inspiração na ligação com a comunidade tech, na aprendizagem contínua e na exploração de novas tecnologias.",
@@ -31,6 +31,7 @@ export const pt: Translations = {
   experience: {
     heading: "Experiência",
     resumeBtn: "Ver currículo completo",
+    resumeBtnAts: "Descarregar currículo compatível com ATS",
     generatingBtn: "A gerar PDF...",
     items: {
       spacium: {
@@ -38,35 +39,35 @@ export const pt: Translations = {
         seniority: "Pleno",
         company: "SPACIUM",
         description:
-          "Na SPACIUM, atuei como Desenvolvedor Frontend Pleno, liderando iniciativas para criar aplicações web escaláveis e de alto desempenho. Fui responsável por projetar interfaces de utilizador responsivas e intuitivas e por colaborar estreitamente com as equipas de design e backend para entregar experiências digitais fluídas. Recorrendo a tecnologias modernas como Next.js, TypeScript, Tailwind CSS e React, contribuí significativamente para a melhoria das nossas soluções de frontend.",
+          "Na SPACIUM, trabalhei como Desenvolvedor Frontend a construir aplicações web escaláveis e de alto desempenho. Projetei interfaces responsivas e intuitivas e colaborei estreitamente com as equipas de design e backend para entregar experiências digitais fluídas. Com Next.js, TypeScript, Tailwind CSS e React, melhorei o desempenho do frontend e contribuí para uma arquitetura de componentes mais limpa e fácil de manter.",
       },
       risingsystems: {
         role: "Desenvolvedor de Software",
         seniority: "Pleno",
         company: "RisingSystems",
         description:
-          "Na RisingSystems, trabalhei como Desenvolvedor de Software Pleno, desenvolvendo e mantendo soluções de software personalizadas para diversos clientes. A minha função focou-se na otimização do desempenho das aplicações e em garantir uma experiência fluida para o utilizador. Utilizando tecnologias como C#, .NET Core, SQL Server e MongoDB, implementei funcionalidades robustas e colaborei com equipas multidisciplinares para atingir objetivos estratégicos de negócio.",
+          "Na RisingSystems, construí e mantive soluções de software personalizadas para diversos clientes, com foco no desempenho e fiabilidade das aplicações. Com C#, .NET Core, SQL Server e MongoDB, entreguei funcionalidades robustas, otimizei queries de base de dados e refatorei código legado para reduzir a dívida técnica. Colaborei com equipas multidisciplinares para alinhar a arquitetura do software com objetivos estratégicos de negócio e padrões de alta disponibilidade.",
       },
       freelance: {
         role: "Desenvolvedor Full Stack",
         seniority: "Júnior",
         company: "Freelance",
         description:
-          "Como Desenvolvedor Full Stack Freelancer, geri projetos de ponta a ponta para startups, projetando e desenvolvendo aplicações web que aumentaram efetivamente o engajamento dos utilizadores. Atuando como Júnior, combinei tecnologias de frontend e backend, incluindo React, Node.js, Express.js e PostgreSQL, para entregar soluções à medida que impulsionaram a presença digital e o desempenho dos sistemas.",
+          "Como Desenvolvedor Full Stack Freelancer, entreguei aplicações web de ponta a ponta para startups, combinando tecnologias de frontend e backend — React, Node.js, Express.js e PostgreSQL — para entregar soluções à medida. Projetei arquiteturas escaláveis, otimizei o desempenho dos sistemas e construí interfaces responsivas que aumentaram o engajamento dos utilizadores e reforçaram a presença digital dos clientes.",
       },
       ucall: {
         role: "Engenheiro Backend",
         seniority: "Pleno",
         company: "Ucall",
         description:
-          "Atuo como engenheiro de backend em sistemas de comunicação e contact-center desenvolvidos em C# e .NET. O meu dia a dia inclui desenvolver e manter APIs, gerir jobs em background e fluxos baseados em mensagens com RabbitMQ, e utilizar Redis para melhorar o desempenho em caminhos críticos. Colaboro estreitamente com DevOps para implementar serviços, monitorizar problemas em produção e manter o sistema estável sob carga real.",
+          "Engenheiro de backend em sistemas de comunicação e contact-center desenvolvidos em C# e .NET. A empresa é um BPO com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia nas suas operações — essa é a escala e o contexto em que trabalho, não o débito de um serviço que construí. Liderei o backend de uma equipa de 2 pessoas no desenvolvimento de uma plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat, com funcionalidades como troca automática de supervisores e assistentes de equipa integrada com um sistema de controlo de assiduidade. Também construí pipelines de média que importam áudios para um servidor SFTP local e enviam as gravações para armazenamento em cloud (Wasabi), além de soluções de IVR self-service. No dia a dia, uso RabbitMQ para fluxos baseados em mensagens, Redis para caminhos críticos de baixa latência e colaboro de perto com DevOps para manter os sistemas estáveis sob carga real.",
       },
       bytebooster: {
         role: "Co-fundador e Tech Lead",
         seniority: "Nível-C",
         company: "Bytebooster",
         description:
-          "Co-fundador e Tech Lead, ajudando a projetar e a entregar soluções de software escaláveis alinhadas com necessidades reais de negócio. Responsável pela estratégia técnica, design de arquitetura e supervisão do desenvolvimento de soluções de software personalizadas.",
+          "Co-fundador e Tech Lead a conduzir a estratégia técnica e a arquitetura de software. Projeto e entrego soluções de software escaláveis alinhadas com necessidades reais de negócio, supervisiono o desenvolvimento de produtos personalizados e oriento as decisões de engenharia desde a arquitetura até à entrega.",
       },
     },
     presentLabel: "Atual",
@@ -112,7 +113,7 @@ export const pt: Translations = {
   cv: {
     role: "Engenheiro de Software Backend",
     summary:
-      "Engenheiro de Software Backend com mais de 4 anos de experiência, trabalhando principalmente com C#/.NET e Node.js. Construo e mantenho sistemas backend focados em desempenho, escalabilidade e fiabilidade, especialmente para APIs e aplicações orientadas a dados. Tenho experiência com filas de mensagens como RabbitMQ, cache com Redis, e APIs REST e GraphQL. Estou habituado a colaborar com equipas de DevOps e produto para lançar funcionalidades estáveis e manter sistemas de produção a funcionar sem problemas.",
+      "Engenheiro de Software Backend com mais de 4 anos de experiência na construção de sistemas escaláveis e distribuídos em C#/.NET e Node.js. Projeto e mantenho APIs de alto débito e serviços backend intensivos em dados — incluindo uma plataforma de controlo de qualidade de atendimento que liderei e que processa mais de 500 mil interações de áudio e chat, pipelines de média de SFTP para cloud, e IVRs self-service. Estes sistemas dão suporte a uma operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia (escala da empresa, não o débito de um único serviço). Domínio de APIs REST e GraphQL, mensageria com RabbitMQ, cache com Redis, pipelines de SFTP e armazenamento em cloud, e microsserviços. Colaboro de perto com equipas de DevOps e produto para entregar funcionalidades fiáveis, seguras e tolerantes a falhas em produção.",
     interests:
       "Xadrez, Fotografia, Leitura, Tempo de qualidade com Família e Amigos, Mortal Kombat",
 
@@ -150,35 +151,35 @@ export const pt: Translations = {
         seniority: "Pleno",
         company: "Ucall",
         description:
-          "Atuo como engenheiro de backend em sistemas de comunicação e contact-center desenvolvidos em C# e .NET. O meu dia a dia inclui desenvolver e manter APIs, gerir jobs em background e fluxos baseados em mensagens com RabbitMQ, e utilizar Redis para melhorar o desempenho em caminhos críticos. Colaboro estreitamente com DevOps para implementar serviços, monitorizar problemas em produção e manter o sistema estável sob carga real.",
+          "Engenheiro de backend num BPO com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia (escala da empresa, não o débito do meu sistema). Liderei o backend de uma equipa de 2 pessoas numa plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat, com troca automática de supervisores e assistentes de equipa integrada com um sistema de controlo de assiduidade. Construí pipelines de média que importam áudios para servidor SFTP local e enviam para cloud (Wasabi), além de soluções de IVR self-service. Stack: C#/.NET, RabbitMQ, Redis, APIs REST e GraphQL.",
       },
       bytebooster: {
         role: "Co-fundador e Tech Lead",
         seniority: "Nível-C",
         company: "Bytebooster",
         description:
-          "Co-fundador e Tech Lead, ajudando a projetar e a entregar soluções de software escaláveis alinhadas com necessidades reais de negócio. Responsável pela estratégia técnica, arquitetura de software e entrega de soluções orientadas a valor.",
+          "Co-fundador e Tech Lead a conduzir a estratégia técnica e a arquitetura de software. Projeto e entrego soluções escaláveis e orientadas a valor, alinhadas com necessidades reais de negócio, orientando as decisões de engenharia desde a arquitetura até à entrega.",
       },
       risingsystems: {
         role: "Desenvolvedor de Software",
         seniority: "Pleno",
         company: "RisingSystems",
         description:
-          "Desenvolvi e mantive soluções de software robustas, otimizando o desempenho das aplicações com C#, .NET Core e SQL Server. Construí backends escaláveis para suportar sistemas de alto tráfego, melhorando a eficiência da base de dados e o desempenho de queries. Colaborei de forma multidisciplinar para alinhar a arquitetura do software com os objetivos do negócio, garantindo elevados padrões de disponibilidade e segurança. Contribuí para a refatoração do sistema, reduzindo a dívida técnica e melhorando a manutenibilidade.",
+          "Construí e mantive soluções de software robustas, otimizando o desempenho das aplicações com C#, .NET Core, SQL Server e MongoDB. Desenvolvi backends escaláveis para sistemas de alto tráfego, melhorando a eficiência da base de dados e o desempenho de queries. Colaborei de forma multidisciplinar para alinhar a arquitetura com os objetivos do negócio, garantindo alta disponibilidade e segurança. Refatorei código legado, reduzindo a dívida técnica e melhorando a manutenibilidade.",
       },
       spacium: {
         role: "Desenvolvedor Frontend",
         seniority: "Pleno",
         company: "SPACIUM",
         description:
-          "Trabalhei em aplicações frontend usando Next.js, TypeScript e Tailwind CSS. Foquei-me em construir interfaces responsivas e integrar APIs de backend em estreita colaboração com as equipas de backend e design.",
+          "Construí aplicações frontend responsivas com Next.js, TypeScript, Tailwind CSS e React. Melhorei o desempenho do frontend e integrei APIs de backend em estreita colaboração com as equipas de backend e design, contribuindo para uma arquitetura de componentes mais limpa e fácil de manter.",
       },
       freelance: {
         role: "Desenvolvedor Full Stack",
         seniority: "Júnior",
         company: "Freelance",
         description:
-          "Desenvolvi aplicações web completas para startups, gerindo o desenvolvimento de frontend e backend com React, Node.js e PostgreSQL. Projetei e implementei arquiteturas escaláveis que suportaram o crescimento do negócio e a eficiência operacional. Foquei-me em aumentar o engajamento dos utilizadores através de melhorias de UI/UX responsivas e otimizações de desempenho. Entreguei soluções à medida alinhadas com as necessidades dos clientes, garantindo resultados de alto impacto e manutenibilidade a longo prazo.",
+          "Entreguei aplicações web de ponta a ponta para startups com React, Node.js, Express.js e PostgreSQL. Projetei e implementei arquiteturas escaláveis que suportaram o crescimento do negócio e a eficiência operacional. Aumentei o engajamento dos utilizadores através de melhorias de UI/UX responsivas e otimizações de desempenho, entregando soluções à medida e fáceis de manter, alinhadas com as necessidades dos clientes.",
       },
     },
 
@@ -206,6 +207,7 @@ export const pt: Translations = {
       github: "Github",
       blog: "Blog",
       web: "Web",
+      summary: "Resumo Profissional",
       education: "Formação",
       certifications: "Certificações",
       skills: "Competências",

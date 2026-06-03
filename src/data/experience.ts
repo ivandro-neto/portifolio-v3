@@ -41,6 +41,8 @@ export const experiences: ExperienceMeta[] = [
       "REST API",
       "Redis",
       "RabbitMQ",
+      "SFTP",
+      "Wasabi (S3)",
       "Distributed Systems",
       "Microservices",
     ],
@@ -86,5 +88,7 @@ export const techCategories: Record<
     "SQLite",
     "Redis",
     "RabbitMQ",
+    "SFTP",
+    "Wasabi (S3)",
   ],
 };

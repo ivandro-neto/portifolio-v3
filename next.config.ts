@@ -4,6 +4,15 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // The résumé API reads its Handlebars templates at runtime via `fs`. The
+  // filename is chosen dynamically (two-column vs single-column), so automatic
+  // file tracing may miss them — include both explicitly in the function bundle.
+  outputFileTracingIncludes: {
+    "/api/generate-resume": [
+      "./pages/api/cv-template.hbs",
+      "./pages/api/cv-template-single.hbs",
+    ],
+  },
   images: {
     remotePatterns: [
       {
