@@ -192,7 +192,7 @@ export const en = {
       },
       {
         language: "English",
-        level: "B2",
+        level: "C1",
       },
       {
         language: "German",

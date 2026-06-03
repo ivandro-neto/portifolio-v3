@@ -189,7 +189,7 @@ export const pt: Translations = {
       },
       {
         language: "Inglês",
-        level: "B2",
+        level: "C1",
       },
       {
         language: "Alemão",
