@@ -14,14 +14,14 @@ export const pt: Translations = {
   hero: {
     role: "Engenheiro de Software Backend",
     tagline:
-      "Engenheiro de Software Backend especializado em C# (.NET) e sistemas escaláveis e distribuídos. Projeto e construo APIs de alto desempenho e plataformas intensivas em dados que funcionam de forma fiável em escala.",
+      "Engenheiro de Software Backend especializado em C# (.NET) e sistemas backend escaláveis. Projeto e construo APIs de alto desempenho e plataformas intensivas em dados que funcionam de forma fiável em escala.",
   },
 
   // ---------- ABOUT ----------
   about: {
     heading: "Sobre",
-    p1: "Engenheiro de Software Backend especializado em C# (.NET) e sistemas escaláveis e distribuídos. Projeto e construo APIs de alto desempenho e plataformas intensivas em dados com forte foco em escalabilidade, baixa latência, segurança e tolerância a falhas. Tenho experiência prática com APIs REST e GraphQL, Redis, RabbitMQ, fluxos baseados em mensagens, pipelines de SFTP e armazenamento em cloud, e CI/CD.",
-    p2: "Atualmente sou Engenheiro Backend na Ucall — uma operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia (escala da empresa, não o débito do meu sistema). Aí liderei o backend de uma equipa de 2 pessoas no desenvolvimento de uma plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat. Sou também Co-fundador e Tech Lead da Bytebooster, onde ajudo a projetar e entregar soluções de software escaláveis alinhadas com necessidades reais de negócio.",
+    p1: "Engenheiro de Software Backend especializado em C# (.NET) e sistemas backend escaláveis. Projeto e construo APIs de alto desempenho e plataformas intensivas em dados com forte foco em escalabilidade, baixa latência, segurança e tolerância a falhas. Tenho experiência prática com APIs REST e GraphQL, Redis, RabbitMQ, fluxos baseados em mensagens, pipelines de SFTP e armazenamento em cloud, e CI/CD.",
+    p2: "Atualmente sou Engenheiro Backend na Ucall — uma operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia. Aí liderei o backend de uma equipa de 2 pessoas no desenvolvimento de uma plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat. Sou também Co-fundador e Tech Lead da Bytebooster, onde ajudo a projetar e entregar soluções de software escaláveis alinhadas com necessidades reais de negócio.",
     p2_ucall_label: "Ucall",
     p3: "Estou habituado a trabalhar em equipas internacionais e distribuídas, colaborando estreitamente com DevOps e stakeholders de produto. Valorizo código limpo, arquitetura sólida e melhoria contínua. O meu objetivo é entregar soluções que sejam robustas e seguras, mas que também gerem valor tangível para o negócio.",
     p4: "Fora do trabalho, encontro inspiração na ligação com a comunidade tech, na aprendizagem contínua e na exploração de novas tecnologias.",
@@ -81,8 +81,8 @@ export const pt: Translations = {
       entitle: {
         title: "Entitle.",
         description:
-          "Um motor de acesso e monetização em tempo real para produtos SaaS. Construído para centralizar a lógica de subscrições, gestão de funcionalidades, regras de rollout e decisões de acesso através de uma arquitetura escalável orientada a eventos. Inclui gestão determinística de estado de subscrições, feature flags, logs de auditoria e uma API de controlo de acesso pensada para programadores.",
-        liveMask: "Motor de Acesso e Monetização",
+          "Um motor de controlo de acesso em tempo real para produtos SaaS. Construído para centralizar a lógica de subscrições, gestão de funcionalidades, regras de rollout e decisões de acesso através de uma arquitetura escalável orientada a eventos. Inclui gestão determinística de estado de subscrições, feature flags, logs de auditoria e uma API de controlo de acesso pensada para programadores.",
+        liveMask: "Motor de Controlo de Acesso",
       },
       ulock: {
         title: "Ulock Proxy Service",
@@ -113,7 +113,7 @@ export const pt: Translations = {
   cv: {
     role: "Engenheiro de Software Backend",
     summary:
-      "Engenheiro de Software Backend com mais de 4 anos de experiência na construção de sistemas escaláveis e distribuídos em C#/.NET e Node.js. Projeto e mantenho APIs de alto débito e serviços backend intensivos em dados — incluindo uma plataforma de controlo de qualidade de atendimento que liderei e que processa mais de 500 mil interações de áudio e chat, pipelines de média de SFTP para cloud, e IVRs self-service. Estes sistemas dão suporte a uma operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia (escala da empresa, não o débito de um único serviço). Domínio de APIs REST e GraphQL, mensageria com RabbitMQ, cache com Redis, pipelines de SFTP e armazenamento em cloud, e microsserviços. Colaboro de perto com equipas de DevOps e produto para entregar funcionalidades fiáveis, seguras e tolerantes a falhas em produção.",
+      "Engenheiro de Software Backend com mais de 4 anos de experiência na construção de sistemas backend escaláveis em C#/.NET e Node.js. Projeto e mantenho APIs de alto débito e serviços backend intensivos em dados — incluindo uma plataforma de controlo de qualidade de atendimento que liderei e que processa mais de 500 mil interações de áudio e chat, pipelines de média de SFTP para cloud, e IVRs self-service — numa operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia. Domínio de APIs REST e GraphQL, mensageria com RabbitMQ, cache com Redis, pipelines de SFTP e armazenamento em cloud, e microsserviços. Colaboro de perto com equipas de DevOps e produto para entregar funcionalidades fiáveis, seguras e tolerantes a falhas em produção.",
     interests:
       "Xadrez, Fotografia, Leitura, Tempo de qualidade com Família e Amigos, Mortal Kombat",
 
@@ -151,7 +151,7 @@ export const pt: Translations = {
         seniority: "Pleno",
         company: "Ucall",
         description:
-          "Engenheiro de backend num BPO com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia (escala da empresa, não o débito do meu sistema). Liderei o backend de uma equipa de 2 pessoas numa plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat, com troca automática de supervisores e assistentes de equipa integrada com um sistema de controlo de assiduidade. Construí pipelines de média que importam áudios para servidor SFTP local e enviam para cloud (Wasabi), além de soluções de IVR self-service. Stack: C#/.NET, RabbitMQ, Redis, APIs REST e GraphQL.",
+          "Engenheiro de backend num BPO com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia. Liderei o backend de uma equipa de 2 pessoas numa plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat, com troca automática de supervisores e assistentes de equipa integrada com um sistema de controlo de assiduidade. Construí pipelines de média que importam áudios para servidor SFTP local e enviam para cloud (Wasabi), além de soluções de IVR self-service. Stack: C#/.NET, RabbitMQ, Redis, APIs REST e GraphQL.",
       },
       bytebooster: {
         role: "Co-fundador e Tech Lead",

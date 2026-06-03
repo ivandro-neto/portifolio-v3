@@ -12,14 +12,14 @@ export const en = {
   hero: {
     role: "Backend Software Engineer",
     tagline:
-      "Backend Software Engineer specialized in C# (.NET) and scalable, distributed systems. I design and build high-performance APIs and data-intensive platforms that run reliably at scale.",
+      "Backend Software Engineer specialized in C# (.NET) and scalable backend systems. I design and build high-performance APIs and data-intensive platforms that run reliably at scale.",
   },
 
   // ---------- ABOUT ----------
   about: {
     heading: "About",
-    p1: "Backend Software Engineer specialized in C# (.NET) and scalable, distributed systems. I design and build high-performance APIs and data-intensive platforms with a strong focus on scalability, low latency, security, and fault tolerance. I have hands-on experience with REST & GraphQL APIs, Redis, RabbitMQ, message-based workflows, SFTP and cloud-storage pipelines, and CI/CD.",
-    p2: "Currently, I'm a Backend Engineer at Ucall — a contact-center operation with 1,000+ employees that handles 1M+ calls per day (company scale, not my system's throughput). There I led the backend of a 2-person team building a call-quality-control platform that processes 500K+ audio and chat interactions. I'm also Co-founder & Tech Lead at Bytebooster, where I help design and deliver scalable software solutions aligned with real business needs.",
+    p1: "Backend Software Engineer specialized in C# (.NET) and scalable backend systems. I design and build high-performance APIs and data-intensive platforms with a strong focus on scalability, low latency, security, and fault tolerance. I have hands-on experience with REST & GraphQL APIs, Redis, RabbitMQ, message-based workflows, SFTP and cloud-storage pipelines, and CI/CD.",
+    p2: "Currently, I'm a Backend Engineer at Ucall — a contact-center operation with 1,000+ employees handling 1M+ calls per day. There I led the backend of a 2-person team building a call-quality-control platform that processes 500K+ audio and chat interactions. I'm also Co-founder & Tech Lead at Bytebooster, where I help design and deliver scalable software solutions aligned with real business needs.",
     p2_ucall_label: "Ucall",
     p3: "I'm comfortable working in international, distributed teams, collaborating closely with DevOps and product stakeholders. I value clean code, solid architecture, and continuous improvement. My goal is to deliver solutions that are not only robust and secure but also drive tangible business value.",
     p4: "Outside of work, I find inspiration in connecting with the tech community, continuous learning, and exploring new technologies.",
@@ -80,8 +80,8 @@ export const en = {
       entitle: {
         title: "Entitle.",
         description:
-          "A real-time access and monetization engine for SaaS products. Built to centralize subscription logic, feature entitlements, rollout rules, and access decisions through a scalable event-driven architecture. Features deterministic subscription state management, feature flags, audit logs, and a developer-focused access control API.",
-        liveMask: "Access & Monetization Engine",
+          "A real-time access-control engine for SaaS products. Built to centralize subscription logic, feature entitlements, rollout rules, and access decisions through a scalable event-driven architecture. Features deterministic subscription state management, feature flags, audit logs, and a developer-focused access control API.",
+        liveMask: "Access-Control Engine",
       },
       ulock: {
         title: "Ulock Proxy Service",
@@ -112,7 +112,7 @@ export const en = {
   cv: {
     role: "Backend Software Engineer",
     summary:
-      "Backend Software Engineer with 4+ years of experience building scalable, distributed systems in C#/.NET and Node.js. I design and maintain high-throughput APIs and data-intensive backend services — including a call-quality-control platform I led that processes 500K+ audio and chat interactions, SFTP-to-cloud media pipelines, and self-service IVRs. These systems support a contact-center operation with 1,000+ employees that handles 1M+ calls per day (company scale, not single-service throughput). Skilled in REST and GraphQL APIs, RabbitMQ messaging, Redis caching, SFTP and cloud-storage pipelines, and microservices. I collaborate closely with DevOps and product teams to ship reliable, secure, and fault-tolerant features in production.",
+      "Backend Software Engineer with 4+ years of experience building scalable backend systems in C#/.NET and Node.js. I design and maintain high-throughput APIs and data-intensive backend services — including a call-quality-control platform I led that processes 500K+ audio and chat interactions, SFTP-to-cloud media pipelines, and self-service IVRs — within a contact-center operation with 1,000+ employees handling 1M+ calls per day. Skilled in REST and GraphQL APIs, RabbitMQ messaging, Redis caching, SFTP and cloud-storage pipelines, and microservices. I collaborate closely with DevOps and product teams to ship reliable, secure, and fault-tolerant features in production.",
     interests:
       "Chess, Photography, Reading, Quality Time with Family & Friends, Mortal Kombat",
 
@@ -154,7 +154,7 @@ export const en = {
         seniority: "Mid-Level",
         company: "Ucall",
         description:
-          "Backend engineer at a BPO with 1,000+ employees that handles 1M+ calls per day (company scale, not my system's throughput). Led the backend of a 2-person team on a call-quality-control platform that processes 500K+ audio and chat interactions, with automatic supervisor/team-assistant rotation integrated with an attendance-control system. Built media pipelines importing audio into a local SFTP server and offloading recordings to cloud storage (Wasabi), plus self-service IVR solutions. Stack: C#/.NET, RabbitMQ, Redis, REST & GraphQL APIs.",
+          "Backend engineer at a BPO with 1,000+ employees handling 1M+ calls per day. Led the backend of a 2-person team on a call-quality-control platform that processes 500K+ audio and chat interactions, with automatic supervisor/team-assistant rotation integrated with an attendance-control system. Built media pipelines importing audio into a local SFTP server and offloading recordings to cloud storage (Wasabi), plus self-service IVR solutions. Stack: C#/.NET, RabbitMQ, Redis, REST & GraphQL APIs.",
       },
       bytebooster: {
         role: "Co-founder & Tech Lead",
