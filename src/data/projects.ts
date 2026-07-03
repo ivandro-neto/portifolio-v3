@@ -15,7 +15,7 @@ export interface ProjectMeta {
 export const projects: ProjectMeta[] = [
   {
     id: "entitle",
-    liveLink: "https://entitle-psi.vercel.app/",
+    liveLink: "https://www.entitle.site/",
     logo: "projects/logo/entitle-logo.svg",
     repo: "",
     techs: [
