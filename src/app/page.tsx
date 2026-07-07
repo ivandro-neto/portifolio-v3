@@ -102,7 +102,7 @@ const PageInner = () => {
           role: t.cv.role,
           links: [
             {
-              tel: "+244923474934",
+              tel: "+244949359054",
               mail: "ivandro.neto@outlook.com",
               web: "ivandroneto.online",
               git: "github.com/ivandro-neto",
