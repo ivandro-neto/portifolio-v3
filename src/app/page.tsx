@@ -499,9 +499,14 @@ const PageInner = () => {
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
             {t.writing.heading}
           </h2>
-          {contentItems.map((item) => (
-            <ContentCard key={item.id} item={item} />
-          ))}
+          {contentItems
+            .slice()
+            .sort(
+              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+            )
+            .map((item) => (
+              <ContentCard key={item.id} item={item} />
+            ))}
         </section>
 
         <div className="footer text-xs text-offtext opacity-40 text-center mt-12 mb-4">
