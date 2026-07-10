@@ -5,6 +5,12 @@ interface ContentCardProps {
   item: ContentItem;
 }
 
+const PLATFORM_ICON: Partial<Record<ContentItem["platform"], string>> = {
+  X: "/x-twitter-brands-solid-full.svg",
+  Threads: "/threads-brands-solid-full (1).svg",
+  Hashnode: "/hashnode-brands-solid-full.svg",
+};
+
 const ContentCard: React.FC<ContentCardProps> = ({ item }) => {
   React.useEffect(() => {
     if (item.html && item.platform === "X") {
@@ -44,6 +50,8 @@ const ContentCard: React.FC<ContentCardProps> = ({ item }) => {
     );
   }
 
+  const icon = PLATFORM_ICON[item.platform];
+
   return (
     <a
       href={item.link}
@@ -51,24 +59,33 @@ const ContentCard: React.FC<ContentCardProps> = ({ item }) => {
       rel="noopener noreferrer"
       className="group block w-full h-full"
     >
-      <div className="flex flex-col gap-3 p-5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition-all h-full">
-        <div className="flex items-center justify-between text-xs text-offtext">
-          <div className="flex items-center gap-2">
-            <span className={`font-medium ${
-              item.platform === 'X' ? 'text-primary' : 
-              item.platform === 'Threads' ? 'text-primary' : 
-              'text-primary'
-            }`}>
-              {item.platform}
-            </span>
-            <span className="text-white/20">•</span>
-            <span className="opacity-60">{item.date}</span>
+      <div className="flex flex-col gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition-all h-full">
+        <div className="flex items-center justify-between gap-2 text-xs text-offtext">
+          <div className="flex items-center gap-2 min-w-0">
+            {icon && (
+              <span
+                className="w-3.5 h-3.5 bg-primary shrink-0"
+                style={{
+                  maskImage: `url('${icon}')`,
+                  WebkitMaskImage: `url('${icon}')`,
+                  maskSize: "contain",
+                  WebkitMaskSize: "contain",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskRepeat: "no-repeat",
+                  maskPosition: "center",
+                  WebkitMaskPosition: "center",
+                }}
+              />
+            )}
+            <span className="font-medium text-primary shrink-0">{item.platform}</span>
+            <span className="text-white/20 shrink-0">•</span>
+            <span className="opacity-60 truncate">{item.date}</span>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
-            className="w-4 h-4 text-offtext transform transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+            className="w-4 h-4 text-offtext shrink-0 transform transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
           >
             <path
               fillRule="evenodd"
@@ -77,28 +94,32 @@ const ContentCard: React.FC<ContentCardProps> = ({ item }) => {
             />
           </svg>
         </div>
-        
-        <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors leading-snug">
-          {item.title}
-        </h3>
-        
-        {item.description && (
-          <p className="text-sm text-offtext/80 leading-relaxed">
-            {item.description}
-          </p>
-        )}
 
-        {item.image && (
-          <div className="mt-auto pt-4">
-            <div className="rounded-lg overflow-hidden border border-white/10 relative aspect-video">
-              <img 
-                src={item.image} 
-                alt={item.title} 
-                className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
-              />
+        <div className={`flex flex-col gap-4 ${item.image ? "sm:flex-row" : ""}`}>
+          {item.image && (
+            <div className="sm:w-36 md:w-44 lg:w-48 sm:shrink-0">
+              <div className="rounded-lg overflow-hidden border border-white/10 relative aspect-video sm:aspect-square">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
             </div>
+          )}
+
+          <div className="flex flex-col gap-2 min-w-0 flex-1 justify-center">
+            <h3 className="text-base sm:text-lg font-medium text-foreground group-hover:text-primary transition-colors leading-snug">
+              {item.title}
+            </h3>
+
+            {item.description && (
+              <p className="text-sm text-offtext/80 leading-relaxed line-clamp-3 sm:line-clamp-2">
+                {item.description}
+              </p>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </a>
   );

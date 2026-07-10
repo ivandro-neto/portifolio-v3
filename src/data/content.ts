@@ -36,5 +36,16 @@ export const contentItems: ContentItem[] = [
     description: "Event-Driven Architecture (EDA) is often marketed as the ultimate cure for scalability woes. However, in practice, I’ve seen countless systems become far more complex than necessary due to decisions made out of context...",
     link: "https://ivandroneto.hashnode.dev/event-driven-architecture-in-practice-when-to-use-it-and-when-to-walk-away",
     platform: "Hashnode",
+    image: "https://cdn.hashnode.com/res/hashnode/image/upload/v1767785262851/d1c8b2c3-2415-429a-8062-d4559f9a02c5.jpeg",
+  },
+  {
+    id: "4",
+    type: "article",
+    date: "Jul 10, 2026",
+    title: "Why the Entitle Node SDK has zero dependencies",
+    description: "Every JavaScript SDK starts the same way. You open a new project, type npm install axios, and move on. It's the path of least resistance. Axios handles retries, error parsing, headers, timeout logic...",
+    link: "https://ivandroneto.hashnode.dev/why-the-entitle-node-sdk-has-zero-dependencies",
+    platform: "Hashnode",
+    image: "https://cdn.hashnode.com/uploads/covers/695e432ee7cd59a6e62f2327/d7713920-bbad-4117-9d27-0e150af9a44d.png",
   },
 ];

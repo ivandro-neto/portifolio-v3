@@ -494,7 +494,7 @@ const PageInner = () => {
         {/* Writing */}
         <section
           id="writing"
-          className="text-offtext grid grid-cols-1 gap-4 w-full"
+          className="text-offtext grid grid-cols-1 gap-4 sm:gap-5 w-full"
         >
           <h2 className="lg:hidden text-foreground font-semibold sm:block uppercase">
             {t.writing.heading}
