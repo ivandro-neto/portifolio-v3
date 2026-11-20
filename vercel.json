@@ -1,6 +1,6 @@
 {
     "functions": {
-        "pages/api/generate-resume.ts": {
+        "src/pages/api/generate-resume.ts": {
             "maxDuration": 10
         }
     }

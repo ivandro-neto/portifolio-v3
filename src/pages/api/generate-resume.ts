@@ -89,7 +89,7 @@ const compile = async (
   data: Record<string, unknown>,
   layout: Layout,
 ): Promise<string> => {
-  const filePath = path.resolve(process.cwd(), "pages/api", templateFileFor(layout));
+  const filePath = path.resolve(process.cwd(), "src/pages/api", templateFileFor(layout));
   const html = await fs.readFile(filePath, "utf-8");
   return Handlebars.compile(html)(data);
 };

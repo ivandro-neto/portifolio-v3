@@ -9,8 +9,8 @@ const nextConfig: NextConfig = {
   // file tracing may miss them — include both explicitly in the function bundle.
   outputFileTracingIncludes: {
     "/api/generate-resume": [
-      "./pages/api/cv-template.hbs",
-      "./pages/api/cv-template-single.hbs",
+      "./src/pages/api/cv-template.hbs",
+      "./src/pages/api/cv-template-single.hbs",
     ],
   },
   images: {
