@@ -21,9 +21,9 @@ export const pt: Translations = {
   about: {
     heading: "Sobre",
     p1: "Engenheiro de Software Backend especializado em C# (.NET) e sistemas backend escaláveis. Projeto e construo APIs de alto desempenho e plataformas intensivas em dados com forte foco em escalabilidade, baixa latência, segurança e tolerância a falhas. Tenho experiência prática com APIs REST e GraphQL, Redis, RabbitMQ, fluxos baseados em mensagens, pipelines de SFTP e armazenamento em cloud, e CI/CD.",
-    p2: "Atualmente sou Engenheiro Backend na Ucall — uma operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia. Aí liderei o backend de uma equipa de 2 pessoas no desenvolvimento de uma plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat. Sou também Co-fundador e Tech Lead da Bytebooster, onde ajudo a projetar e entregar soluções de software escaláveis alinhadas com necessidades reais de negócio.",
+    p2: "Atualmente sou Engenheiro Backend na Ucall, uma operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia. Aí liderei o backend de uma equipa de 2 pessoas no desenvolvimento de uma plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat. Antes disso, fui co-fundador e CTO da Bytebooster, onde construímos a Kilunga, um produto agritech que despertou o interesse de empresas do setor agrícola em Angola e no estrangeiro.",
     p2_ucall_label: "Ucall",
-    p3: "Estou habituado a trabalhar em equipas internacionais e distribuídas, colaborando estreitamente com DevOps e stakeholders de produto. Valorizo código limpo, arquitetura sólida e melhoria contínua. O meu objetivo é entregar soluções que sejam robustas e seguras, mas que também gerem valor tangível para o negócio.",
+    p3: "Estou habituado a trabalhar em equipas internacionais e distribuídas, colaborando estreitamente com DevOps e stakeholders de produto. Valorizo código limpo, arquitetura sólida e melhoria contínua, e procuro entregar soluções seguras e fiáveis que também gerem valor real para o negócio.",
     p4: "Fora do trabalho, encontro inspiração na ligação com a comunidade tech, na aprendizagem contínua e na exploração de novas tecnologias.",
   },
 
@@ -35,39 +35,46 @@ export const pt: Translations = {
     generatingBtn: "A gerar PDF...",
     items: {
       spacium: {
-        role: "Desenvolvedor Frontend",
-        seniority: "Pleno",
+        role: "Desenvolvedor Frontend → Líder de Equipa",
+        seniority: "Equipa Fundadora",
         company: "SPACIUM",
         description:
-          "Na SPACIUM, trabalhei como Desenvolvedor Frontend a construir aplicações web escaláveis e de alto desempenho. Projetei interfaces responsivas e intuitivas e colaborei estreitamente com as equipas de design e backend para entregar experiências digitais fluídas. Com Next.js, TypeScript, Tailwind CSS e React, melhorei o desempenho do frontend e contribuí para uma arquitetura de componentes mais limpa e fácil de manter.",
+          "Função não remunerada na segunda equipa fundadora da SPACIUM, um novo departamento de apoio a empreendedores e startups. Comecei no frontend e no design e mais tarde fui nomeado para liderar toda a equipa. Trabalhei na construção de aplicações web escaláveis e de alto desempenho. Projetei interfaces responsivas e intuitivas e colaborei estreitamente com as equipas de design e backend para manter a experiência do produto consistente do início ao fim. Com Next.js, TypeScript, Tailwind CSS e React, aumentei a pontuação de performance no Lighthouse de 54 para 98 e contribuí para uma arquitetura de componentes mais limpa e fácil de manter.",
       },
       risingsystems: {
         role: "Desenvolvedor de Software",
-        seniority: "Pleno",
-        company: "RisingSystems",
+        seniority: "Freelance",
+        company: "RisingSystems (parceria)",
         description:
-          "Na RisingSystems, construí e mantive soluções de software personalizadas para diversos clientes, com foco no desempenho e fiabilidade das aplicações. Com C#, .NET Core, SQL Server e MongoDB, entreguei funcionalidades robustas, otimizei queries de base de dados e refatorei código legado para reduzir a dívida técnica. Colaborei com equipas multidisciplinares para alinhar a arquitetura do software com objetivos estratégicos de negócio e padrões de alta disponibilidade.",
+          "Parceria freelance com outro desenvolvedor sob o nome de trabalho RisingSystems, assumindo projetos de clientes à medida que surgiam. O projeto entregue foi o site institucional da Somobes (Sociedade Moçambicana de Bens e Serviços), um grupo de logística moçambicano, com a apresentação da empresa e dos seus serviços. Construí o site a partir dos assets e requisitos fornecidos pela responsável do projeto do lado do cliente e entreguei-o no final de 2024, transferindo o projeto e a titularidade dos repositórios para o cliente.",
       },
       freelance: {
         role: "Desenvolvedor Full Stack",
         seniority: "Júnior",
         company: "Freelance",
         description:
-          "Como Desenvolvedor Full Stack Freelancer, entreguei aplicações web de ponta a ponta para startups, combinando tecnologias de frontend e backend — React, Node.js, Express.js e PostgreSQL — para entregar soluções à medida. Projetei arquiteturas escaláveis, otimizei o desempenho dos sistemas e construí interfaces responsivas que aumentaram o engajamento dos utilizadores e reforçaram a presença digital dos clientes.",
+          "Como Desenvolvedor Full Stack Freelancer, entreguei aplicações web de ponta a ponta para startups, combinando tecnologias de frontend e backend (React, Node.js, Express.js e PostgreSQL) para construir soluções ajustadas às necessidades de cada cliente. Projetei arquiteturas escaláveis, otimizei o desempenho dos sistemas e construí interfaces responsivas que reforçaram a presença digital dos clientes.",
       },
       ucall: {
         role: "Engenheiro Backend",
         seniority: "Pleno",
         company: "Ucall",
         description:
-          "Engenheiro de backend em sistemas de comunicação e contact-center desenvolvidos em C# e .NET. A empresa é um BPO com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia nas suas operações — essa é a escala e o contexto em que trabalho, não o débito de um serviço que construí. Liderei o backend de uma equipa de 2 pessoas no desenvolvimento de uma plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat, com funcionalidades como troca automática de supervisores e assistentes de equipa integrada com um sistema de controlo de assiduidade. Também construí pipelines de média que importam áudios para um servidor SFTP local e enviam as gravações para armazenamento em cloud (Wasabi), além de soluções de IVR self-service. No dia a dia, uso RabbitMQ para fluxos baseados em mensagens, Redis para caminhos críticos de baixa latência e colaboro de perto com DevOps para manter os sistemas estáveis sob carga real.",
+          "Engenheiro de backend em sistemas de comunicação e contact-center desenvolvidos em C# e .NET, num BPO com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia nas suas operações. Liderei o backend de uma equipa de 2 pessoas no desenvolvimento de uma plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat, com funcionalidades como troca automática de supervisores e assistentes de equipa integrada com um sistema de controlo de assiduidade. Também construí pipelines de média que importam áudios para um servidor SFTP local e enviam as gravações para armazenamento em cloud (Wasabi), além de soluções de IVR self-service. No dia a dia, uso RabbitMQ para fluxos baseados em mensagens, Redis para caminhos críticos de baixa latência e colaboro de perto com DevOps para manter os sistemas estáveis sob carga real.",
+      },
+      wahitech: {
+        role: "Desenvolvedor Backend",
+        seniority: "Freelance",
+        company: "Wahitech",
+        description:
+          "Desenvolvedor backend numa equipa freelance de duas pessoas (backend + frontend em Vue.js) na construção de uma plataforma de dicionário financeiro por subscrição, onde empresas e particulares consultam termos e conteúdos financeiros. Construí a API em ASP.NET Core (.NET 8) com Clean Architecture, EF Core e SQL Server: Identity com tokens JWT de acesso e de refresh, planos de subscrição com quotas de pesquisa partilhadas entre subcontas, caching em memória com invalidação direcionada, pagamentos e cupões de desconto, tickets de suporte e um pequeno CMS para o site público. Desenvolvi também a integração de email (SMTP com MailKit, compatível com contas Outlook e Google) e as notificações por SMS, o armazenamento de ficheiros compatível com S3 e o deploy em Docker com GitHub Actions.",
       },
       bytebooster: {
-        role: "Co-fundador e Tech Lead",
+        role: "Co-fundador e CTO",
         seniority: "Nível-C",
         company: "Bytebooster",
         description:
-          "Co-fundador e Tech Lead a conduzir a estratégia técnica e a arquitetura de software. Projeto e entrego soluções de software escaláveis alinhadas com necessidades reais de negócio, supervisiono o desenvolvimento de produtos personalizados e oriento as decisões de engenharia desde a arquitetura até à entrega.",
+          "Co-fundador e CTO de uma startup em fase inicial, iniciada no final de 2022 e registada formalmente em 2023. Liderei a estratégia técnica e a arquitetura de software e construí a Kilunga, um produto agritech que despertou o interesse de empresas do setor agrícola em Angola e no estrangeiro. A empresa não chegou ao primeiro contrato remunerado e os fundadores separaram-se em 2026.",
       },
     },
     presentLabel: "Atual",
@@ -78,6 +85,12 @@ export const pt: Translations = {
     heading: "Projetos",
     viewArchive: "Ver todos os projetos arquivados",
     items: {
+      orus: {
+        title: "ORUS",
+        description:
+          "Produto que fundei e desenvolvo sozinho: uma plataforma self-hosted de fiabilidade de infraestrutura que transforma sinais de servidores e aplicações num único incidente com evidência, identifica a equipa responsável e alerta apenas essa equipa, acompanhando depois a confirmação, a escalada e a recuperação. Um agente em .NET 10 corre em servidores Linux e Windows (cerca de 58 MB de RAM e 1% de CPU), autentica-se com chaves ECDSA P-256 e certificate pinning, e guarda os dados num outbox SQLite limitado, para que uma falha do servidor seja reposta sem lacunas nem duplicados. O servidor ingere métricas em tabelas PostgreSQL particionadas por dia, prevê o esgotamento de disco e mantém um registo de auditoria só de escrita, com login protegido por TOTP obrigatório. Desenhado com 8 registos de decisões de arquitetura e um modelo de ameaças, com releases assinadas, testes de integração em PostgreSQL real e um site comercial bilingue. Em piloto em infraestrutura real.",
+        liveMask: "Encaminhamento de Incidentes e Observabilidade",
+      },
       entitle: {
         title: "Entitle.",
         description:
@@ -93,7 +106,7 @@ export const pt: Translations = {
       imoni: {
         title: "Imoni",
         description:
-          "Aplicação completa de finanças pessoais construída como Progressive Web App (PWA). Apresenta uma arquitetura offline-first com sincronização de dados robusta, garantindo 100% de funcionalidade sem ligação à internet.",
+          "Aplicação de finanças pessoais full-stack construída como Progressive Web App (PWA). Apresenta uma arquitetura offline-first com sincronização de dados fiável, garantindo funcionamento completo mesmo sem ligação à internet.",
         liveMask: "PWA de Finanças Offline-first",
       },
     },
@@ -113,7 +126,7 @@ export const pt: Translations = {
   cv: {
     role: "Engenheiro de Software Backend",
     summary:
-      "Engenheiro de Software Backend com mais de 4 anos de experiência na construção de sistemas backend escaláveis em C#/.NET e Node.js. Projeto e mantenho APIs de alto débito e serviços backend intensivos em dados — incluindo uma plataforma de controlo de qualidade de atendimento que liderei e que processa mais de 500 mil interações de áudio e chat, pipelines de média de SFTP para cloud, e IVRs self-service — numa operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia. Domínio de APIs REST e GraphQL, mensageria com RabbitMQ, cache com Redis, pipelines de SFTP e armazenamento em cloud, e microsserviços. Colaboro de perto com equipas de DevOps e produto para entregar funcionalidades fiáveis, seguras e tolerantes a falhas em produção.",
+      "Engenheiro de Software Backend com mais de 4 anos de experiência na construção de sistemas backend escaláveis em C#/.NET e Node.js. Projeto e mantenho APIs de alto débito e serviços backend intensivos em dados numa operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia, incluindo uma plataforma de controlo de qualidade de atendimento que liderei e que processa mais de 500 mil interações de áudio e chat, pipelines de média de SFTP para cloud, e IVRs self-service. Domínio de APIs REST e GraphQL, mensageria com RabbitMQ, cache com Redis, pipelines de SFTP e armazenamento em cloud, e microsserviços. Colaboro de perto com equipas de DevOps e produto para entregar funcionalidades fiáveis, seguras e tolerantes a falhas em produção.",
     interests:
       "Xadrez, Fotografia, Leitura, Tempo de qualidade com Família e Amigos, Mortal Kombat",
 
@@ -153,33 +166,40 @@ export const pt: Translations = {
         description:
           "Engenheiro de backend num BPO com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia. Liderei o backend de uma equipa de 2 pessoas numa plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat, com troca automática de supervisores e assistentes de equipa integrada com um sistema de controlo de assiduidade. Construí pipelines de média que importam áudios para servidor SFTP local e enviam para cloud (Wasabi), além de soluções de IVR self-service. Stack: C#/.NET, RabbitMQ, Redis, APIs REST e GraphQL.",
       },
+      wahitech: {
+        role: "Desenvolvedor Backend",
+        seniority: "Freelance",
+        company: "Wahitech",
+        description:
+          "Desenvolvedor backend (freelance, mar–ago 2025) numa plataforma de dicionário financeiro por subscrição para empresas e particulares. Construí a API em .NET 8 (Clean Architecture, EF Core, SQL Server): autenticação JWT com refresh tokens, planos com quotas partilhadas entre subcontas, caching em memória com invalidação direcionada, pagamentos, integração de email SMTP (Outlook/Google) e SMS, armazenamento compatível com S3, deploy em Docker com GitHub Actions.",
+      },
       bytebooster: {
-        role: "Co-fundador e Tech Lead",
+        role: "Co-fundador e CTO",
         seniority: "Nível-C",
         company: "Bytebooster",
         description:
-          "Co-fundador e Tech Lead a conduzir a estratégia técnica e a arquitetura de software. Projeto e entrego soluções escaláveis e orientadas a valor, alinhadas com necessidades reais de negócio, orientando as decisões de engenharia desde a arquitetura até à entrega.",
+          "Co-fundador e CTO de uma startup em fase inicial, iniciada no final de 2022 e registada formalmente em 2023. Liderei a estratégia técnica e a arquitetura e construí a Kilunga, um produto agritech que despertou interesse no setor agrícola em Angola e no estrangeiro. A empresa encerrou em 2026, antes do primeiro contrato remunerado.",
       },
       risingsystems: {
         role: "Desenvolvedor de Software",
-        seniority: "Pleno",
-        company: "RisingSystems",
+        seniority: "Freelance",
+        company: "RisingSystems (parceria)",
         description:
-          "Construí e mantive soluções de software robustas, otimizando o desempenho das aplicações com C#, .NET Core, SQL Server e MongoDB. Desenvolvi backends escaláveis para sistemas de alto tráfego, melhorando a eficiência da base de dados e o desempenho de queries. Colaborei de forma multidisciplinar para alinhar a arquitetura com os objetivos do negócio, garantindo alta disponibilidade e segurança. Refatorei código legado, reduzindo a dívida técnica e melhorando a manutenibilidade.",
+          "Parceria freelance com outro desenvolvedor. Construí e entreguei o site institucional da Somobes (Sociedade Moçambicana de Bens e Serviços), um grupo de logística moçambicano, a partir dos assets e requisitos do cliente, com transferência do projeto e da titularidade dos repositórios (2024).",
       },
       spacium: {
-        role: "Desenvolvedor Frontend",
-        seniority: "Pleno",
+        role: "Desenvolvedor Frontend → Líder de Equipa",
+        seniority: "Equipa Fundadora",
         company: "SPACIUM",
         description:
-          "Construí aplicações frontend responsivas com Next.js, TypeScript, Tailwind CSS e React. Melhorei o desempenho do frontend e integrei APIs de backend em estreita colaboração com as equipas de backend e design, contribuindo para uma arquitetura de componentes mais limpa e fácil de manter.",
+          "Função não remunerada na segunda equipa fundadora do departamento de apoio a startups da SPACIUM; mais tarde liderei toda a equipa. Construí aplicações frontend responsivas com Next.js, TypeScript, Tailwind CSS e React. Aumentei a pontuação de performance no Lighthouse de 54 para 98 e integrei APIs de backend em estreita colaboração com as equipas de backend e design, contribuindo para uma arquitetura de componentes mais limpa e fácil de manter.",
       },
       freelance: {
         role: "Desenvolvedor Full Stack",
         seniority: "Júnior",
         company: "Freelance",
         description:
-          "Entreguei aplicações web de ponta a ponta para startups com React, Node.js, Express.js e PostgreSQL. Projetei e implementei arquiteturas escaláveis que suportaram o crescimento do negócio e a eficiência operacional. Aumentei o engajamento dos utilizadores através de melhorias de UI/UX responsivas e otimizações de desempenho, entregando soluções à medida e fáceis de manter, alinhadas com as necessidades dos clientes.",
+          "Entreguei aplicações web de ponta a ponta para startups com React, Node.js, Express.js e PostgreSQL. Projetei e implementei arquiteturas escaláveis que suportaram o crescimento do negócio e a eficiência operacional. Construí interfaces responsivas com atenção ao desempenho, entregando soluções personalizadas e fáceis de manter, alinhadas com as necessidades dos clientes.",
       },
     },
 
@@ -242,8 +262,7 @@ export const pt: Translations = {
         "Plataforma de templates full-stack. A versão web está funcional (modo demo), backend em TypeScript/Node.js.",
       designPatterns:
         "Implementação de vários padrões de design de software demonstrando boas práticas arquiteturais.",
-      timeTower:
-        "Jogo de puzzle match-3 desenvolvido com a framework MonoGame.",
+      timeTower: "Jogo de puzzle com placar online, desenvolvido em C# com o framework MonoGame (cliente do jogo, servidor do placar em TypeScript e página web) para a cadeira de Engenharia de Software.",
       xpto: "Modelação de um sistema de gestão de condomínios com foco em princípios de POO e persistência de dados.",
     },
   },

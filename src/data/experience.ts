@@ -7,7 +7,8 @@ export type ExperienceId =
   | "risingsystems"
   | "freelance"
   | "ucall"
-  | "bytebooster";
+  | "bytebooster"
+  | "wahitech";
 
 export interface ExperienceMeta {
   id: ExperienceId;
@@ -24,11 +25,11 @@ export const experiences: ExperienceMeta[] = [
   {
     id: "risingsystems",
     period: "2023 - 2025",
-    skills: ["C#", ".NET Core", "SQL Server", "MongoDB"],
+    skills: ["TypeScript", "React"],
   },
   {
     id: "freelance",
-    period: "2020 - 2022",
+    period: "2021 - 2022",
     skills: ["React", "Node.js", "Express.js", "PostgreSQL"],
   },
   {
@@ -48,8 +49,24 @@ export const experiences: ExperienceMeta[] = [
     ],
   },
   {
+    id: "wahitech",
+    period: "2025",
+    skills: [
+      "C#",
+      ".NET 8",
+      "ASP.NET Core",
+      "EF Core",
+      "SQL Server",
+      "JWT",
+      "Caching",
+      "MailKit (SMTP)",
+      "Docker",
+      "GitHub Actions",
+    ],
+  },
+  {
     id: "bytebooster",
-    period: "2023 - Present",
+    period: "2022 - 2026",
     skills: ["Technical Strategy", "Software Architecture", "Team Leadership"],
   },
 ];
@@ -57,6 +74,7 @@ export const experiences: ExperienceMeta[] = [
 // Order in which the resumed experience appears in the generated CV.
 export const experiencesResumedOrder: ExperienceId[] = [
   "ucall",
+  "wahitech",
   "bytebooster",
   "risingsystems",
   "spacium",
@@ -65,10 +83,11 @@ export const experiencesResumedOrder: ExperienceId[] = [
 
 export const experiencesResumedPeriods: Record<ExperienceId, string> = {
   ucall: "2025 - Present",
-  bytebooster: "2023 - Present",
+  wahitech: "2025",
+  bytebooster: "2022 - 2026",
   risingsystems: "2023 - 2025",
   spacium: "2023 - 2024",
-  freelance: "2020 - 2022",
+  freelance: "2021 - 2022",
 };
 
 // Tech-skill keys are translated via `cv.techCategories.<key>`. The values

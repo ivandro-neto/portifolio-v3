@@ -1,7 +1,7 @@
 // Non-translatable project metadata. Translatable fields (title, description,
 // liveMask) live in `src/i18n/{en,pt}.ts` under `projects.items.<id>`.
 
-export type ProjectId = "entitle" | "ulock" | "imoni";
+export type ProjectId = "orus" | "entitle" | "ulock" | "imoni";
 
 export interface ProjectMeta {
   id: ProjectId;
@@ -13,6 +13,25 @@ export interface ProjectMeta {
 }
 
 export const projects: ProjectMeta[] = [
+  {
+    id: "orus",
+    liveLink: "https://github.com/ivandro-neto/orus-releases",
+    logo: "",
+    repo: "",
+    techs: [
+      "C#",
+      ".NET 10",
+      "ASP.NET Core",
+      "EF Core",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "Docker",
+      "GitHub Actions",
+      "Testcontainers",
+      "Astro",
+    ],
+  },
   {
     id: "entitle",
     liveLink: "https://www.entitle.site/",

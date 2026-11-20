@@ -50,7 +50,7 @@ export const archivedProjects: ArchivedProject[] = [
   },
   {
     id: "timeTower",
-    year: "2021",
+    year: "2025",
     title: "TimeTower",
     madeAtKey: "universityProject",
     builtWith: ["C#", "MonoGame", "Game Dev"],
