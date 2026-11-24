@@ -319,11 +319,13 @@
         {{/each}}
       </section>
 
+      {{#if interests}}
       <!-- Interests -->
       <section>
         <h2>{{labels.interests}}</h2>
         <p style="line-height: 1.3;">{{interests}}</p>
       </section>
+      {{/if}}
     </aside>
 
     <!-- Main Content -->
@@ -337,7 +339,7 @@
             <span class="exp-role">{{role}}</span>
             <span class="exp-date">{{period}}</span>
           </div>
-          <div class="exp-company">{{company}} - {{seniority}}</div>
+          <div class="exp-company">{{company}}</div>
           <p class="exp-desc">{{description}}</p>
         </div>
         {{/each}}

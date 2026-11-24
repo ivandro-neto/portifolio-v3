@@ -91,6 +91,9 @@ export const en = {
         title: "ORUS",
         description:
           "A product I founded and build on my own: a self-hosted infrastructure reliability platform that turns raw server and application signals into one evidence-backed incident, works out which team owns it and alerts only that team, then tracks acknowledgement, escalation and recovery. A .NET 10 agent runs on Linux and Windows servers (about 58 MB of RAM and 1% CPU), authenticates with ECDSA P-256 keys and certificate pinning, and buffers data in a bounded SQLite outbox, so a server outage replays with no gaps or duplicates. The server ingests metrics into daily-partitioned PostgreSQL tables, forecasts disk exhaustion, and keeps an append-only audit log behind mandatory TOTP login. Designed through 8 architecture decision records and a threat model, with signed releases, integration tests on real PostgreSQL, and a bilingual sales site. Piloted on real infrastructure.",
+        // Shorter version used in the generated CV.
+        cvDescription:
+          "Self-hosted infrastructure reliability platform that I founded and build: it turns server and application signals into one evidence-backed incident, routes it to the owning team, and tracks escalation and recovery. A .NET 10 agent for Linux and Windows (about 58 MB of RAM and 1% CPU) buffers data in a SQLite outbox so outages replay without gaps; PostgreSQL backend, signed releases, TOTP-protected audit log. Piloted on real infrastructure.",
         liveMask: "Incident Routing & Observability",
       },
       entitle: {
