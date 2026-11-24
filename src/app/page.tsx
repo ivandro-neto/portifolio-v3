@@ -14,6 +14,12 @@ import {
 } from "@/data/experience";
 import Loading from "@/components/loading-screen";
 import { projects } from "@/data/projects";
+import {
+  CvFocus,
+  cvFocuses,
+  projectOrderByFocus,
+  techCategoriesByFocus,
+} from "@/data/cv-focus";
 import { contentItems } from "@/data/content";
 import ContentCard from "@/components/content-card";
 import Script from "next/script";
@@ -30,6 +36,7 @@ const PageInner = () => {
   const [isTop, setIsTop] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [cvFocus, setCvFocus] = useState<CvFocus>("dotnet");
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
@@ -67,8 +74,10 @@ const PageInner = () => {
     setIsGeneratingPdf(true);
 
     // Build skills array with translated category names but raw tech values.
+    const nodeFocus = cvFocus === "node" ? t.cv.focus.node : null;
+
     const techCategoriesArray = (
-      Object.entries(techCategories) as [
+      Object.entries(techCategoriesByFocus[cvFocus]) as [
         keyof typeof techCategories,
         string[],
       ][]
@@ -78,13 +87,21 @@ const PageInner = () => {
     }));
 
     // Build resumed experience list from i18n + ordered metadata.
+    const nodeDescriptions: Partial<Record<string, string>> =
+      nodeFocus?.experienceDescriptions ?? {};
     const experienceResumed = experiencesResumedOrder.map((id) => ({
       period: localizedPeriod(experiencesResumedPeriods[id]),
       ...t.cv.experienceResumed[id],
+      description:
+        nodeDescriptions[id] ?? t.cv.experienceResumed[id].description,
     }));
 
     // Build projects array for the CV (translated fields + raw techs/link).
-    const projectsForCv = projects.map((p) => ({
+    const projectOrder = projectOrderByFocus[cvFocus];
+    const orderedProjects = [...projects].sort(
+      (a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id),
+    );
+    const projectsForCv = orderedProjects.map((p) => ({
       title: t.projects.items[p.id].title,
       description: t.projects.items[p.id].description,
       liveLink: p.liveLink,
@@ -99,7 +116,7 @@ const PageInner = () => {
           lang: locale,
           layout,
           name: "Ivandro Neto",
-          role: t.cv.role,
+          role: nodeFocus?.role ?? t.cv.role,
           links: [
             {
               tel: "+244949359054",
@@ -109,7 +126,7 @@ const PageInner = () => {
               lndk: "linkedin.com/in/ineto818",
             },
           ],
-          summary: t.cv.summary,
+          summary: nodeFocus?.summary ?? t.cv.summary,
           skills: techCategoriesArray,
           experience: experienceResumed,
           educations: t.cv.educations,
@@ -414,6 +431,28 @@ const PageInner = () => {
             })}
 
           <div className="flex flex-col gap-2">
+            <div
+              className="flex items-center gap-2 text-sm text-offtext flex-wrap"
+              role="group"
+              aria-label={t.experience.cvFocusLabel}
+            >
+              <span>{t.experience.cvFocusLabel}:</span>
+              {cvFocuses.map((focus) => (
+                <button
+                  key={focus}
+                  type="button"
+                  onClick={() => setCvFocus(focus)}
+                  aria-pressed={cvFocus === focus}
+                  className={`cursor-pointer hover:underline ${
+                    cvFocus === focus ? "text-foreground font-semibold" : ""
+                  }`}
+                >
+                  {focus === "node"
+                    ? t.experience.cvFocusNode
+                    : t.experience.cvFocusDotnet}
+                </button>
+              ))}
+            </div>
             <button
               onClick={() => handleDownloadPDF("two-column")}
               disabled={isGeneratingPdf}

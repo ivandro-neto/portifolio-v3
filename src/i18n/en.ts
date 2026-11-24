@@ -31,6 +31,9 @@ export const en = {
     resumeBtn: "View full résumé",
     resumeBtnAts: "Download ATS-friendly résumé",
     generatingBtn: "Generating PDF...",
+    cvFocusLabel: "Résumé focus",
+    cvFocusDotnet: "C# / .NET",
+    cvFocusNode: "Node.js / TypeScript",
     // Full experience list (translatable parts only)
     items: {
       spacium: {
@@ -129,6 +132,22 @@ export const en = {
     interests:
       "Chess, Photography, Reading, Quality Time with Family & Friends, Mortal Kombat",
 
+    // Node.js / TypeScript focus of the generated CV (same experience,
+    // different emphasis). See src/data/cv-focus.ts.
+    focus: {
+      node: {
+        role: "Backend Software Engineer (Node.js / TypeScript)",
+        summary:
+          "Backend Software Engineer with 4+ years of experience building scalable backend systems in TypeScript/Node.js and C#/.NET. TypeScript is my longest-standing and strongest language: I design new services from scratch and own the full software development lifecycle. I build and maintain high-throughput APIs and data-intensive backend services within a contact-center operation with 1,000+ employees handling 1M+ calls per day, including a call-quality-control platform I led that processes 500K+ audio and chat interactions, SFTP-to-cloud media pipelines, and self-service IVRs. Skilled in Node.js, NestJS, Express, Prisma, PostgreSQL, Redis, RabbitMQ, REST and GraphQL APIs, and event-driven microservices.",
+        experienceDescriptions: {
+          ucall:
+            "Backend engineer at a BPO with 1,000+ employees handling 1M+ calls per day. Led the backend of a 2-person team on a call-quality-control platform that processes 500K+ audio and chat interactions, with automatic supervisor/team-assistant rotation integrated with an attendance-control system. Built media pipelines importing audio into a local SFTP server and offloading recordings to cloud storage (Wasabi), plus self-service IVR solutions. I design the architecture of new projects from scratch and own their full lifecycle, choosing between TypeScript/Node.js and C#/.NET per project. Stack: TypeScript, Node.js, C#/.NET, RabbitMQ, Redis, REST & GraphQL APIs.",
+          bytebooster:
+            "Co-founder and CTO of an early-stage startup, started in late 2022 and formally registered in 2023. Led technical strategy and architecture and built Kilunga, an agritech product in Node.js and TypeScript that drew interest from agriculture players in Angola and abroad. Company wound down in 2026 before its first paid contract.",
+        },
+      },
+    },
+
     // Tech skills categories (keys translated)
     techCategories: {
       languages: "Programming Languages",
@@ -140,7 +159,7 @@ export const en = {
     educations: [
       {
         institution: "ISPTEC",
-        degree: "Computer Engineering",
+        degree: "Computer Engineering (in progress, 2021 – present)",
       },
     ],
 
@@ -174,7 +193,7 @@ export const en = {
         seniority: "Freelance",
         company: "Wahitech",
         description:
-          "Backend developer (freelance, Mar–Aug 2025) on a subscription-based financial dictionary platform for companies and individuals. Built the .NET 8 API (Clean Architecture, EF Core, SQL Server): JWT auth with refresh tokens, plans with shared quotas across sub-accounts, in-memory caching with targeted invalidation, payments, SMTP email integration (Outlook/Google) and SMS notifications, S3-compatible storage, Docker deploys via GitHub Actions.",
+          "Backend developer (freelance, Mar–Sep 2025) on a subscription-based financial dictionary platform for companies and individuals. Built the .NET 8 API (Clean Architecture, EF Core, SQL Server): JWT auth with refresh tokens, plans with shared quotas across sub-accounts, in-memory caching with targeted invalidation, payments, SMTP email integration (Outlook/Google) and SMS notifications, S3-compatible storage, Docker deploys via GitHub Actions.",
       },
       bytebooster: {
         role: "Co-founder & CTO",
@@ -226,7 +245,7 @@ export const en = {
       contact: "Contact",
       email: "Email",
       phone: "Phone",
-      linkedin: "Linked",
+      linkedin: "LinkedIn",
       github: "Github",
       blog: "Blog",
       web: "Web",
