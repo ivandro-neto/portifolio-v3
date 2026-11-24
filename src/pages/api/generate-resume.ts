@@ -34,7 +34,7 @@ const fallbackCvLabels: Record<Locale, Record<string, string>> = {
     contact: "Contact",
     email: "Email",
     phone: "Phone",
-    linkedin: "Linked",
+    linkedin: "LinkedIn",
     github: "Github",
     blog: "Blog",
     web: "Web",

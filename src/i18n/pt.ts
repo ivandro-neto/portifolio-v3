@@ -33,6 +33,9 @@ export const pt: Translations = {
     resumeBtn: "Ver currículo completo",
     resumeBtnAts: "Descarregar currículo compatível com ATS",
     generatingBtn: "A gerar PDF...",
+    cvFocusLabel: "Foco do currículo",
+    cvFocusDotnet: "C# / .NET",
+    cvFocusNode: "Node.js / TypeScript",
     items: {
       spacium: {
         role: "Desenvolvedor Frontend → Líder de Equipa",
@@ -129,6 +132,22 @@ export const pt: Translations = {
       "Engenheiro de Software Backend com mais de 4 anos de experiência na construção de sistemas backend escaláveis em C#/.NET e Node.js. Projeto e mantenho APIs de alto débito e serviços backend intensivos em dados numa operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia, incluindo uma plataforma de controlo de qualidade de atendimento que liderei e que processa mais de 500 mil interações de áudio e chat, pipelines de média de SFTP para cloud, e IVRs self-service. Domínio de APIs REST e GraphQL, mensageria com RabbitMQ, cache com Redis, pipelines de SFTP e armazenamento em cloud, e microsserviços. Colaboro de perto com equipas de DevOps e produto para entregar funcionalidades fiáveis, seguras e tolerantes a falhas em produção.",
     interests:
       "Xadrez, Fotografia, Leitura, Tempo de qualidade com Família e Amigos, Mortal Kombat",
+
+    // Node.js / TypeScript focus of the generated CV (same experience,
+    // different emphasis). See src/data/cv-focus.ts.
+    focus: {
+      node: {
+        role: "Engenheiro de Software Backend (Node.js / TypeScript)",
+        summary:
+          "Engenheiro de Software Backend com mais de 4 anos de experiência na construção de sistemas backend escaláveis em TypeScript/Node.js e C#/.NET. TypeScript é a linguagem com que trabalho há mais tempo e onde sou mais forte: desenho serviços novos de raiz e acompanho todo o ciclo de desenvolvimento. Construo e mantenho APIs de alto débito e serviços backend intensivos em dados numa operação de contact-center com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia, incluindo uma plataforma de controlo de qualidade de atendimento que liderei e que processa mais de 500 mil interações de áudio e chat, pipelines de média de SFTP para cloud, e IVRs self-service. Domínio de Node.js, NestJS, Express, Prisma, PostgreSQL, Redis, RabbitMQ, APIs REST e GraphQL, e microsserviços orientados a eventos.",
+        experienceDescriptions: {
+          ucall:
+            "Engenheiro de backend num BPO com mais de 1.000 funcionários que atende mais de 1M de chamadas por dia. Liderei o backend de uma equipa de 2 pessoas numa plataforma de controlo de qualidade de atendimento que processa mais de 500 mil interações de áudio e chat, com troca automática de supervisores e assistentes de equipa integrada com um sistema de controlo de assiduidade. Construí pipelines de média que importam áudios para servidor SFTP local e enviam para cloud (Wasabi), além de soluções de IVR self-service. Desenho de raiz a arquitetura dos novos projetos e acompanho todo o seu ciclo de vida, escolhendo entre TypeScript/Node.js e C#/.NET conforme o projeto. Stack: TypeScript, Node.js, C#/.NET, RabbitMQ, Redis, APIs REST e GraphQL.",
+          bytebooster:
+            "Co-fundador e CTO de uma startup em fase inicial, iniciada no final de 2022 e registada formalmente em 2023. Liderei a estratégia técnica e a arquitetura e construí a Kilunga, um produto agritech em Node.js e TypeScript, que despertou interesse no setor agrícola em Angola e no estrangeiro. A empresa encerrou em 2026, antes do primeiro contrato remunerado.",
+        },
+      },
+    },
 
     techCategories: {
       languages: "Linguagens de Programação",
