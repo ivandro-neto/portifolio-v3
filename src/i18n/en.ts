@@ -159,7 +159,7 @@ export const en = {
     educations: [
       {
         institution: "ISPTEC",
-        degree: "Computer Engineering",
+        degree: "Computer Engineering (in progress, 2021 – present)",
       },
     ],
 

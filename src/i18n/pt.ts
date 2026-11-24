@@ -158,7 +158,7 @@ export const pt: Translations = {
     educations: [
       {
         institution: "ISPTEC",
-        degree: "Engenharia Informática",
+        degree: "Engenharia Informática (em curso, 2021 – atual)",
       },
     ],
 
