@@ -65,6 +65,11 @@
       padding: 0 5px;
     }
 
+    /* Keep each "Label: value" pair on one line; wrap between pairs. */
+    .contact-line > span {
+      white-space: nowrap;
+    }
+
     h2 {
       font-size: 12px;
       font-weight: 700;
@@ -156,10 +161,10 @@
       <div class="contact-line">
         {{#each links}}
         <span><strong>{{../labels.email}}:</strong> <a href="mailto:{{mail}}">{{mail}}</a></span>
-        {{#if tel}}<span class="contact-sep">|</span><span><strong>{{../labels.phone}}:</strong> <a href="tel:{{tel}}">{{tel}}</a></span>{{/if}}
-        {{#if lndk}}<span class="contact-sep">|</span><span><strong>{{../labels.linkedin}}:</strong> <a href="https://www.{{lndk}}">{{lndk}}</a></span>{{/if}}
-        {{#if git}}<span class="contact-sep">|</span><span><strong>{{../labels.github}}:</strong> <a href="https://www.{{git}}">{{git}}</a></span>{{/if}}
-        {{#if web}}<span class="contact-sep">|</span><span><strong>{{../labels.web}}:</strong> <a href="https://www.{{web}}">{{web}}</a></span>{{/if}}
+        {{#if tel}}<span><span class="contact-sep">|</span><strong>{{../labels.phone}}:</strong> <a href="tel:{{tel}}">{{tel}}</a></span>{{/if}}
+        {{#if lndk}}<span><span class="contact-sep">|</span><strong>{{../labels.linkedin}}:</strong> <a href="https://www.{{lndk}}">{{lndk}}</a></span>{{/if}}
+        {{#if git}}<span><span class="contact-sep">|</span><strong>{{../labels.github}}:</strong> <a href="https://www.{{git}}">{{git}}</a></span>{{/if}}
+        {{#if web}}<span><span class="contact-sep">|</span><strong>{{../labels.web}}:</strong> <a href="https://www.{{web}}">{{web}}</a></span>{{/if}}
         {{/each}}
       </div>
     </header>
@@ -179,7 +184,7 @@
           <span class="item-title">{{role}}</span>
           <span class="item-date">{{period}}</span>
         </div>
-        <div class="item-meta">{{company}} — {{seniority}}</div>
+        <div class="item-meta">{{company}}</div>
         <p class="item-desc">{{description}}</p>
       </div>
       {{/each}}
@@ -234,11 +239,13 @@
       {{/each}}
     </section>
 
+    {{#if interests}}
     <!-- Interests -->
     <section>
       <h2>{{labels.interests}}</h2>
       <p>{{interests}}</p>
     </section>
+    {{/if}}
   </div>
 </body>
 

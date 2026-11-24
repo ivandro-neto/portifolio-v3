@@ -103,7 +103,10 @@ const PageInner = () => {
     );
     const projectsForCv = orderedProjects.map((p) => ({
       title: t.projects.items[p.id].title,
-      description: t.projects.items[p.id].description,
+      description:
+        "cvDescription" in t.projects.items[p.id]
+          ? (t.projects.items[p.id] as { cvDescription: string }).cvDescription
+          : t.projects.items[p.id].description,
       liveLink: p.liveLink,
       techs: p.techs,
     }));
@@ -133,7 +136,6 @@ const PageInner = () => {
           certifications: t.cv.certifications,
           languages: t.cv.languages,
           projects: projectsForCv,
-          interests: t.cv.interests,
           labels: t.cv.labels,
         }),
       });

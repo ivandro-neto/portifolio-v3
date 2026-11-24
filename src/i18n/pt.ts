@@ -92,6 +92,9 @@ export const pt: Translations = {
         title: "ORUS",
         description:
           "Produto que fundei e desenvolvo sozinho: uma plataforma self-hosted de fiabilidade de infraestrutura que transforma sinais de servidores e aplicações num único incidente com evidência, identifica a equipa responsável e alerta apenas essa equipa, acompanhando depois a confirmação, a escalada e a recuperação. Um agente em .NET 10 corre em servidores Linux e Windows (cerca de 58 MB de RAM e 1% de CPU), autentica-se com chaves ECDSA P-256 e certificate pinning, e guarda os dados num outbox SQLite limitado, para que uma falha do servidor seja reposta sem lacunas nem duplicados. O servidor ingere métricas em tabelas PostgreSQL particionadas por dia, prevê o esgotamento de disco e mantém um registo de auditoria só de escrita, com login protegido por TOTP obrigatório. Desenhado com 8 registos de decisões de arquitetura e um modelo de ameaças, com releases assinadas, testes de integração em PostgreSQL real e um site comercial bilingue. Em piloto em infraestrutura real.",
+        // Shorter version used in the generated CV.
+        cvDescription:
+          "Plataforma self-hosted de fiabilidade de infraestrutura que fundei e desenvolvo: transforma sinais de servidores e aplicações num único incidente com evidência, encaminha-o para a equipa responsável e acompanha a escalada e a recuperação. Um agente em .NET 10 para Linux e Windows (cerca de 58 MB de RAM e 1% de CPU) guarda os dados num outbox SQLite, para que as falhas sejam repostas sem lacunas; backend em PostgreSQL, releases assinadas e registo de auditoria com TOTP. Em piloto em infraestrutura real.",
         liveMask: "Encaminhamento de Incidentes e Observabilidade",
       },
       entitle: {
