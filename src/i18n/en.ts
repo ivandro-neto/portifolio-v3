@@ -193,7 +193,7 @@ export const en = {
         seniority: "Freelance",
         company: "Wahitech",
         description:
-          "Backend developer (freelance, Mar–Aug 2025) on a subscription-based financial dictionary platform for companies and individuals. Built the .NET 8 API (Clean Architecture, EF Core, SQL Server): JWT auth with refresh tokens, plans with shared quotas across sub-accounts, in-memory caching with targeted invalidation, payments, SMTP email integration (Outlook/Google) and SMS notifications, S3-compatible storage, Docker deploys via GitHub Actions.",
+          "Backend developer (freelance, Mar–Sep 2025) on a subscription-based financial dictionary platform for companies and individuals. Built the .NET 8 API (Clean Architecture, EF Core, SQL Server): JWT auth with refresh tokens, plans with shared quotas across sub-accounts, in-memory caching with targeted invalidation, payments, SMTP email integration (Outlook/Google) and SMS notifications, S3-compatible storage, Docker deploys via GitHub Actions.",
       },
       bytebooster: {
         role: "Co-founder & CTO",

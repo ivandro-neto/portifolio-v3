@@ -190,7 +190,7 @@ export const pt: Translations = {
         seniority: "Freelance",
         company: "Wahitech",
         description:
-          "Desenvolvedor backend (freelance, mar–ago 2025) numa plataforma de dicionário financeiro por subscrição para empresas e particulares. Construí a API em .NET 8 (Clean Architecture, EF Core, SQL Server): autenticação JWT com refresh tokens, planos com quotas partilhadas entre subcontas, caching em memória com invalidação direcionada, pagamentos, integração de email SMTP (Outlook/Google) e SMS, armazenamento compatível com S3, deploy em Docker com GitHub Actions.",
+          "Desenvolvedor backend (freelance, mar–set 2025) numa plataforma de dicionário financeiro por subscrição para empresas e particulares. Construí a API em .NET 8 (Clean Architecture, EF Core, SQL Server): autenticação JWT com refresh tokens, planos com quotas partilhadas entre subcontas, caching em memória com invalidação direcionada, pagamentos, integração de email SMTP (Outlook/Google) e SMS, armazenamento compatível com S3, deploy em Docker com GitHub Actions.",
       },
       bytebooster: {
         role: "Co-fundador e CTO",
